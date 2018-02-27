@@ -1,0 +1,13 @@
+{
+    "name": "krzysiekpiasecki/dotpay",
+    "description": "Dotpay integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krzysztof Piasecki",
+            "email": "krzysiekpiasecki@gmail.com"
+        }
+    ],
+    "require": {}
+}
