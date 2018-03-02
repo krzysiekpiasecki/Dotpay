@@ -8,7 +8,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace KrzysiekPiasecki\Dotpay\Credentials;
+namespace KrzysiekPiasecki\Dotpay;
 
 /**
  * Credentials.

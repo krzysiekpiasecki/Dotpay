@@ -8,7 +8,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace KrzysiekPiasecki\Dotpay\Request;
+namespace KrzysiekPiasecki\Dotpay;
 
 class RequestBag
 {
