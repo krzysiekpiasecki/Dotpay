@@ -40,7 +40,7 @@ class ResponseBag
 
     public $control;
 
-    public $desription;
+    public $description;
 
     public $email;
 
