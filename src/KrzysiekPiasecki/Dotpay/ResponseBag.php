@@ -10,6 +10,9 @@
 
 namespace KrzysiekPiasecki\Dotpay;
 
+/**
+ * Represents a Dotpay ResponseBag.
+ */
 class ResponseBag
 {
     public $id;
