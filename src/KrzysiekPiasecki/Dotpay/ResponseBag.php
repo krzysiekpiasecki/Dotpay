@@ -1,13 +1,21 @@
 <?php
 
-namespace KrzysiekPiasecki\Dotpay\Response;
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
-class ResponseBag 
+namespace KrzysiekPiasecki\Dotpay;
+
+class ResponseBag
 {
     public $id;
 
     public $operation_number;
-    
+
     public $operation_type;
 
     public $operation_status;
