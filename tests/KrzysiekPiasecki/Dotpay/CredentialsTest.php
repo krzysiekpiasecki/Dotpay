@@ -8,17 +8,20 @@
  * with this source code in the file LICENSE.
  */
 
-namespace KrzysiekPiasecki\Dotpay\Credentials;
+namespace KrzysiekPiasecki\Dotpay;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * Credentials tests {@see \KrzysiekPiasecki\Dotpay\Credentials\Credentials}.
+ * CredentialsTest tests.
  *
- * @coversNothing
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Credentials
  */
 class CredentialsTest extends TestCase
 {
+    /**
+     * @covers ::pin()
+     */
     public function testPin()
     {
         $credentials = new Credentials(876234, 'asdfsdf#()$(#)FSDFDF');
@@ -28,6 +31,9 @@ class CredentialsTest extends TestCase
         );
     }
 
+    /**
+     * @covers ::id()
+     */
     public function testId()
     {
         $credentials = new Credentials(876234, 'asdfsdf#()$(#)FSDFDF');
