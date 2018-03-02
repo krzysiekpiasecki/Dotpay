@@ -10,7 +10,10 @@
     "scripts": {
         "test": "./vendor/bin/phpunit",
         "fix": "./vendor/bin/php-cs-fixer fix",
-        "doc": "./vendor/bin/sami.php update sami.conf.php"
+        "doc": "./vendor/bin/sami.php update sami.conf.php",
+        "win:test": ".\\vendor\\bin\\phpunit",
+        "win:fix": ".\\vendor\\bin\\php-cs-fixer fix"
+
     },
     "require": {},
     "require-dev": {
