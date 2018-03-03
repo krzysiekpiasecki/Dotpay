@@ -20,8 +20,8 @@ install:
 before_script:
 
 script:
-  - composer fix --no-interaction
-  - composer test --coverage-clover=coverage.clover
+  - ./vendor/bin/php-cs-fixer --no-interaction
+  - ./vendor/bin/phpunit --coverage-clover=coverage.clover
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
