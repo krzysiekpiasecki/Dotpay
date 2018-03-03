@@ -20,7 +20,7 @@ install:
 before_script:
 
 script:
-  - composer fix --dry-run
+  - composer fix --no-interaction
   - composer test
 
 after_success:
