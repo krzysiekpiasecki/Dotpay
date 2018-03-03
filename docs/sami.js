@@ -27,7 +27,7 @@ window.projectVersion = 'master';
             
             {"type": "Class", "fromName": "KrzysiekPiasecki\\Dotpay", "fromLink": "KrzysiekPiasecki/Dotpay.html", "link": "KrzysiekPiasecki/Dotpay/RequestBag.html", "name": "KrzysiekPiasecki\\Dotpay\\RequestBag", "doc": "&quot;Data structure to represent the request sent to Dotpay.&quot;"},
                     
-            {"type": "Class", "fromName": "KrzysiekPiasecki\\Dotpay", "fromLink": "KrzysiekPiasecki/Dotpay.html", "link": "KrzysiekPiasecki/Dotpay/ResponseBag.html", "name": "KrzysiekPiasecki\\Dotpay\\ResponseBag", "doc": "&quot;Represents a Dotpay ResponseBag.&quot;"},
+            {"type": "Class", "fromName": "KrzysiekPiasecki\\Dotpay", "fromLink": "KrzysiekPiasecki/Dotpay.html", "link": "KrzysiekPiasecki/Dotpay/ResponseBag.html", "name": "KrzysiekPiasecki\\Dotpay\\ResponseBag", "doc": "&quot;Data structure to represent the response sent by Dotpay.&quot;"},
                     
             {"type": "Class", "fromName": "KrzysiekPiasecki\\Dotpay", "fromLink": "KrzysiekPiasecki/Dotpay.html", "link": "KrzysiekPiasecki/Dotpay/ResponseSignature.html", "name": "KrzysiekPiasecki\\Dotpay\\ResponseSignature", "doc": "&quot;Represents signature of Dotpay response.&quot;"},
                                                         {"type": "Method", "fromName": "KrzysiekPiasecki\\Dotpay\\ResponseSignature", "fromLink": "KrzysiekPiasecki/Dotpay/ResponseSignature.html", "link": "KrzysiekPiasecki/Dotpay/ResponseSignature.html#method___construct", "name": "KrzysiekPiasecki\\Dotpay\\ResponseSignature::__construct", "doc": "&quot;ResponseSignature.&quot;"},
