@@ -4,22 +4,22 @@
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
  *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+ * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay\Validation;
+namespace  KrzysiekPiasecki\Dotpay\Validation\Constraint;
 
+use KrzysiekPiasecki\Dotpay\Validation\ApiVersionValidator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\ApiVersionConstraint
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Constraint\ApiVersionConstraint
  */
 class ApiVersionConstraintTest extends TestCase
 {
-    public function testMessage()
+    public function testMessageProperty()
     {
-        $expectedMessage = 'The api version {{ api_version }} is invalid';
+        $expectedMessage = 'The value {{ api_version }} is not a valid \'api_version\' parameter';
         $constraintMessage = (new ApiVersionConstraint())->message;
         $this->assertSame(
             $expectedMessage,
@@ -42,7 +42,7 @@ class ApiVersionConstraintTest extends TestCase
             $validateBy,
             ApiVersionValidator::class,
             sprintf(
-                'Expected %s to be a validator of ApiVersionConstraint, but was %s',
+                'Expected %s to be a validator against ApiVersionConstraint, but was %s',
                 ApiVersionValidator::class,
                 $validateBy
             )

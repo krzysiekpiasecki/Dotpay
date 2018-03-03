@@ -4,8 +4,7 @@
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
  *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+ * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
 namespace  KrzysiekPiasecki\Dotpay\Validation\Constraint;
@@ -14,18 +13,19 @@ use KrzysiekPiasecki\Dotpay\Validation\ApiVersionValidator;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Constraint against request parameter 'api_version'.
+ * Constraint against 'api_version' parameter.
  *
- * @see RequestBag::$api_version The request parameter 'api_version'
+ * @see RequestBag::$api_version Parameter 'api_version'
  * @Annotation
+ * @Target({"PROPERTY"})
  */
-class ApiVersion extends Constraint
+class ApiVersionConstraint extends Constraint
 {
     /** @var string Constraint message */
-    public $message = 'The request api_version parameter {{ api_version }} is invalid';
+    public $message = 'The value {{ api_version }} is not a valid \'api_version\' parameter';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validatedBy()
     {
