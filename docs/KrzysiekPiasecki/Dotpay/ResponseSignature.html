@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>KrzysiekPiasecki\Dotpay\Credentials | Dotpayds API</title>
+    <title>KrzysiekPiasecki\Dotpay\ResponseSignature | Dotpayds API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:KrzysiekPiasecki_Dotpay_Credentials" data-root-path="../../">
+    <body id="class" data-name="class:KrzysiekPiasecki_Dotpay_ResponseSignature" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,27 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../KrzysiekPiasecki.html">KrzysiekPiasecki</a></li><li class="backslash">\</li><li><a href="../../KrzysiekPiasecki/Dotpay.html">Dotpay</a></li><li class="backslash">\</li><li>Credentials</li>
+                        <li><a href="../../KrzysiekPiasecki.html">KrzysiekPiasecki</a></li><li class="backslash">\</li><li><a href="../../KrzysiekPiasecki/Dotpay.html">Dotpay</a></li><li class="backslash">\</li><li>ResponseSignature</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Credentials
+            ResponseSignature
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Credentials</strong>
+    <strong>ResponseSignature</strong>
 </p>
 
         
     
 
             <div class="description">
-            <p>Credentials.</p>                                </div>
+            <p>Represents signature of Dotpay response.</p>                                </div>
     
     
     
@@ -99,20 +99,9 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(int $id, string $pin)
+                    <a href="#method___construct">__construct</a>(<a href="../../KrzysiekPiasecki/Dotpay/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\ResponseBag">ResponseBag</abbr></a> $bag, string $pin)
         
-                                            <p>Credentials.</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_id">id</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>ResponseSignature.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -120,10 +109,9 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_pin">pin</a>()
+                    <a href="#method_signature">signature</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns a Dotpay response signature.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -134,9 +122,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 33</div>
+        <div class="location">at         line 28</div>
         <code>                    
-    <strong>__construct</strong>(int $id, string $pin)
+    <strong>__construct</strong>(<a href="../../KrzysiekPiasecki/Dotpay/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\ResponseBag">ResponseBag</abbr></a> $bag, string $pin)
         </code>
     </h3>
     <div class="details">
@@ -144,20 +132,20 @@
     
 
                     <div class="method-description">
-                                    <p>Credentials.</p>                                                </div>
+                                    <p>ResponseSignature.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$id</td>
-                <td></td>
+                <td><a href="../../KrzysiekPiasecki/Dotpay/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\ResponseBag">ResponseBag</abbr></a></td>
+                <td>$bag</td>
+                <td>Response bag</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$pin</td>
-                <td></td>
+                <td>Seller pin</td>
             </tr>
             </table>
 
@@ -169,44 +157,18 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_id">
-        <div class="location">at         line 42</div>
-        <code>                    int
-    <strong>id</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_pin">
-        <div class="location">at         line 50</div>
+                    <h3 id="method_signature">
+        <div class="location">at         line 69</div>
         <code>                    string
-    <strong>pin</strong>()
+    <strong>signature</strong>()
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Returns a Dotpay response signature.</p>                    <p><strong>Always ensure that signature is correct!</strong></p>                            </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -214,7 +176,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td>Dotpay response signature</td>
         </tr>
     </table>
 
