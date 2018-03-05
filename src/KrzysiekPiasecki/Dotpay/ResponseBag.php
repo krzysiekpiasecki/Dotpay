@@ -14,49 +14,12 @@ namespace KrzysiekPiasecki\Dotpay;
  */
 class ResponseBag
 {
-<<<<<<< HEAD
-    /** @var string Seller id */    
-=======
     /** @var string Seller id */
->>>>>>> upstream/master
     public $id;
 
     /** @var string Operation number */
     public $operation_number;
 
-<<<<<<< HEAD
-     /** @var string Operation type */
-    public $operation_type;
-
-     /** @var string Operation status */
-    public $operation_status;
-
-     /** @var string Operation amount */
-    public $operation_amount;
-
-     /** @var string Operation currency */
-    public $operation_currency;
-
-     /** @var string Operation withdrawal amount */
-    public $operation_withdrawal_amount;
-
-     /** @var string Operation commission amount */
-    public $operation_commission_amount;
-
-     /** @var string Parameter informing if the operation is completed */
-    public $is_completed;
-
-     /** @var string Operation original amount */
-    public $operation_original_amount;
-
-     /** @var string Operation original currency */
-    public $operation_original_currency;
-
-     /** @var string Operation datetime */
-    public $operation_datetime;
-
-     /** @var string Number of related operation */
-=======
     /** @var string Operation type */
     public $operation_type;
 
@@ -88,7 +51,6 @@ class ResponseBag
     public $operation_datetime;
 
     /** @var string Number of related operation */
->>>>>>> upstream/master
     public $operation_related_number;
 
     /** @var string Operation control number */

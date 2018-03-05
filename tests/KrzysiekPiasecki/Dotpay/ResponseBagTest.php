@@ -4,12 +4,7 @@
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
  *
-<<<<<<< HEAD
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
-=======
  * @license   https://opensource.org/licenses/MIT  The MIT License
->>>>>>> upstream/master
  */
 
 namespace KrzysiekPiasecki\Dotpay;
