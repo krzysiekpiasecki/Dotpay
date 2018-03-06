@@ -7,9 +7,9 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay\Validation;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
-use KrzysiekPiasecki\Dotpay\Validation\Constraint\ApiVersionConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ApiVersionConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
