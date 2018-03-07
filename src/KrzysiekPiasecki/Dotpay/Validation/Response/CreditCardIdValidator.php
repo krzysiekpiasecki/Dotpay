@@ -9,19 +9,19 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
-use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\CreditCardBrandIdConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\CreditCardIdConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Validator against CreditCardBrandIdConstraint.
+ * Validator against CreditCardIdConstraint.
  *
- * @see CreditCardBrandIdConstraint Constraint against 'creditCardBrandId' parameter
+ * @see CreditCardIdConstraint Constraint against 'creditCardId' parameter
  */
-class CreditCardBrandIdValidator extends ConstraintValidator
+class CreditCardIdValidator extends ConstraintValidator
 {
     /**
-     * Validate against {@see CreditCardBrandIdConstraint}.
+     * Validate against {@see CreditCardIdConstraint}.
      *
      * @param mixed      $value      Validated value
      * @param Constraint $constraint Used constraint
