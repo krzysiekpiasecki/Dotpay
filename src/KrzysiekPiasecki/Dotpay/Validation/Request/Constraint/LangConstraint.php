@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\LangValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'lang' parameter.
@@ -19,8 +20,34 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class LangConstraint extends Constraint
+class LangConstraint extends Choice
 {
+    /**
+     * Available languages
+     *
+     * @var array
+     */
+    private static $languages = [
+        'cz',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'hu',
+        'it',
+        'pl',
+        'ro',
+        'ru',
+    ];
+
+    /**
+     * LangConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$languages);
+    }
+
     /** @var string Constraint message */
     public $message = 'The value {{ lang }} is not a valid \'lang\' parameter';
 
