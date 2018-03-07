@@ -9,9 +9,7 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ApiVersionConstraint;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\LangConstraint;
-use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
@@ -19,11 +17,6 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
  */
 class LangValidatorTest extends ConstraintValidatorTestCase
 {
-    protected function createValidator()
-    {
-        return new LangValidator();
-    }
-
     /**
      * @covers ::validate()
      * @dataProvider provideValidLanguages
@@ -34,7 +27,6 @@ class LangValidatorTest extends ConstraintValidatorTestCase
         $this->validator->validate($lang, $constraint);
         $this->assertNoViolation();
     }
-
 
     /**
      * @covers ::validate()
@@ -47,7 +39,8 @@ class LangValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return array
      */
-    public function provideValidLanguages(): array {
+    public function provideValidLanguages(): array
+    {
         return [
             ['cz'],
             ['de'],
@@ -58,8 +51,12 @@ class LangValidatorTest extends ConstraintValidatorTestCase
             ['it'],
             ['pl'],
             ['ro'],
-            ['ru']
+            ['ru'],
         ];
     }
 
+    protected function createValidator()
+    {
+        return new LangValidator();
+    }
 }

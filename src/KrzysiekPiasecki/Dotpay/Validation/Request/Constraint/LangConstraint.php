@@ -22,8 +22,10 @@ use Symfony\Component\Validator\Constraints\Choice;
  */
 class LangConstraint extends Choice
 {
+    /** @var string Constraint message */
+    public $message = 'The value {{ lang }} is not a valid \'lang\' parameter';
     /**
-     * Available languages
+     * Available languages.
      *
      * @var array
      */
@@ -47,9 +49,6 @@ class LangConstraint extends Choice
     {
         parent::__construct(self::$languages);
     }
-
-    /** @var string Constraint message */
-    public $message = 'The value {{ lang }} is not a valid \'lang\' parameter';
 
     /**
      * {@inheritdoc}

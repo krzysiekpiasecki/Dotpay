@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class CreditCardBrandIdConstraint extends Constraint
+class CreditCardIdConstraint extends Constraint
 {
     /** @var string Constraint message */
     public $message = 'The value {{ creditCardBrandId }} is not a valid \'creditCardBrandId\' parameter';

@@ -10,6 +10,7 @@
 namespace KrzysiekPiasecki\Dotpay;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint as RequestConstraint;
+
 /**
  * Data structure to represent the request sent to Dotpay.
  */
@@ -32,6 +33,7 @@ class RequestBag
 
     /**
      * @RequestConstraint\LangConstraint
+     *
      * @var string Transaction language
      */
     public $lang;

@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class geoipCountryConstraint extends Constraint
+class GeoipCountryConstraint extends Constraint
 {
     /** @var string Constraint message */
     public $message = 'The value {{ geoipCountry }} is not a valid \'geoipCountry\' parameter';
