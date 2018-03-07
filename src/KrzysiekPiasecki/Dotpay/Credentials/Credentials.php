@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
@@ -7,12 +9,12 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay;
+namespace KrzysiekPiasecki\Dotpay\Credentials;
 
 /**
  * Credentials.
  */
-class Credentials
+class Credentials implements CredentialsInterface
 {
     /**
      * @var int
@@ -27,19 +29,19 @@ class Credentials
     /**
      * Credentials.
      *
-     * @param int    $id
+     * @param string $id
      * @param string $pin
      */
-    public function __construct($id, $pin)
+    public function __construct(string $id, string $pin)
     {
         $this->id = $id;
         $this->pin = $pin;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function id()
+    public function id(): string
     {
         return $this->id;
     }
@@ -47,7 +49,7 @@ class Credentials
     /**
      * @return string
      */
-    public function pin()
+    public function pin(): string
     {
         return $this->pin;
     }
