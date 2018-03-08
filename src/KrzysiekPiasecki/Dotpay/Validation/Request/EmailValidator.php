@@ -11,14 +11,13 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\EmailConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against EmailConstraint.
  *
  * @see EmailConstraint Constraint against 'email' parameter
  */
-class EmailValidator extends ConstraintValidator
+class EmailValidator extends \Symfony\Component\Validator\Constraints\EmailValidator
 {
     /**
      * Validate against {@see EmailConstraint}.
@@ -28,7 +27,6 @@ class EmailValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }
