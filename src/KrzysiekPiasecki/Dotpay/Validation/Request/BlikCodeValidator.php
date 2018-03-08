@@ -23,7 +23,7 @@ class BlikCodeValidator extends RegexValidator
     /**
      * Validate against {@see BlikCodeConstraint}.
      *
-     * @param mixed      $value      Validated value
+     * @param mixed $value Validated value
      * @param Constraint $constraint Used constraint
      */
     public function validate($value, Constraint $constraint)
