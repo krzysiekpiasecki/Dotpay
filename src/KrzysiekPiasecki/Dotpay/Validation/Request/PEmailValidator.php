@@ -22,7 +22,7 @@ class PEmailValidator extends \Symfony\Component\Validator\Constraints\EmailVali
     /**
      * Validate against {@see PEmailConstraint}.
      *
-     * @param mixed      $value      Validated value
+     * @param mixed $value Validated value
      * @param Constraint $constraint Used constraint
      */
     public function validate($value, Constraint $constraint)
