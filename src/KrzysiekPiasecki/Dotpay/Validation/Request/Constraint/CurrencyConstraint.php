@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\CurrencyValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'currency' parameter.
@@ -19,10 +20,27 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class CurrencyConstraint extends Constraint
+class CurrencyConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ currency }} is not a valid \'currency\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        'PLN',
+        'EUR',
+        'USD',
+        'GBP',
+        'JPY',
+        'CZK',
+        'SEK',
+        'UAH',
+        'RON',
+    ];
 
     /**
      * {@inheritdoc}
@@ -30,5 +48,13 @@ class CurrencyConstraint extends Constraint
     public function validatedBy()
     {
         return CurrencyValidator::class;
+    }
+
+    /**
+     * CurrencyConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
     }
 }
