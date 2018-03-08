@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\PEmailValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * Constraint against 'pEmail' parameter.
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class PEmailConstraint extends Constraint
+class PEmailConstraint extends Email
 {
     /** @var string Constraint message */
     public $message = 'The value {{ pEmail }} is not a valid \'pEmail\' parameter';
