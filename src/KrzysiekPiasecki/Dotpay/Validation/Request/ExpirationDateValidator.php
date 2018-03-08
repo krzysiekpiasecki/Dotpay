@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ExpirationDateConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\DateTimeValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see ExpirationDateConstraint Constraint against 'expirationDate' parameter
  */
-class ExpirationDateValidator extends ConstraintValidator
+class ExpirationDateValidator extends DateTimeValidator
 {
     /**
      * Validate against {@see ExpirationDateConstraint}.
@@ -28,7 +29,6 @@ class ExpirationDateValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }
