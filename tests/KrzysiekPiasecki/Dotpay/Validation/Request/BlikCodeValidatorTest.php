@@ -9,29 +9,30 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\IdConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\BlikCodeConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\IdValidator
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\BlikCodeValidator
  */
-class IdValidatorTest extends ConstraintValidatorTestCase
+class BlikCodeValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
-     * @dataProvider provideValidIds()
+     * @dataProvider provideValidValues
      */
-    public function testValidId(string $id)
+    public function testValidValue(string $value)
     {
-        $constraint = new IdConstraint();
-        $this->validator->validate($id, $constraint);
+        $constraint = new BlikCodeConstraint();
+        $constraint->pattern = '^[0-9]\d*$^';
+        $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
 
     /**
      * @covers ::validate()
      */
-    public function testInvalidId()
+    public function testInvalidValue()
     {
         $this->markTestSkipped('Not implemented yet');
     }
@@ -39,17 +40,16 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return array
      */
-    public function provideValidIds(): array
+    public function provideValidValues(): array
     {
         return [
-           ['1'],
-           ['123456'],
-           ['999999'],
+            ['123123'],
+            ['32322'],
         ];
     }
 
     protected function createValidator()
     {
-        return new IdValidator();
+        return new BlikCodeValidator();
     }
 }

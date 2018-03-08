@@ -11,6 +11,8 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ButtontextConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\LengthValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +20,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see ButtontextConstraint Constraint against 'buttontext' parameter
  */
-class ButtontextValidator extends ConstraintValidator
+class ButtontextValidator extends RegexValidator
 {
     /**
      * Validate against {@see ButtontextConstraint}.
@@ -28,7 +30,6 @@ class ButtontextValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

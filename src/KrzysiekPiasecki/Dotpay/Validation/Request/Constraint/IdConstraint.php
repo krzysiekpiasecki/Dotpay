@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\IdValidator;
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'id' parameter.
@@ -19,14 +20,13 @@ use Symfony\Component\Validator\Constraints\Range;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class IdConstraint extends Range
+class IdConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ id }} is not a valid \'id\' parameter';
 
-    public $min = 1;
-
-    public $max = 999999;
+    /** @var string regex pattern */
+    public $pattern = '/^[1-9][0-9]{0,5}$/';
 
     /**
      * {@inheritdoc}
@@ -34,5 +34,13 @@ class IdConstraint extends Range
     public function validatedBy()
     {
         return IdValidator::class;
+    }
+
+    /**
+     * IdConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
     }
 }

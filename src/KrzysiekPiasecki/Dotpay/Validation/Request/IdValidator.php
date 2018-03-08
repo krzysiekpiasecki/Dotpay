@@ -12,6 +12,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\IdConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\RangeValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see IdConstraint Constraint against 'id' parameter
  */
-class IdValidator extends RangeValidator
+class IdValidator extends RegexValidator
 {
     /**
      * Validate against {@see IdConstraint}.
