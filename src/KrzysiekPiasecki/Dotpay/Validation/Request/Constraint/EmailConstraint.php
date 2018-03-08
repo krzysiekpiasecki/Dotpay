@@ -18,7 +18,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see EmailConstraint Constraint against 'email' parameter
  */
-class EmailValidator extends ConstraintValidator
+class EmailConstraint extends ConstraintValidator
 {
     /**
      * Validate against {@see EmailConstraint}.

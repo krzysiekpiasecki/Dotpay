@@ -9,7 +9,6 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\ApiVersionValidator;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ApiVersionConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
