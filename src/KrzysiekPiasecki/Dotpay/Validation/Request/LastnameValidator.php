@@ -11,24 +11,23 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\LastnameConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 /**
  * Validator against LastnameConstraint.
  *
  * @see LastnameConstraint Constraint against 'lastname' parameter
  */
-class LastnameValidator extends ConstraintValidator
+class LastnameValidator extends RegexValidator
 {
     /**
      * Validate against {@see LastnameConstraint}.
      *
-     * @param mixed      $value      Validated value
+     * @param mixed $value Validated value
      * @param Constraint $constraint Used constraint
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

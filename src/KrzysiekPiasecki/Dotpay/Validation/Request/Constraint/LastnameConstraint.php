@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\LastnameValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'lastname' parameter.
@@ -19,10 +20,13 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class LastnameConstraint extends Constraint
+class LastnameConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ lastname }} is not a valid \'lastname\' parameter';
+
+    /** @var string regex pattern */
+    public $pattern = '^[\\w\\d _\\-]{0,50}$^';
 
     /**
      * {@inheritdoc}
@@ -30,5 +34,13 @@ class LastnameConstraint extends Constraint
     public function validatedBy()
     {
         return LastnameValidator::class;
+    }
+
+    /**
+     * Lastname constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
     }
 }
