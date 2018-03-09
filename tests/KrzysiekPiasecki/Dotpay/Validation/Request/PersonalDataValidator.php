@@ -21,7 +21,7 @@ class PersonalDataValidatorTest extends ConstraintValidatorTestCase
      * @covers ::validate()
      * @dataProvider provideValidValues()
      */
-    public function testValidEmail(string $value)
+    public function testValidData(string $value)
     {
         $constraint = new PersonalDataConstraint();
         $this->validator->validate($value, $constraint);
@@ -31,7 +31,7 @@ class PersonalDataValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      */
-    public function testInvalidEmail()
+    public function testInvalidData()
     {
         $this->markTestSkipped('Not implemented yet');
     }
