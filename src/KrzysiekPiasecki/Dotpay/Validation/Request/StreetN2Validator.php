@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\StreetN2Constraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see StreetN2Constraint Constraint against 'streetN2' parameter
  */
-class StreetN2Validator extends ConstraintValidator
+class StreetN2Validator extends RegexValidator
 {
     /**
      * Validate against {@see StreetN2Constraint}.
@@ -28,7 +29,6 @@ class StreetN2Validator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

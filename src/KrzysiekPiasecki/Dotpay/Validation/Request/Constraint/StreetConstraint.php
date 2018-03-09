@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\StreetValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'street' parameter.
@@ -19,10 +20,13 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class StreetConstraint extends Constraint
+class StreetConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ street }} is not a valid \'street\' parameter';
+
+    /** @var string regex pattern */
+    public $pattern = '^[\\w\\d _\\-]{0,30}$^';
 
     /**
      * {@inheritdoc}
@@ -30,5 +34,13 @@ class StreetConstraint extends Constraint
     public function validatedBy()
     {
         return StreetValidator::class;
+    }
+
+    /**
+     * StreetConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
     }
 }

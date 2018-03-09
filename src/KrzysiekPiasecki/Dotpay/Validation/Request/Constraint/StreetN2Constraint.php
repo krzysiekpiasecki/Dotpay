@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\StreetN2Validator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'streetN2' parameter.
@@ -19,10 +20,13 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class StreetN2Constraint extends Constraint
+class StreetN2Constraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ streetN2 }} is not a valid \'streetN2\' parameter';
+
+    /** @var string regex pattern */
+    public $pattern = '^[\\w\\d _\\-]{0,30}$^';
 
     /**
      * {@inheritdoc}
@@ -30,5 +34,13 @@ class StreetN2Constraint extends Constraint
     public function validatedBy()
     {
         return StreetN2Validator::class;
+    }
+
+    /**
+     * StreetN2Constraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
     }
 }
