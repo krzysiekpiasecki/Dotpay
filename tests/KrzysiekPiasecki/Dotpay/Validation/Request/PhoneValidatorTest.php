@@ -9,21 +9,21 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PersonalDataConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PhoneConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\PersonalDataValidator
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\PhoneValidator
  */
-class PersonalDataValidatorTest extends ConstraintValidatorTestCase
+class PhoneValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
      * @dataProvider provideValidValues()
      */
-    public function testValidData(string $value)
+    public function testValidPhone(string $value)
     {
-        $constraint = new PersonalDataConstraint();
+        $constraint = new PhoneConstraint();
         $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
@@ -31,7 +31,7 @@ class PersonalDataValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      */
-    public function testInvalidData()
+    public function testInvalidPhone()
     {
         $this->markTestSkipped('Not implemented yet');
     }
@@ -42,12 +42,13 @@ class PersonalDataValidatorTest extends ConstraintValidatorTestCase
     public function provideValidValues(): array
     {
         return [
-            ['1'],
+            ['333777888'],
+            ['333-222-111'],
         ];
     }
 
     protected function createValidator()
     {
-        return new PersonalDataValidator();
+        return new PhoneValidator();
     }
 }
