@@ -11,6 +11,8 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PostcodeConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\LengthValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +20,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see PostcodeConstraint Constraint against 'postcode' parameter
  */
-class PostcodeValidator extends ConstraintValidator
+class PostcodeValidator extends RegexValidator
 {
     /**
      * Validate against {@see PostcodeConstraint}.
@@ -28,7 +30,6 @@ class PostcodeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }
