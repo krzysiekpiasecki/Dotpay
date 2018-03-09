@@ -106,11 +106,11 @@ class ChannelConstraint extends Choice
     }
 
     /**
-     * Available languages.
+     * Available channels.
      *
      * @var array
      */
-    private static $values = [
+    public static $values = [
         '71',
         '246',
         '248',
@@ -171,7 +171,7 @@ class ChannelConstraint extends Choice
     ];
 
     /**
-     * LangConstraint constructor.
+     * ChannelConstraint constructor.
      */
     public function __construct()
     {
