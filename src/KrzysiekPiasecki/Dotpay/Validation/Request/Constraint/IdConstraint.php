@@ -10,7 +10,6 @@
 namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\IdValidator;
-use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Regex;
 
 /**
@@ -29,18 +28,18 @@ class IdConstraint extends Regex
     public $pattern = '/^[1-9][0-9]{0,5}$/';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return IdValidator::class;
-    }
-
-    /**
      * IdConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return IdValidator::class;
     }
 }

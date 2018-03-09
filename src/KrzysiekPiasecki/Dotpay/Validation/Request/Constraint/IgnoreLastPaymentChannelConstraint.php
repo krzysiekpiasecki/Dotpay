@@ -37,18 +37,18 @@ class IgnoreLastPaymentChannelConstraint extends Choice
     ];
 
     /**
+     * IgnoreLastPaymentChannelConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function validatedBy()
     {
         return IgnoreLastPaymentChannelValidator::class;
-    }
-
-    /**
-     * IgnoreLastPaymentChannelConstraint constructor
-     */
-    public function __construct()
-    {
-        parent::__construct(self::$values);
     }
 }

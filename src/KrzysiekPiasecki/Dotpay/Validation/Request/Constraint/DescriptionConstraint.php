@@ -29,18 +29,18 @@ class DescriptionConstraint extends Regex
     public $pattern = '^[\\w\\d _\\-]{1,255}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return DescriptionValidator::class;
-    }
-
-    /**
      * DescriptionConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return DescriptionValidator::class;
     }
 }

@@ -29,18 +29,18 @@ class FirstnameConstraint extends Regex
     public $pattern = '^[\\w\\d _\\-]{0,50}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return FirstnameValidator::class;
-    }
-
-    /**
      * FirstnameConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return FirstnameValidator::class;
     }
 }

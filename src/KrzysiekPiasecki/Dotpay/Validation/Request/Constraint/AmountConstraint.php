@@ -11,7 +11,6 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\AmountValidator;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Regex;
 
 /**
@@ -29,18 +28,18 @@ class AmountConstraint extends Regex
     public $pattern = '^(0|([1-9][0-9]*))(\\.[0-9]+)?$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return AmountValidator::class;
-    }
-
-    /**
      * AmountConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return AmountValidator::class;
     }
 }

@@ -36,18 +36,18 @@ class ChLockConstraint extends Choice
     ];
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return ChLockValidator::class;
-    }
-
-    /**
      * ChLockConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct(self::$values);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return ChLockValidator::class;
     }
 }

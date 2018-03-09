@@ -29,18 +29,18 @@ class PhoneConstraint extends Regex
     public $pattern = ' ^[\\d \\+\\-_]{0,20}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return PhoneValidator::class;
-    }
-
-    /**
      * PhoneConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return PhoneValidator::class;
     }
 }

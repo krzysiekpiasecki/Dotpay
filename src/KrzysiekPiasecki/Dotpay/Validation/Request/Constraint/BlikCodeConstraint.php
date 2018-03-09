@@ -28,14 +28,6 @@ class BlikCodeConstraint extends Regex
     public $pattern = '^[0-9]\d*$';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return BlikCodeValidator::class;
-    }
-
-    /**
      * BlikcodeConstraint constructor.
      */
     public function __construct()
@@ -43,4 +35,11 @@ class BlikCodeConstraint extends Regex
         parent::__construct($this->pattern);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return BlikCodeValidator::class;
+    }
 }

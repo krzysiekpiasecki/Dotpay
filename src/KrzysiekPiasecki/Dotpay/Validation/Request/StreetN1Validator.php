@@ -12,7 +12,6 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\StreetN1Constraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\RegexValidator;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against StreetN1Constraint.

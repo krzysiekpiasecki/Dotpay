@@ -26,14 +26,6 @@ class TypeConstraint extends Choice
     public $message = 'The value {{ type }} is not a valid \'type\' parameter';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return TypeValidator::class;
-    }
-
-    /**
      * Available values.
      *
      * @var array
@@ -50,5 +42,13 @@ class TypeConstraint extends Choice
     public function __construct()
     {
         parent::__construct(self::$values);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return TypeValidator::class;
     }
 }

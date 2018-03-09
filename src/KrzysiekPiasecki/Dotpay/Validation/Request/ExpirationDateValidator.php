@@ -12,7 +12,6 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ExpirationDateConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\DateTimeValidator;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against ExpirationDateConstraint.

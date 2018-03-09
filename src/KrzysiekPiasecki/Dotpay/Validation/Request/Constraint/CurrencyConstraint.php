@@ -43,18 +43,18 @@ class CurrencyConstraint extends Choice
     ];
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return CurrencyValidator::class;
-    }
-
-    /**
      * CurrencyConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct(self::$values);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return CurrencyValidator::class;
     }
 }

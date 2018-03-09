@@ -12,7 +12,6 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ChannelConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\ChoiceValidator;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against ChannelConstraint.
@@ -32,4 +31,3 @@ class ChannelValidator extends ChoiceValidator
         return parent::validate($value, $constraint);
     }
 }
-

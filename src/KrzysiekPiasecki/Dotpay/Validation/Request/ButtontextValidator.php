@@ -11,9 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ButtontextConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints\LengthValidator;
 use Symfony\Component\Validator\Constraints\RegexValidator;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against ButtontextConstraint.

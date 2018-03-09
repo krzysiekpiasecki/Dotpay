@@ -28,18 +28,18 @@ class CountryConstraint extends Regex
     public $pattern = '^.{1,50}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return CountryValidator::class;
-    }
-
-    /**
      * CountryConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return CountryValidator::class;
     }
 }

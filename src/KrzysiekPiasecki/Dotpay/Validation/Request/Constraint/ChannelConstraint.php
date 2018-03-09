@@ -26,14 +26,6 @@ class ChannelConstraint extends Choice
     public $message = 'The value {{ channel }} is not a valid \'channel\' parameter';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return ChannelValidator::class;
-    }
-
-    /**
      * Available channels.
      *
      * @var array
@@ -104,5 +96,13 @@ class ChannelConstraint extends Choice
     public function __construct()
     {
         parent::__construct(self::$values);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return ChannelValidator::class;
     }
 }

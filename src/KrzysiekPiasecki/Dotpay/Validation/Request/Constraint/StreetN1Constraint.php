@@ -29,18 +29,18 @@ class StreetN1Constraint extends Regex
     public $pattern = '^[\\w\\d _\\-]{0,30}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return StreetN1Validator::class;
-    }
-
-    /**
      * StreetN1Constraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return StreetN1Validator::class;
     }
 }

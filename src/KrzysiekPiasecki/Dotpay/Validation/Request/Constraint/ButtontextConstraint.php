@@ -28,18 +28,18 @@ class ButtontextConstraint extends Regex
     public $pattern = '^.{4,100}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return ButtontextValidator::class;
-    }
-
-    /**
      * BylawConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return ButtontextValidator::class;
     }
 }

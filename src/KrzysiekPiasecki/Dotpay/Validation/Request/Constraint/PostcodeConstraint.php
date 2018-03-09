@@ -11,7 +11,6 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\PostcodeValidator;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Regex;
 
 /**
@@ -30,18 +29,18 @@ class PostcodeConstraint extends Regex
     public $pattern = '^.{0,20}$^';
 
     /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
-    {
-        return PostcodeValidator::class;
-    }
-
-    /**
      * PostcodeConstraint constructor.
      */
     public function __construct()
     {
         parent::__construct($this->pattern);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validatedBy()
+    {
+        return PostcodeValidator::class;
     }
 }
