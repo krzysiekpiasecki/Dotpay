@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\TypeValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'type' parameter.
@@ -19,10 +20,29 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class TypeConstraint extends Constraint
+class TypeConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ type }} is not a valid \'type\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        '0',
+        '2',
+        '4',
+    ];
+
+    /**
+     * TypeConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}

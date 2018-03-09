@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\IgnoreLastPaymentChannelValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'ignoreLastPaymentChannel' parameter.
@@ -19,11 +20,29 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class IgnoreLastPaymentChannelConstraint extends Constraint
+class IgnoreLastPaymentChannelConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ ignoreLastPaymentChannel }} 
         is not a valid \'ignoreLastPaymentChannel\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        '1',
+        'true',
+    ];
+
+    /**
+     * IgnoreLastPaymentChannelConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}

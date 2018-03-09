@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\CityConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 /**
  * Validator against CityConstraint.
  *
  * @see CityConstraint Constraint against 'city' parameter
  */
-class CityValidator extends ConstraintValidator
+class CityValidator extends RegexValidator
 {
     /**
      * Validate against {@see CityConstraint}.
@@ -28,7 +28,6 @@ class CityValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\BlikCodeConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 /**
  * Validator against BlikCodeConstraint.
  *
  * @see BlikCodeConstraint Constraint against 'blikCode' parameter
  */
-class BlikCodeValidator extends ConstraintValidator
+class BlikCodeValidator extends RegexValidator
 {
     /**
      * Validate against {@see BlikCodeConstraint}.
@@ -28,7 +28,6 @@ class BlikCodeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

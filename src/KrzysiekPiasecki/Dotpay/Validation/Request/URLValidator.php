@@ -11,14 +11,13 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\URLConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against URLConstraint.
  *
  * @see URLConstraint Constraint against 'URL' parameter
  */
-class URLValidator extends ConstraintValidator
+class URLValidator extends \Symfony\Component\Validator\Constraints\UrlValidator
 {
     /**
      * Validate against {@see URLConstraint}.
@@ -28,7 +27,6 @@ class URLValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

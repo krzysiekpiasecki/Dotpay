@@ -25,6 +25,7 @@
         "phpunit/phpunit": "^5.0",
         "friendsofphp/php-cs-fixer": "^2.10",
         "phpdocumentor/reflection-docblock": "~2.0",
+        "symfony/intl": "^4.0",
         "sami/sami": "^4.0"
     },
     "autoload": {

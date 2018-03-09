@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\ChLockConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 
 /**
  * Validator against ChLockConstraint.
  *
  * @see ChLockConstraint Constraint against 'chLock' parameter
  */
-class ChLockValidator extends ConstraintValidator
+class ChLockValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see ChLockConstraint}.
@@ -28,7 +28,6 @@ class ChLockValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

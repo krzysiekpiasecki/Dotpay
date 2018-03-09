@@ -7,10 +7,10 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\BylawValidator;
-use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'bylaw' parameter.
@@ -19,10 +19,27 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class BylawConstraint extends Constraint
+class BylawConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ bylaw }} is not a valid \'bylaw\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        '1',
+    ];
+
+    /**
+     * BylawConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}

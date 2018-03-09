@@ -7,28 +7,30 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay\Validation\Request;
+namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\EmailConstraint;
+use KrzysiekPiasecki\Dotpay\RequestBag;
+use KrzysiekPiasecki\Dotpay\Validation\Request\EmailValidator;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
- * Validator against EmailConstraint.
+ * Constraint against 'email' parameter.
  *
- * @see EmailConstraint Constraint against 'email' parameter
+ * @see RequestBag::$email Parameter 'email'
+ * @Annotation
+ * @Target({"PROPERTY"})
  */
-class EmailConstraint extends ConstraintValidator
+class EmailConstraint extends Email
 {
+    /** @var string Constraint message */
+    public $message = 'The value {{ email }} is not a valid \'email\' parameter';
+
     /**
-     * Validate against {@see EmailConstraint}.
-     *
-     * @param mixed      $value      Validated value
-     * @param Constraint $constraint Used constraint
+     * {@inheritdoc}
      */
-    public function validate($value, Constraint $constraint)
+    public function validatedBy()
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return EmailValidator::class;
     }
 }
