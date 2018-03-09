@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\DescriptionConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see DescriptionConstraint Constraint against 'description' parameter
  */
-class DescriptionValidator extends ConstraintValidator
+class DescriptionValidator extends RegexValidator
 {
     /**
      * Validate against {@see DescriptionConstraint}.
@@ -28,7 +29,6 @@ class DescriptionValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }
