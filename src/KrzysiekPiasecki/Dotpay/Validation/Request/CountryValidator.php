@@ -23,7 +23,7 @@ class CountryValidator extends RegexValidator
     /**
      * Validate against {@see CountryConstraint}.
      *
-     * @param mixed $value Validated value
+     * @param mixed      $value      Validated value
      * @param Constraint $constraint Used constraint
      */
     public function validate($value, Constraint $constraint)
