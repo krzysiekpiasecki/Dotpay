@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\IgnoreLastPaymentChannelConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see IgnoreLastPaymentChannelConstraint Constraint against 'ignoreLastPaymentChannel' parameter
  */
-class IgnoreLastPaymentChannelValidator extends ConstraintValidator
+class IgnoreLastPaymentChannelValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see IgnoreLastPaymentChannelConstraint}.
@@ -28,7 +29,6 @@ class IgnoreLastPaymentChannelValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }
