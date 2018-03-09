@@ -48,6 +48,6 @@ class PersonalDataValidator extends ConstraintValidatorTestCase
 
     protected function createValidator()
     {
-        return new PersonalDataValidator();
+        return new self();
     }
 }
