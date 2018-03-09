@@ -18,7 +18,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see URLCConstraint Constraint against 'URLC' parameter
  */
-class URLCValidator extends ConstraintValidator
+class URLCValidator extends \Symfony\Component\Validator\Constraints\UrlValidator
 {
     /**
      * Validate against {@see URLCConstraint}.
@@ -28,7 +28,6 @@ class URLCValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

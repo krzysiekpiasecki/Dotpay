@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\URLValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Url;
 
 /**
  * Constraint against 'URL' parameter.
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class URLConstraint extends Constraint
+class URLConstraint extends Url
 {
     /** @var string Constraint message */
     public $message = 'The value {{ URL }} is not a valid \'URL\' parameter';
