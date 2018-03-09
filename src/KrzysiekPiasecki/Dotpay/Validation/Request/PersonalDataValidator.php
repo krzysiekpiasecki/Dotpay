@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PersonalDataConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see PersonalDataConstraint Constraint against 'personalData' parameter
  */
-class PersonalDataValidator extends ConstraintValidator
+class PersonalDataValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see PersonalDataConstraint}.
@@ -28,7 +29,6 @@ class PersonalDataValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }
