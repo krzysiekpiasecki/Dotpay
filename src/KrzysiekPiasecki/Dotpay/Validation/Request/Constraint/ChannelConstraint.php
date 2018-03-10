@@ -7,10 +7,9 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\ChannelValidator;
-use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**
@@ -106,76 +105,4 @@ class ChannelConstraint extends Choice
         return ChannelValidator::class;
     }
 
-    /**
-     * Available channels.
-     *
-     * @var array
-     */
-    public static $values = [
-        '71',
-        '246',
-        '248',
-        '249',
-        '249',
-        '1',
-        '2',
-        '4',
-        '6',
-        '36',
-        '38',
-        '38',
-        '44',
-        '45',
-        '46',
-        '48',
-        '50',
-        '51',
-        '56',
-        '58',
-        '60',
-        '65',
-        '66',
-        '70',
-        '72',
-        '73',
-        '74',
-        '75',
-        '76',
-        '80',
-        '81',
-        '83',
-        '84',
-        '86',
-        '87',
-        '90',
-        '91',
-        '92',
-        '7',
-        '10',
-        '15',
-        '16',
-        '32',
-        '33',
-        '88',
-        '89',
-        '11',
-        '21',
-        '31',
-        '35',
-        '82',
-        '24',
-        '52',
-        '218',
-        '55',
-        '68',
-        '212',
-    ];
-
-    /**
-     * ChannelConstraint constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct(self::$values);
-    }
 }

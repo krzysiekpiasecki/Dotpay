@@ -7,10 +7,9 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\TypeValidator;
-use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**
@@ -50,24 +49,5 @@ class TypeConstraint extends Choice
     public function validatedBy()
     {
         return TypeValidator::class;
-    }
-
-    /**
-     * Available values.
-     *
-     * @var array
-     */
-    private static $values = [
-        '0',
-        '2',
-        '4',
-    ];
-
-    /**
-     * TypeConstraint constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct(self::$values);
     }
 }
