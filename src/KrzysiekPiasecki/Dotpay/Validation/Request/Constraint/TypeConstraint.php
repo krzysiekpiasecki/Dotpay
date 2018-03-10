@@ -50,23 +50,4 @@ class TypeConstraint extends Choice
     {
         return TypeValidator::class;
     }
-
-    /**
-     * Available values.
-     *
-     * @var array
-     */
-    private static $values = [
-        '0',
-        '2',
-        '4',
-    ];
-
-    /**
-     * TypeConstraint constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct(self::$values);
-    }
 }
