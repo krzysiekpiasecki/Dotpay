@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationWithdrawalAmountConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see OperationWithdrawalAmountConstraint Constraint against 'operationWithdrawalAmount' parameter
  */
-class OperationWithdrawalAmountValidator extends ConstraintValidator
+class OperationWithdrawalAmountValidator extends RegexValidator
 {
     /**
      * Validate against {@see OperationWithdrawalAmountConstraint}.
@@ -28,7 +29,6 @@ class OperationWithdrawalAmountValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

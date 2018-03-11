@@ -7,10 +7,9 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\ChannelValidator;
-use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**
@@ -105,4 +104,5 @@ class ChannelConstraint extends Choice
     {
         return ChannelValidator::class;
     }
+
 }

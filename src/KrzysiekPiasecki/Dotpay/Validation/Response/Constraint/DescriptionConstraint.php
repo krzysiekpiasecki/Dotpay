@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\DescriptionValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'description' parameter.
@@ -19,10 +20,22 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class DescriptionConstraint extends Constraint
+class DescriptionConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ description }} is not a valid \'description\' parameter';
+
+    /** @var string regex pattern */
+    public $pattern = '^[\\w\\d _\\-]{1,255}$^';
+
+    /**
+     * DescriptionConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
+    }
+
 
     /**
      * {@inheritdoc}

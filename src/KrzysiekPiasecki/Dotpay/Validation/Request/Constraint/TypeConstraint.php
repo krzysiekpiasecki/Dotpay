@@ -7,10 +7,9 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\TypeValidator;
-use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**

@@ -11,6 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationOriginalCurrencyConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
@@ -18,7 +19,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see OperationOriginalCurrencyConstraint Constraint against 'operationOriginalCurrency' parameter
  */
-class OperationOriginalCurrencyValidator extends ConstraintValidator
+class OperationOriginalCurrencyValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see OperationOriginalCurrencyConstraint}.
@@ -28,7 +29,6 @@ class OperationOriginalCurrencyValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

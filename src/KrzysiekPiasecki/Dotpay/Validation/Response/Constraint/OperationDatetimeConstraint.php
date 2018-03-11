@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationDatetimeValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Constraint against 'operationDatetime' parameter.
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationDatetimeConstraint extends Constraint
+class OperationDatetimeConstraint extends DateTime
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationDatetime }} is not a valid \'operationDatetime\' parameter';

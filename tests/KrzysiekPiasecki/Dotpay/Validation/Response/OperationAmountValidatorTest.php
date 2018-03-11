@@ -7,23 +7,23 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay\Validation\Request;
+namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
-use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PersonalDataConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationAmountConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\PersonalDataValidator
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Response\OperationAmountValidator
  */
-class PersonalDataValidator extends ConstraintValidatorTestCase
+class OperationAmountValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
-     * @dataProvider provideValidValues()
+     * @dataProvider provideValidValues
      */
-    public function testValidData(string $value)
+    public function testValidValue(string $value)
     {
-        $constraint = new PersonalDataConstraint();
+        $constraint = new OperationAmountConstraint();
         $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
@@ -31,7 +31,7 @@ class PersonalDataValidator extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      */
-    public function testInvalidData()
+    public function testInvalidValue()
     {
         $this->markTestSkipped('Not implemented yet');
     }
@@ -43,11 +43,14 @@ class PersonalDataValidator extends ConstraintValidatorTestCase
     {
         return [
             ['1'],
+            ['1999343.23'],
+            ['12.34'],
+            ['0.34'],
         ];
     }
 
     protected function createValidator()
     {
-        return new self();
+        return new OperationAmountValidator();
     }
 }

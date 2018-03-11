@@ -7,10 +7,10 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\IsCompletedValidator;
-use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'isCompleted' parameter.
@@ -19,10 +19,28 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class IsCompletedConstraint extends Constraint
+class IsCompletedConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ isCompleted }} is not a valid \'isCompleted\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        'true',
+        'false',
+    ];
+
+    /**
+     * IsCompletedConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}
