@@ -7,10 +7,10 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationWithdrawalAmountValidator;
-use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'operationWithdrawalAmount' parameter.
@@ -19,10 +19,20 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationWithdrawalAmountConstraint extends Constraint
+class OperationWithdrawalAmountConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationWithdrawalAmount }} is not a valid \'operationWithdrawalAmount\' parameter';
+
+    public $pattern = '^(0|([1-9][0-9]*))(\\.[0-9]+)?$^';
+
+    /**
+     * OperationWithdrawalAmountConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
+    }
 
     /**
      * {@inheritdoc}
