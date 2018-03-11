@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 /**
  * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Request\PersonalDataValidator
  */
-class PersonalDataValidator extends ConstraintValidatorTestCase
+class PersonalDataValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
@@ -48,6 +48,6 @@ class PersonalDataValidator extends ConstraintValidatorTestCase
 
     protected function createValidator()
     {
-        return new self();
+        return new PersonalDataValidator();
     }
 }
