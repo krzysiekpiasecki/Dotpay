@@ -11,7 +11,6 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\PEmailConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against PEmailConstraint.

@@ -51,7 +51,6 @@ class OperationTypeConstraint extends Choice
         parent::__construct(self::$values);
     }
 
-
     /**
      * {@inheritdoc}
      */

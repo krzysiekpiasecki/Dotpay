@@ -36,7 +36,6 @@ class DescriptionConstraint extends Regex
         parent::__construct($this->pattern);
     }
 
-
     /**
      * {@inheritdoc}
      */

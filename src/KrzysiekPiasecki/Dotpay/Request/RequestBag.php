@@ -1,8 +1,15 @@
 <?php
 
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
+ */
+
 namespace KrzysiekPiasecki\Dotpay\Request;
 
-class RequestBag 
+class RequestBag
 {
     public $api_version;
 

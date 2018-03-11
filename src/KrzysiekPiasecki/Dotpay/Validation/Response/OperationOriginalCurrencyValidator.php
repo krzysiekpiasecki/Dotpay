@@ -12,7 +12,6 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationOriginalCurrencyConstraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\ChoiceValidator;
-use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Validator against OperationOriginalCurrencyConstraint.
