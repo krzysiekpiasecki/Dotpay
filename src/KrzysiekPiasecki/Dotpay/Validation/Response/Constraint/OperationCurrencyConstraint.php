@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationCurrencyValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'operationCurrency' parameter.
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationCurrencyConstraint extends Constraint
+class OperationCurrencyConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationCurrency }} is not a valid \'operationCurrency\' parameter';

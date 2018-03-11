@@ -11,7 +11,7 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationCurrencyConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 
 /**
  * Validator against OperationCurrencyConstraint.
@@ -23,7 +23,7 @@ class OperationCurrencyValidator extends ChoiceValidator
     /**
      * Validate against {@see OperationCurrencyConstraint}.
      *
-     * @param mixed      $value      Validated value
+     * @param mixed $value Validated value
      * @param Constraint $constraint Used constraint
      */
     public function validate($value, Constraint $constraint)
