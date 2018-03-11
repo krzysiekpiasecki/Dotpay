@@ -35,7 +35,7 @@ class IsCompletedConstraint extends Choice
     ];
 
     /**
-     * BylawConstraint constructor.
+     * IsCompletedConstraint constructor.
      */
     public function __construct()
     {
