@@ -18,7 +18,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see PEmailConstraint Constraint against 'pEmail' parameter
  */
-class PEmailValidator extends ConstraintValidator
+class PEmailValidator extends EmailValidator
 {
     /**
      * Validate against {@see PEmailConstraint}.
@@ -28,7 +28,6 @@ class PEmailValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }
