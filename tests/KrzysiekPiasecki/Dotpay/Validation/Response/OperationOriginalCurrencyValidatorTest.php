@@ -9,13 +9,13 @@
 
 namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
-use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationOriginalAmountConstraint;
+use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationOriginalCurrencyConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Response\OperationOriginalAmountValidator
+ * @coversDefaultClass \KrzysiekPiasecki\Dotpay\Validation\Response\OperationOriginalCurrencyValidator
  */
-class OperationOriginalAmountValidatorTest extends ConstraintValidatorTestCase
+class OperationOriginalCurrencyValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
@@ -23,7 +23,7 @@ class OperationOriginalAmountValidatorTest extends ConstraintValidatorTestCase
      */
     public function testValidValue(string $value)
     {
-        $constraint = new OperationOriginalAmountConstraint();
+        $constraint = new OperationOriginalCurrencyConstraint();
         $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
@@ -42,15 +42,20 @@ class OperationOriginalAmountValidatorTest extends ConstraintValidatorTestCase
     public function provideValidValues(): array
     {
         return [
-            ['1'],
-            ['1999343.23'],
-            ['12.34'],
-            ['0.34'],
+            ['PLN'],
+            ['EUR'],
+            ['USD'],
+            ['GBP'],
+            ['JPY'],
+            ['CZK'],
+            ['SEK'],
+            ['UAH'],
+            ['RON'],
         ];
     }
 
     protected function createValidator()
     {
-        return new OperationOriginalAmountValidator();
+        return new OperationOriginalCurrencyValidator();
     }
 }

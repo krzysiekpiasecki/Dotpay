@@ -7,10 +7,10 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationOriginalCurrencyValidator;
-use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'operationOriginalCurrency' parameter.
@@ -19,10 +19,35 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationOriginalCurrencyConstraint extends Constraint
+class OperationOriginalCurrencyConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationOriginalCurrency }} is not a valid \'operationOriginalCurrency\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        'PLN',
+        'EUR',
+        'USD',
+        'GBP',
+        'JPY',
+        'CZK',
+        'SEK',
+        'UAH',
+        'RON',
+    ];
+
+    /**
+     * OperationOriginalCurrencyConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}
