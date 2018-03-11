@@ -25,6 +25,31 @@ class OperationCurrencyConstraint extends Constraint
     public $message = 'The value {{ operationCurrency }} is not a valid \'operationCurrency\' parameter';
 
     /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        'PLN',
+        'EUR',
+        'USD',
+        'GBP',
+        'JPY',
+        'CZK',
+        'SEK',
+        'UAH',
+        'RON',
+    ];
+
+    /**
+     * OperationCurrencyConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function validatedBy()

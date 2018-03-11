@@ -18,7 +18,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  *
  * @see OperationCurrencyConstraint Constraint against 'operationCurrency' parameter
  */
-class OperationCurrencyValidator extends ConstraintValidator
+class OperationCurrencyValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see OperationCurrencyConstraint}.
@@ -28,7 +28,6 @@ class OperationCurrencyValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }
