@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationCommissionAmountValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'operationCommissionAmount' parameter.
@@ -19,10 +20,20 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationCommissionAmountConstraint extends Constraint
+class OperationCommissionAmountConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationCommissionAmount }} is not a valid \'operationCommissionAmount\' parameter';
+
+    public $pattern = '^-(0|([1-9][0-9]*))(\\.[0-9]+)?$^';
+
+    /**
+     * OperationCommissionAmountConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
+    }
 
     /**
      * {@inheritdoc}

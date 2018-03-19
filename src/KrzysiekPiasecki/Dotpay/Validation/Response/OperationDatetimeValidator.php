@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationDatetimeConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\DateTimeValidator;
 
 /**
  * Validator against OperationDatetimeConstraint.
  *
  * @see OperationDatetimeConstraint Constraint against 'operationDatetime' parameter
  */
-class OperationDatetimeValidator extends ConstraintValidator
+class OperationDatetimeValidator extends DateTimeValidator
 {
     /**
      * Validate against {@see OperationDatetimeConstraint}.
@@ -28,7 +28,6 @@ class OperationDatetimeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

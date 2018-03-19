@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationTypeConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 
 /**
  * Validator against OperationTypeConstraint.
  *
  * @see OperationTypeConstraint Constraint against 'operationType' parameter
  */
-class OperationTypeValidator extends ConstraintValidator
+class OperationTypeValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see OperationTypeConstraint}.
@@ -28,7 +28,6 @@ class OperationTypeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

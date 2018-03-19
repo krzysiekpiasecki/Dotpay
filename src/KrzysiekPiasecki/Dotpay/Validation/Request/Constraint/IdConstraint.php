@@ -7,10 +7,10 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace  KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
+namespace KrzysiekPiasecki\Dotpay\Validation\Request\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\IdValidator;
-use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * Constraint against 'id' parameter.
@@ -19,10 +19,21 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class IdConstraint extends Constraint
+class IdConstraint extends Regex
 {
     /** @var string Constraint message */
     public $message = 'The value {{ id }} is not a valid \'id\' parameter';
+
+    /** @var string regex pattern */
+    public $pattern = '/^[1-9][0-9]{0,5}$/';
+
+    /**
+     * IdConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct($this->pattern);
+    }
 
     /**
      * {@inheritdoc}

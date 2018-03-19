@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Request;
 
 use KrzysiekPiasecki\Dotpay\Validation\Request\Constraint\PhoneConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 /**
  * Validator against PhoneConstraint.
  *
  * @see PhoneConstraint Constraint against 'phone' parameter
  */
-class PhoneValidator extends ConstraintValidator
+class PhoneValidator extends RegexValidator
 {
     /**
      * Validate against {@see PhoneConstraint}.
@@ -28,7 +28,6 @@ class PhoneValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

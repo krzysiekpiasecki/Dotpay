@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\IsCompletedConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\ChoiceValidator;
 
 /**
  * Validator against IsCompletedConstraint.
  *
  * @see IsCompletedConstraint Constraint against 'isCompleted' parameter
  */
-class IsCompletedValidator extends ConstraintValidator
+class IsCompletedValidator extends ChoiceValidator
 {
     /**
      * Validate against {@see IsCompletedConstraint}.
@@ -28,7 +28,6 @@ class IsCompletedValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        parent::validate($value, $constraint);
     }
 }

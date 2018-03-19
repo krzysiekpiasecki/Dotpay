@@ -1,7 +1,5 @@
 <?php
 
-echo '<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />';
-
 $loader = require_once 'vendor/autoload.php';
 
 use Symfony\Bridge\Twig\Extension\FormExtension;
@@ -92,28 +90,35 @@ $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 
 $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new HttpFoundationExtension())
-    ->addExtension(new CsrfExtension($csrfManager))
+    //->addExtension(new CsrfExtension($csrfManager))
     ->addExtension(new ValidatorExtension(Validation::createValidator()))
     ->getFormFactory();
 
 
 $requestBag = new \KrzysiekPiasecki\Dotpay\RequestBag();
+$requestBag->id = '747789';
+$requestBag->api_version = 'dev';
+$requestBag->currency = 'PLN';
+$requestBag->description = 'Faktura 1';
+$requestBag->amount = '1,23';
 
 $form = $formFactory->createBuilder(
     \KrzysiekPiasecki\Dotpay\Request\RequestFormType::class,
     $requestBag,
     array(
-//    'action' => 'http://ssl.dotpay.pl/t2/',
-    'action' => 'index.php',
-    'method' => 'POST',
+        'action' => 'http://ssl.dotpay.pl/t2/',
+        'method' => 'GET',
     ))
     ->getForm();
-
 
 $form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
     $data = $form->getData();
+    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(
+        'http://ssl.dotpay.pl/t2/'
+    );
+    $response->send();
 } else {
     echo ($twig->render('new.html.twig', array(
         'form' => $form->createView(),

@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\emailValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * Constraint against 'email' parameter.
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class EmailConstraint extends Constraint
+class EmailConstraint extends Email
 {
     /** @var string Constraint message */
     public $message = 'The value {{ email }} is not a valid \'email\' parameter';

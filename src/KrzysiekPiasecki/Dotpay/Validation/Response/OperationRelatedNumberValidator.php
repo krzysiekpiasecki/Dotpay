@@ -11,14 +11,14 @@ namespace KrzysiekPiasecki\Dotpay\Validation\Response;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\OperationRelatedNumberConstraint;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\ConstraintValidator;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 /**
  * Validator against OperationRelatedNumberConstraint.
  *
  * @see OperationRelatedNumberConstraint Constraint against 'operationRelatedNumber' parameter
  */
-class OperationRelatedNumberValidator extends ConstraintValidator
+class OperationRelatedNumberValidator extends RegexValidator
 {
     /**
      * Validate against {@see OperationRelatedNumberConstraint}.
@@ -28,7 +28,6 @@ class OperationRelatedNumberValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        return parent::validate($value, $constraint);
     }
 }

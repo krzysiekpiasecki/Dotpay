@@ -11,6 +11,7 @@ namespace  KrzysiekPiasecki\Dotpay\Validation\Response\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Validation\Response\OperationTypeValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Constraint against 'operationType' parameter.
@@ -19,10 +20,36 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class OperationTypeConstraint extends Constraint
+class OperationTypeConstraint extends Choice
 {
     /** @var string Constraint message */
     public $message = 'The value {{ operationType }} is not a valid \'operationType\' parameter';
+
+    /**
+     * Available values.
+     *
+     * @var array
+     */
+    private static $values = [
+        'payment',
+        'payment_multimerchant_child',
+        'payment_multimerchant_parent',
+        'refund',
+        'payout',
+        'payout_any_amount',
+        'release_rollback',
+        'unidentified_payment',
+        'complaint',
+        'credit_card_registration',
+    ];
+
+    /**
+     * OperationTypeConstraint constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(self::$values);
+    }
 
     /**
      * {@inheritdoc}
