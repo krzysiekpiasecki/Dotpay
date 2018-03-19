@@ -28,7 +28,9 @@ class AmountValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+        if (false === is_numeric($value)) {
+            $this->context->buildViolation($constraint->message)
+                ->addViolation();
+        }
     }
 }
