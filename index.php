@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
@@ -93,7 +92,7 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->getFormFactory();
 
 $requestBag = new \KrzysiekPiasecki\Dotpay\RequestBag();
-$requestBag->id = '747789';
+$requestBag->id = '759550';
 $requestBag->api_version = 'dev';
 $requestBag->currency = 'PLN';
 $requestBag->description = 'Faktura 1';
@@ -118,11 +117,12 @@ if ($form->isSubmitted() && $form->isValid()) {
         'http://ssl.dotpay.pl/t2/'
     );
     $response->send();
+
+    echo '<pre>';
+    var_dump($data);
 } else {
     echo $twig->render('new.html.twig', [
         'form' => $form->createView(),
     ]);
 }
 
-echo '<pre>';
-var_dump($data);

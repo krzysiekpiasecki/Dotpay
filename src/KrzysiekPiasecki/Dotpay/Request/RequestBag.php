@@ -7,6 +7,8 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
+declare(strict_types=1);
+
 namespace KrzysiekPiasecki\Dotpay\Request;
 
 class RequestBag
