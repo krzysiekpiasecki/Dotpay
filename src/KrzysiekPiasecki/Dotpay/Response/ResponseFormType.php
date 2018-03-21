@@ -7,7 +7,7 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace KrzysiekPiasecki\Dotpay\Request;
+namespace KrzysiekPiasecki\Dotpay\Response;
 
 use KrzysiekPiasecki\Dotpay\Response\ResponseBag;
 use KrzysiekPiasecki\Dotpay\Validation\Response\Constraint\ChannelConstraint;
