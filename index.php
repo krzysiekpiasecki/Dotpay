@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
+ */
+
 $loader = require_once 'vendor/autoload.php';
 
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
@@ -33,12 +39,9 @@ $csrfGenerator = new UriSafeTokenGenerator();
 $csrfStorage = new SessionTokenStorage($session);
 $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 
-
-
 /**
- * Twig Extension
+ * Twig Extension.
  */
-
 
 // the Twig file that holds all the default markup for rendering forms
 // this file comes with TwigBridge
@@ -52,20 +55,18 @@ $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
 // the path to your other templates
 $viewsDirectory = realpath(__DIR__.'/../views');
 
-$twig = new Twig_Environment(new Twig_Loader_Filesystem(array(
+$twig = new Twig_Environment(new Twig_Loader_Filesystem([
     $viewsDirectory,
     $vendorTwigBridgeDirectory.'/Resources/views/Form',
-)));
-$formEngine = new TwigRendererEngine(array($defaultFormTheme), $twig);
-$twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader(array(
+]));
+$formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
+$twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader([
     FormRenderer::class => function () use ($formEngine, $csrfManager) {
         return new FormRenderer($formEngine, $csrfManager);
     },
-)));
+]));
 
 $twig->addExtension(new FormExtension());
-
-
 
 // creates the Translator
 $translator = new Translator('en');
@@ -79,21 +80,17 @@ $translator->addLoader('xlf', new XliffFileLoader());
 
 $twig->addExtension(new TranslationExtension($translator));
 
-
-
 $session = new Session();
 
 $csrfGenerator = new UriSafeTokenGenerator();
 $csrfStorage = new SessionTokenStorage($session);
 $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 
-
 $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new HttpFoundationExtension())
     //->addExtension(new CsrfExtension($csrfManager))
     ->addExtension(new ValidatorExtension(Validation::createValidator()))
     ->getFormFactory();
-
 
 $requestBag = new \KrzysiekPiasecki\Dotpay\RequestBag();
 $requestBag->id = '747789';
@@ -102,14 +99,16 @@ $requestBag->currency = 'PLN';
 $requestBag->description = 'Faktura 1';
 $requestBag->amount = '1,23';
 
-$form = $formFactory->createBuilder(
+$form = $formFactory->createNamed(
+    null,
     \KrzysiekPiasecki\Dotpay\Request\RequestFormType::class,
     $requestBag,
-    array(
-        'action' => 'http://ssl.dotpay.pl/t2/',
+    [
+        'action' => 'https://ssl.dotpay.pl/test_payment/',
         'method' => 'GET',
-    ))
-    ->getForm();
+    ]
+)
+;
 
 $form->handleRequest($request);
 
@@ -120,12 +119,10 @@ if ($form->isSubmitted() && $form->isValid()) {
     );
     $response->send();
 } else {
-    echo ($twig->render('new.html.twig', array(
+    echo $twig->render('new.html.twig', [
         'form' => $form->createView(),
-    )));
+    ]);
 }
 
 echo '<pre>';
 var_dump($data);
-
-

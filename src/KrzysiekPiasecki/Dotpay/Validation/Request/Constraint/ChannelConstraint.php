@@ -104,4 +104,5 @@ class ChannelConstraint extends Choice
     {
         return ChannelValidator::class;
     }
+
 }
