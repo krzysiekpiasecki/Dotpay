@@ -1,9 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: KPIASECK
- * Date: 2018-03-19
- * Time: 19:27
+
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
 namespace KrzysiekPiasecki\Dotpay\Request;
@@ -51,141 +52,222 @@ class ResponseFormType extends BaseType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', TextType::class, array(
-                    'constraints' => array(
-                        new IdConstraint()
-                    )
-                )
-            )->add('operation_number', TextType::class, array(
-                    'constraints' => array(
-                        new OperationNumberConstraint()
-                    )
-                )
-            )->add('operation_type', TextType::class, array(
-                    'constraints' => array(
-                        new OperationTypeConstraint()
-                    )
-                )
-            )->add('operation_status', TextType::class, array(
-                    'constraints' => array(
-                        new OperationStatusConstraint()
-                    )
-                )
-            )->add('operation_amount', TextType::class, array(
-                    'constraints' => array(
-                        new OperationAmountConstraint()
-                    )
-                )
-            )->add('operation_currency', TextType::class, array(
-                    'constraints' => array(
-                        new OperationCurrencyConstraint()
-                    )
-                )
-            )->add('operation_withdrawal_amount', TextType::class, array(
-                    'constraints' => array(
-                        new OperationWithdrawalAmountConstraint()
-                    )
-                )
-            )->add('operation_commission_amount', TextType::class, array(
-                    'constraints' => array(
-                        new OperationCommissionAmountConstraint()
-                    )
-                )
-            )->add('is_completed', TextType::class, array(
-                    'constraints' => array(
-                        new IsCompletedConstraint()
-                    )
-                )
-            )->add('operation_original_amount', TextType::class, array(
-                    'constraints' => array(
-                        new OperationOriginalAmountConstraint()
-                    )
-                )
-            )->add('operation_original_currency', TextType::class, array(
-                    'constraints' => array(
-                        new OperationOriginalCurrencyConstraint()
-                    )
-                )
-            )->add('operation_datetime', TextType::class, array(
-                    'constraints' => array(
-                        new OperationDatetimeConstraint()
-                    )
-                )
-            )->add('operation_related_number', TextType::class, array(
-                    'constraints' => array(
-                        new OperationRelatedNumberConstraint()
-                    )
-                )
-            )->add('control', TextType::class, array(
-                    'constraints' => array(
-                        new ControlConstraint()
-                    )
-                )
-            )->add('description', TextType::class, array(
-                    'constraints' => array(
-                        new DescriptionConstraint()
-                    )
-                )
-            )->add('email', TextType::class, array(
-                    'constraints' => array(
-                        new EmailConstraint()
-                    )
-                )
-            )->add('p_info', TextType::class, array(
-                    'constraints' => array(
-                        new PInfoConstraint()
-                    )
-                )
-            )->add('p_email', TextType::class, array(
-                    'constraints' => array(
-                        new PEmailConstraint()
-                    )
-                )
-            )->add('credit_card_issuer_identification_number', TextType::class, array(
-                    'constraints' => array(
-                        new CreditCardIssuerIdentificationNumberConstraint()
-                    )
-                )
-            )->add('credit_card_masked_number', TextType::class, array(
-                    'constraints' => array(
-                        new CreditCardMaskedNumberConstraint()
-                    )
-                )
-            )->add('credit_card_brand_codename', TextType::class, array(
-                    'constraints' => array(
-                        new CreditCardBrandCodenameConstraint()
-                    )
-                )
-            )->add('credit_card_brand_code', TextType::class, array(
-                    'constraints' => array(
-                        new CreditCardBrandCodeConstraint()
-                    )
-                )
-            )->add('credit_card_id', TextType::class, array(
-                    'constraints' => array(
-                        new CreditCardIdConstraint()
-                    )
-                )
-            )->add('channel', TextType::class, array(
-                    'constraints' => array(
-                        new ChannelConstraint()
-                    )
-                )
-            )->add('channel_country', TextType::class, array(
-                    'constraints' => array(
-                        new ChannelCountryConstraint()
-                    )
-                )
-            )->add('geoip_country', TextType::class, array(
-                    'constraints' => array(
-                        new GeoipCountryConstraint()
-                    )
-                )
-            )->add('signature', TextType::class, array(
-                    'constraints' => array(
-                        new SignatureConstraint()
-                    )
-                )
+            ->add(
+                'id',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new IdConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_number',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationNumberConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_type',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationTypeConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_status',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationStatusConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_amount',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationAmountConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_currency',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationCurrencyConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_withdrawal_amount',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationWithdrawalAmountConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_commission_amount',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationCommissionAmountConstraint(),
+                    ],
+                ]
+            )->add(
+                'is_completed',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new IsCompletedConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_original_amount',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationOriginalAmountConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_original_currency',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationOriginalCurrencyConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_datetime',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationDatetimeConstraint(),
+                    ],
+                ]
+            )->add(
+                'operation_related_number',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new OperationRelatedNumberConstraint(),
+                    ],
+                ]
+            )->add(
+                'control',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new ControlConstraint(),
+                    ],
+                ]
+            )->add(
+                'description',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new DescriptionConstraint(),
+                    ],
+                ]
+            )->add(
+                'email',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new EmailConstraint(),
+                    ],
+                ]
+            )->add(
+                'p_info',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new PInfoConstraint(),
+                    ],
+                ]
+            )->add(
+                'p_email',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new PEmailConstraint(),
+                    ],
+                ]
+            )->add(
+                'credit_card_issuer_identification_number',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new CreditCardIssuerIdentificationNumberConstraint(),
+                    ],
+                ]
+            )->add(
+                'credit_card_masked_number',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new CreditCardMaskedNumberConstraint(),
+                    ],
+                ]
+            )->add(
+                'credit_card_brand_codename',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new CreditCardBrandCodenameConstraint(),
+                    ],
+                ]
+            )->add(
+                'credit_card_brand_code',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new CreditCardBrandCodeConstraint(),
+                    ],
+                ]
+            )->add(
+                'credit_card_id',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new CreditCardIdConstraint(),
+                    ],
+                ]
+            )->add(
+                'channel',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new ChannelConstraint(),
+                    ],
+                ]
+            )->add(
+                'channel_country',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new ChannelCountryConstraint(),
+                    ],
+                ]
+            )->add(
+                'geoip_country',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new GeoipCountryConstraint(),
+                    ],
+                ]
+            )->add(
+                'signature',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new SignatureConstraint(),
+                    ],
+                ]
             );
     }
 }
