@@ -102,14 +102,15 @@ $requestBag->currency = 'PLN';
 $requestBag->description = 'Faktura 1';
 $requestBag->amount = '1,23';
 
-$form = $formFactory->createBuilder(
+$form = $formFactory->createNamed(
+    null,
     \KrzysiekPiasecki\Dotpay\Request\RequestFormType::class,
     $requestBag,
     array(
-        'action' => 'http://ssl.dotpay.pl/t2/',
+        'action' => 'https://ssl.dotpay.pl/test_payment/',
         'method' => 'GET',
     ))
-    ->getForm();
+;
 
 $form->handleRequest($request);
 
