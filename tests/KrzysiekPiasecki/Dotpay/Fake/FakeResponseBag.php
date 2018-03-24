@@ -9,7 +9,7 @@
 
 namespace KrzysiekPiasecki\Dotpay\Fake;
 
-use KrzysiekPiasecki\Dotpay\ResponseBag;
+use KrzysiekPiasecki\Dotpay\Response\ResponseBag;
 
 class FakeResponseBag extends ResponseBag
 {

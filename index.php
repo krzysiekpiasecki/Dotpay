@@ -12,7 +12,6 @@ $loader = require_once 'vendor/autoload.php';
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
-use Symfony\Component\Form\Extension\Csrf\CsrfExtension;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormRenderer;
@@ -47,17 +46,17 @@ $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 // this file comes with TwigBridge
 $defaultFormTheme = 'form_div_layout.html.twig';
 
-$vendorDirectory = realpath(__DIR__.'/../vendor');
+$vendorDirectory = realpath(__DIR__ . '/../vendor');
 // the path to TwigBridge library so Twig can locate the
 // form_div_layout.html.twig file
 $appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
 $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
 // the path to your other templates
-$viewsDirectory = realpath(__DIR__.'/../views');
+$viewsDirectory = realpath(__DIR__ . '/../views');
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem([
     $viewsDirectory,
-    $vendorTwigBridgeDirectory.'/Resources/views/Form',
+    $vendorTwigBridgeDirectory . '/Resources/views/Form',
 ]));
 $formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
 $twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader([
@@ -92,7 +91,7 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new ValidatorExtension(Validation::createValidator()))
     ->getFormFactory();
 
-$requestBag = new \KrzysiekPiasecki\Dotpay\RequestBag();
+$requestBag = new \KrzysiekPiasecki\Dotpay\Request\RequestBag();
 $requestBag->id = '747789';
 $requestBag->api_version = 'dev';
 $requestBag->currency = 'PLN';
@@ -107,8 +106,7 @@ $form = $formFactory->createNamed(
         'action' => 'https://ssl.dotpay.pl/test_payment/',
         'method' => 'GET',
     ]
-)
-;
+);
 
 $form->handleRequest($request);
 
