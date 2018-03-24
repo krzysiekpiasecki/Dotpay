@@ -46,17 +46,17 @@ $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 // this file comes with TwigBridge
 $defaultFormTheme = 'form_div_layout.html.twig';
 
-$vendorDirectory = realpath(__DIR__ . '/../vendor');
+$vendorDirectory = realpath(__DIR__.'/../vendor');
 // the path to TwigBridge library so Twig can locate the
 // form_div_layout.html.twig file
 $appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
 $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
 // the path to your other templates
-$viewsDirectory = realpath(__DIR__ . '/../views');
+$viewsDirectory = realpath(__DIR__.'/../views');
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem([
     $viewsDirectory,
-    $vendorTwigBridgeDirectory . '/Resources/views/Form',
+    $vendorTwigBridgeDirectory.'/Resources/views/Form',
 ]));
 $formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
 $twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader([
