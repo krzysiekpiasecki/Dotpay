@@ -10,7 +10,7 @@
 namespace  KrzysiekPiasecki\Dotpay\Response\Validation\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Response\Validation\OperationTypeValidator;
-use Symfony\Component\Validator\Constraint;
+
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**

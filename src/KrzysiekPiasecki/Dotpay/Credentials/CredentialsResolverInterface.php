@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace KrzysiekPiasecki\Dotpay\Credentials;
 
-use KrzysiekPiasecki\Dotpay\CredentialsInterface;
-
 interface CredentialsResolverInterface
 {
     /**

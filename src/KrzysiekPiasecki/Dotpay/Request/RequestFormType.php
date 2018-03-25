@@ -345,12 +345,12 @@ class RequestFormType extends BaseType
 
             ->addEventListener(
                 FormEvents::SUBMIT,
-                array($this, 'onSubmit')
+                [$this, 'onSubmit']
             );
     }
 
-
-    public function onSubmit(FormEvent $event) {
+    public function onSubmit(FormEvent $event)
+    {
         $event->getData()->chk = (
         new CHK(
             $event->getData(),

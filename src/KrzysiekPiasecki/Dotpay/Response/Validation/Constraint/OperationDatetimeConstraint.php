@@ -10,7 +10,7 @@
 namespace  KrzysiekPiasecki\Dotpay\Response\Validation\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Response\Validation\OperationDatetimeValidator;
-use Symfony\Component\Validator\Constraint;
+
 use Symfony\Component\Validator\Constraints\DateTime;
 
 /**

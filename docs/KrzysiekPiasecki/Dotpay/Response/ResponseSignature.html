@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>KrzysiekPiasecki\Dotpay\Request\RequestFormType | Dotpayds API</title>
+    <title>KrzysiekPiasecki\Dotpay\Response\ResponseSignature | Dotpayds API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:KrzysiekPiasecki_Dotpay_Request_RequestFormType" data-root-path="../../../">
+    <body id="class" data-name="class:KrzysiekPiasecki_Dotpay_Response_ResponseSignature" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,25 +66,27 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../KrzysiekPiasecki.html">KrzysiekPiasecki</a></li><li class="backslash">\</li><li><a href="../../../KrzysiekPiasecki/Dotpay.html">Dotpay</a></li><li class="backslash">\</li><li><a href="../../../KrzysiekPiasecki/Dotpay/Request.html">Request</a></li><li class="backslash">\</li><li>RequestFormType</li>
+                        <li><a href="../../../KrzysiekPiasecki.html">KrzysiekPiasecki</a></li><li class="backslash">\</li><li><a href="../../../KrzysiekPiasecki/Dotpay.html">Dotpay</a></li><li class="backslash">\</li><li><a href="../../../KrzysiekPiasecki/Dotpay/Response.html">Response</a></li><li class="backslash">\</li><li>ResponseSignature</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            RequestFormType
+            ResponseSignature
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>RequestFormType</strong>        extends <abbr title="Symfony\Component\Form\Extension\Core\Type\BaseType">BaseType</abbr>
+    <strong>ResponseSignature</strong>
 </p>
 
         
     
 
+            <div class="description">
+            <p>Represents signature of Dotpay response.</p>                                </div>
     
     
     
@@ -97,21 +99,19 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_configureOptions">configureOptions</a>(<abbr title="Symfony\Component\OptionsResolver\OptionsResolver">OptionsResolver</abbr> $resolver)
+                    <a href="#method___construct">__construct</a>(<a href="../../../KrzysiekPiasecki/Dotpay/Response/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\Response\ResponseBag">ResponseBag</abbr></a> $bag, string $pin)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>ResponseSignature.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_buildForm">buildForm</a>(<abbr title="Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr> $builder, array $options)
+                    <a href="#method_signature">signature</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns a Dotpay response signature.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -121,24 +121,31 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_configureOptions">
-        <div class="location">at         line 54</div>
+                    <h3 id="method___construct">
+        <div class="location">at         line 28</div>
         <code>                    
-    <strong>configureOptions</strong>(<abbr title="Symfony\Component\OptionsResolver\OptionsResolver">OptionsResolver</abbr> $resolver)
+    <strong>__construct</strong>(<a href="../../../KrzysiekPiasecki/Dotpay/Response/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\Response\ResponseBag">ResponseBag</abbr></a> $bag, string $pin)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>ResponseSignature.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Symfony\Component\OptionsResolver\OptionsResolver">OptionsResolver</abbr></td>
-                <td>$resolver</td>
-                <td></td>
+                <td><a href="../../../KrzysiekPiasecki/Dotpay/Response/ResponseBag.html"><abbr title="KrzysiekPiasecki\Dotpay\Response\ResponseBag">ResponseBag</abbr></a></td>
+                <td>$bag</td>
+                <td>Response bag</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pin</td>
+                <td>Seller pin</td>
             </tr>
             </table>
 
@@ -150,33 +157,29 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_buildForm">
-        <div class="location">at         line 59</div>
-        <code>                    
-    <strong>buildForm</strong>(<abbr title="Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr> $builder, array $options)
+                    <h3 id="method_signature">
+        <div class="location">at         line 69</div>
+        <code>                    string
+    <strong>signature</strong>()
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Returns a Dotpay response signature.</p>                    <p><strong>Always ensure that signature is correct!</strong></p>                            </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr></td>
-                <td>$builder</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td></td>
-            </tr>
-            </table>
+        <tr>
+            <td>string</td>
+            <td>Dotpay response signature</td>
+        </tr>
+    </table>
 
-            
             
             
                     </div>
