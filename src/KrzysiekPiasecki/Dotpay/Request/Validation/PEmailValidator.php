@@ -13,13 +13,14 @@ namespace KrzysiekPiasecki\Dotpay\Request\Validation;
 
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\PEmailConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\EmailValidator;
 
 /**
  * Validator against PEmailConstraint.
  *
  * @see PEmailConstraint Constraint against 'pEmail' parameter
  */
-class PEmailValidator extends \Symfony\Component\Validator\Constraints\EmailValidator
+class PEmailValidator extends EmailValidator
 {
     /**
      * Validate against {@see PEmailConstraint}.

@@ -19,7 +19,6 @@ use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ButtontextConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\BylawConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ChannelConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ChannelGroupsConstraint;
-use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ChkConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ChLockConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\CityConstraint;
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\ControlConstraint;

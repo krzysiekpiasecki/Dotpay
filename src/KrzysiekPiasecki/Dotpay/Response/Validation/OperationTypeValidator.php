@@ -30,6 +30,6 @@ class OperationTypeValidator extends ChoiceValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        return parent::validate($value, $constraint);
+        parent::validate($value, $constraint);
     }
 }

@@ -13,13 +13,14 @@ namespace KrzysiekPiasecki\Dotpay\Request\Validation;
 
 use KrzysiekPiasecki\Dotpay\Request\Validation\Constraint\URLCConstraint;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\UrlValidator;
 
 /**
  * Validator against URLCConstraint.
  *
  * @see URLCConstraint Constraint against 'URLC' parameter
  */
-class URLCValidator extends \Symfony\Component\Validator\Constraints\UrlValidator
+class URLCValidator extends UrlValidator
 {
     /**
      * Validate against {@see URLCConstraint}.

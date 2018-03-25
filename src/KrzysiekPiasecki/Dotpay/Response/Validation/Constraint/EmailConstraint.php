@@ -11,8 +11,7 @@ declare(strict_types=1);
 
 namespace  KrzysiekPiasecki\Dotpay\Response\Validation\Constraint;
 
-use KrzysiekPiasecki\Dotpay\Response\Validation\emailValidator;
-use Symfony\Component\Validator\Constraint;
+use KrzysiekPiasecki\Dotpay\Response\Validation\EmailValidator;
 use Symfony\Component\Validator\Constraints\Email;
 
 /**

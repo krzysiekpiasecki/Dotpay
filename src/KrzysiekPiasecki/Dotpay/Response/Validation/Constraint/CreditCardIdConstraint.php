@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace  KrzysiekPiasecki\Dotpay\Response\Validation\Constraint;
 
-use KrzysiekPiasecki\Dotpay\Response\Validation\CreditCardBrandIdValidator;
+use KrzysiekPiasecki\Dotpay\Response\Validation\CreditCardIdValidator;
 use Symfony\Component\Validator\Constraint;
 
 /**
@@ -31,6 +31,6 @@ class CreditCardIdConstraint extends Constraint
      */
     public function validatedBy()
     {
-        return CreditCardBrandIdValidator::class;
+        return CreditCardIdValidator::class;
     }
 }

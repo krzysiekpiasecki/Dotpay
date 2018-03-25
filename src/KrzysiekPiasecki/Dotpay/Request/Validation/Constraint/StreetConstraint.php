@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace  KrzysiekPiasecki\Dotpay\Request\Validation\Constraint;
 
 use KrzysiekPiasecki\Dotpay\Request\Validation\StreetValidator;
-use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Regex;
 
 /**
