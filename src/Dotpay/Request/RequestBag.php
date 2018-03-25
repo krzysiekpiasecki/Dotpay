@@ -38,11 +38,7 @@ class RequestBag
     /** @var string Transaction description */
     public $description;
 
-    /**
-     * @RequestConstraint\LangConstraint
-     *
-     * @var string Transaction language
-     */
+    /** @var string Transaction language */
     public $lang;
 
     /** @var string Payment channel */

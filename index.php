@@ -91,7 +91,7 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new ValidatorExtension(Validation::createValidator()))
     ->getFormFactory();
 
-$requestBag = new \KrzysiekPiasecki\Dotpay\Request\RequestBag();
+$requestBag = new \Dotpay\Request\RequestBag();
 $requestBag->id = '747789';
 $requestBag->api_version = 'dev';
 $requestBag->currency = 'PLN';
@@ -100,10 +100,10 @@ $requestBag->amount = '1,23';
 
 $form = $formFactory->createNamed(
     null,
-    \KrzysiekPiasecki\Dotpay\Request\RequestFormType::class,
+    \Dotpay\Request\RequestFormType::class,
     $requestBag,
     [
-//        'action' => 'https://ssl.dotpay.pl/test_payment/',
+        'action' => 'https://ssl.dotpay.pl/test_payment/',
         'method' => 'GET',
     ]
 );
