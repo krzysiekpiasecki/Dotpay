@@ -103,7 +103,7 @@ $form = $formFactory->createNamed(
     \KrzysiekPiasecki\Dotpay\Request\RequestFormType::class,
     $requestBag,
     [
-        'action' => 'https://ssl.dotpay.pl/test_payment/',
+//        'action' => 'https://ssl.dotpay.pl/test_payment/',
         'method' => 'GET',
     ]
 );
@@ -111,16 +111,14 @@ $form = $formFactory->createNamed(
 $form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
-    $data = $form->getData();
     $response = new \Symfony\Component\HttpFoundation\RedirectResponse(
         'http://ssl.dotpay.pl/t2/'
     );
     $response->send();
 } else {
+    var_dump( $form->getData());
     echo $twig->render('new.html.twig', [
         'form' => $form->createView(),
     ]);
 }
 
-echo '<pre>';
-var_dump($data);

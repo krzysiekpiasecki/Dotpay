@@ -46,6 +46,8 @@ use KrzysiekPiasecki\Dotpay\Response\Validation\Constraint\DescriptionConstraint
 use Symfony\Component\Form\Extension\Core\Type\BaseType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RequestFormType extends BaseType
@@ -326,14 +328,34 @@ class RequestFormType extends BaseType
                         new BlikCodeConstraint(),
                     ],
                 ]
-            )->add(
-                'chk',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ChkConstraint(),
-                    ],
-                ]
+            )
+
+//            ->add(
+//                // @todo Remove this parameter? Add field on submit event
+//                // to remove this from model data
+//                // @remove also validators?
+//                'chk',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ChkConstraint(),
+//                    ],
+//                ]
+//            )
+
+            ->addEventListener(
+                FormEvents::SUBMIT,
+                array($this, 'onSubmit')
             );
+    }
+
+
+    public function onSubmit(FormEvent $event) {
+        $event->getData()->chk = (
+        new CHK(
+            $event->getData(),
+            '1234'
+        )
+        )->__toString();
     }
 }
