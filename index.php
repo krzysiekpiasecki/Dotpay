@@ -116,9 +116,8 @@ if ($form->isSubmitted() && $form->isValid()) {
     );
     $response->send();
 } else {
-    var_dump( $form->getData());
+    var_dump($form->getData());
     echo $twig->render('new.html.twig', [
         'form' => $form->createView(),
     ]);
 }
-

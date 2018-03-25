@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
@@ -345,12 +347,12 @@ class RequestFormType extends BaseType
 
             ->addEventListener(
                 FormEvents::SUBMIT,
-                array($this, 'onSubmit')
+                [$this, 'onSubmit']
             );
     }
 
-
-    public function onSubmit(FormEvent $event) {
+    public function onSubmit(FormEvent $event)
+    {
         $event->getData()->chk = (
         new CHK(
             $event->getData(),
