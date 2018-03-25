@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Dotpayds project.
  * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
