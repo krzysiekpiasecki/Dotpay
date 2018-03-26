@@ -19,6 +19,7 @@ use Dotpay\Request\Validator\Constraint\ButtontextConstraint;
 use Dotpay\Request\Validator\Constraint\BylawConstraint;
 use Dotpay\Request\Validator\Constraint\ChannelConstraint;
 use Dotpay\Request\Validator\Constraint\ChannelGroupsConstraint;
+use Dotpay\Request\Validator\Constraint\ChkConstraint;
 use Dotpay\Request\Validator\Constraint\ChLockConstraint;
 use Dotpay\Request\Validator\Constraint\CityConstraint;
 use Dotpay\Request\Validator\Constraint\ControlConstraint;
@@ -105,103 +106,109 @@ class RequestFormType extends BaseType
                     ],
                 ]
             )
+//            ->add(
+//                'lang',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new LangConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'channel',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ChannelConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'ch_lock',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ChLockConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'channel_groups',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ChannelGroupsConstraint(),
+//                    ],
+//                ])
+
+//            ->add(
+//                'URL',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new URLConstraint(),
+//                    ],
+//                ]
+//            )
+            // ->add(
+//                'type',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new TypeConstraint(),
+//                    ],
+//                ]
+//            )
+
+//        ->add(
+//                'buttontext',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ButtontextConstraint(),
+//                    ],
+//                ]
+//            )
+//
+//->add(
+//                'bylaw',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new BylawConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'personal_data',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new PersonalDataConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'URLC',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new URLCConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'expiration_date',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ExpirationDateConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'control',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new ControlConstraint(),
+//                    ],
+//                ])
             ->add(
-                'lang',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new LangConstraint(),
-                    ],
-                ]
-            )->add(
-                'channel',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ChannelConstraint(),
-                    ],
-                ]
-            )->add(
-                'ch_lock',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ChLockConstraint(),
-                    ],
-                ]
-            )->add(
-                'channel_groups',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ChannelGroupsConstraint(),
-                    ],
-                ]
-            )->add(
-                'URL',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new URLConstraint(),
-                    ],
-                ]
-            )->add(
-                'type',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new TypeConstraint(),
-                    ],
-                ]
-            )->add(
-                'buttontext',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ButtontextConstraint(),
-                    ],
-                ]
-            )->add(
-                'bylaw',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new BylawConstraint(),
-                    ],
-                ]
-            )->add(
-                'personal_data',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new PersonalDataConstraint(),
-                    ],
-                ]
-            )->add(
-                'URLC',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new URLCConstraint(),
-                    ],
-                ]
-            )->add(
-                'expiration_date',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ExpirationDateConstraint(),
-                    ],
-                ]
-            )->add(
-                'control',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new ControlConstraint(),
-                    ],
-                ]
-            )->add(
                 'firstname',
                 TextType::class,
                 [
@@ -225,125 +232,121 @@ class RequestFormType extends BaseType
                         new EmailConstraint(),
                     ],
                 ]
-            )->add(
-                'street',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new StreetConstraint(),
-                    ],
-                ]
-            )->add(
-                'street_n1',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new StreetN1Constraint(),
-                    ],
-                ]
-            )->add(
-                'street_n2',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new StreetN2Constraint(),
-                    ],
-                ]
-            )->add(
-                'state',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new StateConstraint(),
-                    ],
-                ]
-            )->add(
-                'addr3',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new Addr3Constraint(),
-                    ],
-                ]
-            )->add(
-                'city',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new CityConstraint(),
-                    ],
-                ]
-            )->add(
-                'postcode',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new PostcodeConstraint(),
-                    ],
-                ]
-            )->add(
-                'phone',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new PhoneConstraint(),
-                    ],
-                ]
-            )->add(
-                'country',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new CountryConstraint(),
-                    ],
-                ]
-            )->add(
-                'deladdr',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new DeladdrConstraint(),
-                    ],
-                ]
-            )->add(
-                'p_info',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new PInfoConstraint(),
-                    ],
-                ]
-            )->add(
-                'p_email',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new PEmailConstraint(),
-                    ],
-                ]
-            )->add(
-                'blik_code',
-                TextType::class,
-                [
-                    'constraints' => [
-                        new BlikCodeConstraint(),
-                    ],
-                ]
             )
-
-//            ->add(
-//                // @todo Remove this parameter? Add field on submit event
-//                // to remove this from model data
-//                // @remove also validators?
-//                'chk',
+// ->add(
+//                'street',
 //                TextType::class,
 //                [
 //                    'constraints' => [
-//                        new ChkConstraint(),
+//                        new StreetConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'street_n1',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new StreetN1Constraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'street_n2',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new StreetN2Constraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'state',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new StateConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'addr3',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new Addr3Constraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'city',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new CityConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'postcode',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new PostcodeConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'phone',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new PhoneConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'country',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new CountryConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'deladdr',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new DeladdrConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'p_info',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new PInfoConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'p_email',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new PEmailConstraint(),
+//                    ],
+//                ]
+//            )->add(
+//                'blik_code',
+//                TextType::class,
+//                [
+//                    'constraints' => [
+//                        new BlikCodeConstraint(),
 //                    ],
 //                ]
 //            )
-
+            ->add(
+                'chk',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new ChkConstraint(),
+                    ],
+                ]
+            )
             ->addEventListener(
                 FormEvents::SUBMIT,
                 [$this, 'onSubmit']

@@ -30,6 +30,6 @@ class ChkValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        parent::validate($value, $constraint);
+        return;
     }
 }

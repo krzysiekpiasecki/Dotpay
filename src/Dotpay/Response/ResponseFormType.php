@@ -9,9 +9,8 @@
 
 declare(strict_types=1);
 
-namespace Dotpay\Request;
+namespace Dotpay\Response;
 
-use Dotpay\Response\ResponseBag;
 use Dotpay\Response\Validator\Constraint\ChannelConstraint;
 use Dotpay\Response\Validator\Constraint\ChannelCountryConstraint;
 use Dotpay\Response\Validator\Constraint\ControlConstraint;
@@ -42,6 +41,8 @@ use Dotpay\Response\Validator\Constraint\SignatureConstraint;
 use Symfony\Component\Form\Extension\Core\Type\BaseType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ResponseFormType extends BaseType
@@ -270,6 +271,25 @@ class ResponseFormType extends BaseType
                         new SignatureConstraint(),
                     ],
                 ]
+            )
+            ->addEventListener(
+                FormEvents::SUBMIT,
+                [$this, 'onSubmit']
             );
+    }
+
+    public function onSubmit(FormEvent $event)
+    {
+        $responseBag = $event->getData();
+        $signatureExpected = (new Signature(
+            $event->getData(),
+            'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'
+        ))->__toString();
+
+        if ($responseBag->signature !== $signatureExpected) {
+            // Security issue
+            throw new \RuntimeException('Invalid response signature');
+        }
+
     }
 }

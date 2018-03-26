@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @coversDefaultClass \Dotpay\Response\ResponseSignature
  */
-class ResponseSignatureTest extends TestCase
+class SignatureTest extends TestCase
 {
     /**
      * @covers ::__construct()
@@ -27,7 +27,7 @@ class ResponseSignatureTest extends TestCase
      */
     public function testSignature()
     {
-        $signature = (new ResponseSignature(new FakeResponseBag(), 'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'))->signature();
+        $signature = (new Signature(new FakeResponseBag(), 'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'))->signature();
 
         $this->assertSame(
             $signature,

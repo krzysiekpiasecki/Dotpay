@@ -14,7 +14,7 @@ namespace Dotpay\Response;
 /**
  * Represents signature of Dotpay response.
  */
-class ResponseSignature
+class Signature
 {
     /**
      * @var string Response signature
@@ -67,8 +67,21 @@ class ResponseSignature
      * <strong>Always ensure that signature is correct!</strong>
      *
      * @return string Dotpay response signature
+     * @deprecated
      */
     public function signature(): string
+    {
+        return $this->signature;
+    }
+
+    /**
+     * Returns a Dotpay response signature.
+     *
+     * <strong>Always ensure that signature is correct!</strong>
+     *
+     * @return string Dotpay response signature
+     */
+    public function __toString(): string
     {
         return $this->signature;
     }
