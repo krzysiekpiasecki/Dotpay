@@ -15,7 +15,7 @@ use Dotpay\Response\Validator\Constraint\ErrorCodeConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \Dotpay\Response\Validator\ChannelValidator
+ * @coversDefaultClass \Dotpay\Response\Validator\ErrorCodeValidator
  */
 class ErrorCodeValidatorTest extends ConstraintValidatorTestCase
 {

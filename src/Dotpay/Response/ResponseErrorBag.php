@@ -16,6 +16,6 @@ namespace Dotpay\Response;
  */
 class ResponseErrorBag
 {
-    /** @var string error code */
+    /** @var string error_code */
     public $error_code;
 }
