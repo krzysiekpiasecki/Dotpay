@@ -9,6 +9,13 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
+ */
+
 namespace Dotpay\Response;
 
 /**
@@ -67,9 +74,8 @@ class Signature
      * <strong>Always ensure that signature is correct!</strong>
      *
      * @return string Dotpay response signature
-     * @deprecated
      */
-    public function signature(): string
+    public function __toString(): string
     {
         return $this->signature;
     }
@@ -80,8 +86,10 @@ class Signature
      * <strong>Always ensure that signature is correct!</strong>
      *
      * @return string Dotpay response signature
+     *
+     * @deprecated
      */
-    public function __toString(): string
+    public function signature(): string
     {
         return $this->signature;
     }

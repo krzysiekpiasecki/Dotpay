@@ -35,7 +35,7 @@ $request = new Request(
 
 $request = Request::createFromGlobals();
 
-if($request->get('completed')) {
+if ($request->get('completed')) {
     exit('Transaction was completed');
 }
 
@@ -111,8 +111,7 @@ $responseBag = new FakeResponseBag();
 
 const MODE_RESPONSE = 1;
 
-if (1 == MODE_RESPONSE) {
-
+if (1 === MODE_RESPONSE) {
     $form = $formFactory->createNamed(
         null,
         ResponseFormType::class,
@@ -122,7 +121,6 @@ if (1 == MODE_RESPONSE) {
             'method' => 'GET',
         ]
     );
-
 
     $form->submit([
         'id' => '999999',
@@ -151,22 +149,18 @@ if (1 == MODE_RESPONSE) {
         'channel' => '248',
         'channel_country' => 'POL',
         'geoip_country' => 'POL',
-        'signature' => '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11'
+        'signature' => '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
     ]);
 
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
         var_dump($responseBag);
-        exit("Response delevired");
+        exit('Response delevired');
     }
 
     exit('End of the script');
-
-
-
 }
-
 
 $form = $formFactory->createNamed(
     null,
@@ -182,7 +176,8 @@ $form->handleRequest($request);
 
 if ($form->isSubmitted() && $form->isValid()) {
     $response = new \Symfony\Component\HttpFoundation\RedirectResponse(
-        sprintf('%s%s',
+        sprintf(
+            '%s%s',
             'https://ssl.dotpay.pl/test_payment/?',
             $request->getQueryString()
         )
@@ -192,5 +187,4 @@ if ($form->isSubmitted() && $form->isValid()) {
     echo $twig->render('new.html.twig', [
         'form' => $form->createView(),
     ]);
-
 }
