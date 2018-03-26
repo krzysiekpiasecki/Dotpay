@@ -16,14 +16,14 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace Dotpay\Credentials;
+namespace Dotpay\Environment;
 
 use PHPUnit\Framework\TestCase;
 
 /**
  * Pin tests.
  *
- * @coversDefaultClass \Dotpay\Credentials\Pin
+ * @coversDefaultClass \Dotpay\Environment\Pin
  */
 class PinTest extends TestCase
 {

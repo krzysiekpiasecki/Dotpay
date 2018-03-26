@@ -16,10 +16,10 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace Dotpay\Credentials;
+namespace Dotpay\Environment;
 
 /**
- * Credentials.
+ * Environment.
  */
 class Credentials implements CredentialsInterface
 {
@@ -34,7 +34,7 @@ class Credentials implements CredentialsInterface
     private $pin;
 
     /**
-     * Credentials.
+     * Environment.
      *
      * @param string $id
      * @param string $pin

@@ -7,7 +7,7 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace Dotpay\Credentials;
+namespace Dotpay\Environment;
 
 final class Pin
 {

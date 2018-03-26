@@ -16,12 +16,20 @@ declare(strict_types=1);
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace Dotpay\Credentials;
+namespace Dotpay\Environment;
 
-interface CredentialsResolverInterface
+/**
+ * Represents Seller's credentials.
+ */
+interface CredentialsInterface
 {
     /**
-     * @return CredentialsInterface
+     * @return string Seller id
      */
-    public function resolveCredentials(): CredentialsInterface;
+    public function id(): string;
+
+    /**
+     * @return string Seller pin
+     */
+    public function pin(): string;
 }
