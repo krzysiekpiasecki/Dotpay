@@ -9,7 +9,7 @@
 
 namespace Dotpay\Environment;
 
-final class Pin
+final class PIN
 {
     private $pin;
 
