@@ -22,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 
 class Payment implements MiddlewareInterface
 {
@@ -38,6 +39,9 @@ class Payment implements MiddlewareInterface
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
+        $httpFoundationFactory = new HttpFoundationFactory();
+        $symfonyRequest = $httpFoundationFactory->createRequest($request);
+
         $handler->handle($request);
     }
 }
