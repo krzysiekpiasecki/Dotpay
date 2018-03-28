@@ -9,6 +9,13 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
+ */
+
 namespace Dotpay\Response\Validator;
 
 use Dotpay\Response\Validator\Constraint\ErrorCodeConstraint;
@@ -54,7 +61,7 @@ class ErrorCodeValidatorTest extends ConstraintValidatorTestCase
             ['AMOUNT_TOO_HIGH'],
             ['BAD_DATA_FORMAT'],
             ['REQUIRED_PARAMETERS_NOT_PRESENT'],
-            ['MULTIMERCHANT_INVALID_ACCOUNT_CONFIGURATION']
+            ['MULTIMERCHANT_INVALID_ACCOUNT_CONFIGURATION'],
             ['MULTIMERCHANT_INSUFFICIENT_AMOUNT'],
             ['MULTIMERCHANT_WRONG_CURRENCY'],
             ['UNKNOWN_ERROR'],

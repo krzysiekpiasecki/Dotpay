@@ -24,7 +24,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 
-class Error implements MiddlewareInterface
+class ErrorCode implements MiddlewareInterface
 {
     /**
      * Process an incoming server request and return a response, optionally delegating

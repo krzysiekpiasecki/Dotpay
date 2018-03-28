@@ -23,15 +23,15 @@ use PHPUnit\Framework\TestCase;
 /**
  * Error test.
  *
- * @coversDefaultClass \Dotpay\Server\Error
+ * @coversDefaultClass \Dotpay\Server\ErrorCode
  */
-class ErrorTest extends TestCase
+class ErrorCodeTest extends TestCase
 {
     /**
      * @covers ::__construct()
      */
     public function testConstruct()
     {
-        $this->assertNotNull(new Error());
+        $this->assertNotNull(new ErrorCode());
     }
 }

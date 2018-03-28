@@ -9,16 +9,23 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of Dotpayds project.
+ * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+ *
+ * @license   https://opensource.org/licenses/MIT  The MIT License
+ */
+
 namespace Dotpay\Response;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * ResponseErrorBag tests.
+ * ResponseErrorCodeBag tests.
  *
- * @coversDefaultClass \Dotpay\Response\ResponseErrorBag
+ * @coversDefaultClass \Dotpay\Response\ResponseErrorCodeBag
  */
-class ResponseErrorBagTest extends TestCase
+class ResponseErrorCodeBagTest extends TestCase
 {
     /**
      * @param string $property Property name
@@ -27,9 +34,9 @@ class ResponseErrorBagTest extends TestCase
     public function testAvailableProperties(string $property)
     {
         $this->assertTrue(
-            property_exists(ResponseErrorBag::class, $property),
+            property_exists(ResponseErrorCodeBag::class, $property),
             sprintf(
-                'Expected property "%s" to exist in ResponseErrorBag',
+                'Expected property "%s" to exist in ResponseErrorCodeBag',
                 $property
             )
         );
@@ -39,13 +46,13 @@ class ResponseErrorBagTest extends TestCase
     {
         $this->assertSame(
             1,
-            count(get_class_vars(ResponseErrorBag::class)),
-            'Invalid count of ResponseErrorBag properties'
+            count(get_class_vars(ResponseErrorCodeBag::class)),
+            'Invalid count of ResponseErrorCodeBag properties'
         );
     }
 
     /**
-     * Provide list of available properties in ResponseErrorBag class.
+     * Provide list of available properties in ResponseErrorCodeBag class.
      *
      * @return array
      */
