@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Dotpay\Response\Validator;
 
 use Dotpay\Response\Validator\Constraint\ErrorCodeConstraint;
+use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
@@ -42,7 +43,13 @@ class ErrorCodeValidatorTest extends ConstraintValidatorTestCase
      */
     public function testInvalidValue()
     {
-        $this->markTestSkipped('Not implemented yet');
+        $constraint = new ErrorCodeConstraint();
+        $this->validator->validate('PAYMENT_EXPIRATION', $constraint);
+
+        $this->buildViolation('The value {{ value }} is not a valid \'error_code\' parameter')
+            ->setParameter('{{ value }}', '"PAYMENT_EXPIRATION"')
+            ->setCode(Choice::NO_SUCH_CHOICE_ERROR)
+            ->assertRaised();
     }
 
     /**

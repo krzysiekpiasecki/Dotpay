@@ -31,7 +31,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 class ErrorCodeConstraint extends Choice
 {
     /** @var string Constraint message */
-    public $message = 'The value {{ error_code }} is not a valid \'error_code\' parameter';
+    public $message = 'The value {{ value }} is not a valid \'error_code\' parameter';
 
     /**
      * Available error codes.
