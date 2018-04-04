@@ -24,7 +24,8 @@
         "symfony/http-foundation": "^4.0",
         "symfony/security-csrf": "^4.0",
         "psr/http-server-middleware": "1.0.0",
-        "symfony/psr-http-message-bridge": "^1.0"
+        "symfony/psr-http-message-bridge": "^1.0",
+        "zendframework/zend-diactoros": "^1.7"
 
     },
     "require-dev": {

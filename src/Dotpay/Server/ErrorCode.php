@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace Dotpay\Server;
 
 use Dotpay\Response\ResponseErrorCodeBag;
+use Dotpay\Response\ResponseErrorCodeType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
-use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Validator\Validation;
@@ -47,26 +47,21 @@ class ErrorCode implements MiddlewareInterface
         $httpFoundationFactory = new HttpFoundationFactory();
         $symfonyRequest = $httpFoundationFactory->createRequest($request);
         $formFactory = Forms::createFormFactoryBuilder()
-            ->addExtension(new HttpFoundationExtension())
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
-
         $responseErrorCodeBag = new ResponseErrorCodeBag();
         $form = $formFactory->createNamed(
             null,
-            ResponseErrorCodeBag::class,
+            ResponseErrorCodeType::class,
             $responseErrorCodeBag
         );
-
         $form->submit([
-            'error_code' => $request->getAttribute('error_code')
+            'error_code' => $request->getQueryParams()['error_code'],
         ]);
-
         if (!$form->isValid()) {
-            throw new \RuntimeException('Invalid form');
+            throw new \RuntimeException('Invalid error code');
         }
 
-        $handler->handle($request);
-
+        return $handler->handle($request);
     }
 }

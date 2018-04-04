@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Dotpay\Response\Validator;
 
 use Dotpay\Response\Validator\Constraint\ErrorCodeConstraint;
+use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
@@ -40,9 +41,16 @@ class ErrorCodeValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      */
-    public function testInvalidValue()
+    public function testNoSuchChoiseError()
     {
-        $this->markTestSkipped('Not implemented yet');
+        $constraint = new ErrorCodeConstraint();
+        $this->validator->validate('baz', $constraint);
+        $this->buildViolation(
+            'The value {{ value }} is not a valid \'error_code\' parameter'
+            )
+            ->setParameter('{{ value }}', '"baz"')
+            ->setCode(Choice::NO_SUCH_CHOICE_ERROR)
+            ->assertRaised();
     }
 
     /**
