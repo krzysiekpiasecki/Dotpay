@@ -41,13 +41,14 @@ class ErrorCodeValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      */
-    public function testInvalidValue()
+    public function testNoSuchChoiseError()
     {
         $constraint = new ErrorCodeConstraint();
-        $this->validator->validate('PAYMENT_EXPIRATION', $constraint);
-
-        $this->buildViolation('The value {{ value }} is not a valid \'error_code\' parameter')
-            ->setParameter('{{ value }}', '"PAYMENT_EXPIRATION"')
+        $this->validator->validate('baz', $constraint);
+        $this->buildViolation(
+            'The value {{ value }} is not a valid \'error_code\' parameter'
+            )
+            ->setParameter('{{ value }}', '"baz"')
             ->setCode(Choice::NO_SUCH_CHOICE_ERROR)
             ->assertRaised();
     }

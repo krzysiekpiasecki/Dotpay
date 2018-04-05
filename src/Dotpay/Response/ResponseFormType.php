@@ -56,7 +56,10 @@ class ResponseFormType extends BaseType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('data_class', ResponseBag::class);
+        $resolver->setDefaults([
+            'pin' => '',
+            'data_class', ResponseBag::class,
+        ]);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -290,12 +293,12 @@ class ResponseFormType extends BaseType
         $responseBag = $event->getData();
         $signatureExpected = (new Signature(
             $event->getData(),
-            'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'
+            $event->getForm()->getConfig()->getOptions()['pin']
         ))->__toString();
 
         if ($responseBag->signature !== $signatureExpected) {
-            // Security issue
-            throw new \RuntimeException('Invalid response signature');
+            // Security issue!!! Trow SecurityException instead
+            throw new \RuntimeException('Invalid response signature!!!');
         }
     }
 }

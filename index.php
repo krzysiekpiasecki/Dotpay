@@ -11,6 +11,8 @@ $loader = require_once 'vendor/autoload.php';
 
 use Dotpay\Fake\FakeResponseBag;
 use Dotpay\Response\ResponseFormType;
+use Psr\Http\Server\RequestHandlerInterface;
+use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
@@ -19,6 +21,7 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
@@ -33,11 +36,79 @@ $request = new Request(
     $_POST
 );
 
-$request = Request::createFromGlobals();
+$request = new Request(
+    $_GET,
+    (array) new FakeResponseBag()
+);
 
-if ($request->get('completed')) {
-    exit('Transaction was completed');
+$request = Request::createFromGlobals();
+$psr7Factory = new DiactorosFactory();
+$psrRequest = $psr7Factory->createRequest($request);
+
+class ErrorCodeHandler implements RequestHandlerInterface
+{
+    /**
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    {
+        $errorCode = $request->getQueryParams()['error_code'];
+
+        printf(
+            'Error code was recived %s',
+            $errorCode
+        );
+
+        $symfonyResponse = new Response(sprintf('Error code %s', $errorCode));
+        $psr7Factory = new DiactorosFactory();
+        $psrResponse = $psr7Factory->createResponse($symfonyResponse);
+
+        return $psrResponse;
+    }
 }
+
+class URLCHandler implements RequestHandlerInterface
+{
+    /**
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    {
+        echo 'URLC Handler';
+        $symfonyResponse = new Response();
+        $psr7Factory = new DiactorosFactory();
+        $psrResponse = $psr7Factory->createResponse($symfonyResponse);
+
+        return $psrResponse;
+    }
+}
+
+try {
+//    $errorState = new \Dotpay\Server\ErrorCode(new InstanceOfErrorCodeHabdker);
+//    $errorState->process($psrRequest, new ErrorCodeHandler);
+//
+
+    $urlcHandler = new URLCHandler();
+    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
+    $urlc->process($psrRequest, $urlcHandler);
+} catch (Throwable $e) {
+    echo <<<EXCEPTION
+    <h1>Exception thrown<h1>
+    <h3>Exception message: {$e->getMessage()}</h3>
+    <pre>${e}</pre>
+    throw ${e};
+EXCEPTION;
+} finally {
+    echo <<<'finally'
+    <h5>Response was handled by the server</h5>
+finally;
+}
+
+exit();
 
 $session = new Session();
 $csrfGenerator = new UriSafeTokenGenerator();

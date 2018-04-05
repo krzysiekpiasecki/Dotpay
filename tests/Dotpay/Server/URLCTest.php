@@ -32,6 +32,6 @@ class URLCTest extends TestCase
      */
     public function testConstruct()
     {
-        $this->assertNotNull(new URLC());
+        $this->assertNotNull(new URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'));
     }
 }
