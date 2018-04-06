@@ -11,7 +11,6 @@ namespace Dotpay\Server\Handler;
 
 use Dotpay\Request\RequestBag;
 use Dotpay\Request\RequestFormType;
-use Dotpay\Response\ResponseFormType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -35,8 +34,8 @@ class DefaultPaymentHandler implements RequestHandlerInterface
     /**
      * DefaultPaymentHandler constructor.
      *
-     * @param string $sellerID
-     * @param string $pin
+     * @param string                  $sellerID
+     * @param string                  $pin
      * @param PaymentHandlerInterface $paymentHandler
      */
     public function __construct(string $sellerID, string $pin, PaymentHandlerInterface $paymentHandler)
@@ -103,7 +102,7 @@ class DefaultPaymentHandler implements RequestHandlerInterface
 
         $this->paymentHandler->handle($requestBag);
 
-        $symfonyResponse = new RedirectResponse();
+        $symfonyResponse = new RedirectResponse('https://ssl.dotpay.pl/test_seller/test/');
         $psr7Factory = new DiactorosFactory();
         $psrResponse = $psr7Factory->createResponse($symfonyResponse);
 

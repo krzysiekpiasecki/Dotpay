@@ -30,29 +30,6 @@ use Symfony\Component\Translation\Loader\XliffFileLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validation;
 
-$request = Request::createFromGlobals();
-$request = new Request(
-    $_GET,
-    $_POST
-);
-
-//$request = new Request(
-//    $_GET,
-//    (array) new FakeResponseBag()
-//);
-
-
-$request = new Request(
-    $_GET,
-    (array) new FakeRequestBag()
-);
-
-
-
-$request = Request::createFromGlobals();
-$psr7Factory = new DiactorosFactory();
-$psrRequest = $psr7Factory->createRequest($request);
-
 class ErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface
 {
     public function handle(string $errorCode)
@@ -74,13 +51,17 @@ class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
 {
     public function handle(RequestBag $bag)
     {
-        printf('Payment was handled by the client');
-        var_dump($bag);
+        //printf('Payment was handled by the client');
     }
 }
 
-try {
+$_POST = (array) new FakeRequestBag();
 
+$request = Request::createFromGlobals();
+$psr7Factory = new DiactorosFactory();
+$psrRequest = $psr7Factory->createRequest($request);
+
+try {
 //    $errorCode = new ErrorCode();
 //    $httpResponse =
 //        $errorCode->process(
@@ -100,7 +81,6 @@ try {
 //            )
 //    );
 
-
     $payment = new \Dotpay\Server\Payment();
     $httpResponse =
         $payment->process(
@@ -112,25 +92,19 @@ try {
             )
         );
 
+    $emitter = new Zend\Diactoros\Response\SapiEmitter();
+    $emitter->emit($httpResponse);
 } catch (Throwable $e) {
     echo <<<EXCEPTION
-    <h1>Exception thrown<h1>
-    <h3>Exception message: {$e->getMessage()}</h3>
-    <pre>${e}</pre>
-    throw ${e};
+    <h1 style="background: red; color: white; padding: 10px;">Exception was thrown: {$e->getMessage()}</h1>
+    <pre style="padding: 20px; border: #ccc;">${e}</pre>
 EXCEPTION;
 } finally {
-    echo '<br/>';
-
-    $content = $httpResponse->getBody()->getContents();
-
-    var_dump(
-        $httpResponse
-    );
-
     echo <<<'finally'
-    <h5>Response was handled by the server</h5>
 finally;
+    echo '<pre>';
+    var_dump($httpResponse);
+    echo '</pre>';
 }
 
 exit();
