@@ -41,7 +41,6 @@ class Payment implements MiddlewareInterface
     ): ResponseInterface {
         $httpFoundationFactory = new HttpFoundationFactory();
         $symfonyRequest = $httpFoundationFactory->createRequest($request);
-
         $handler->handle($request);
     }
 }

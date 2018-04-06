@@ -9,9 +9,10 @@
 
 $loader = require_once 'vendor/autoload.php';
 
+use Dotpay\Fake\FakeRequestBag;
 use Dotpay\Fake\FakeResponseBag;
+use Dotpay\Request\RequestBag;
 use Dotpay\Response\ResponseFormType;
-use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
@@ -21,7 +22,6 @@ use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormRenderer;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
@@ -36,65 +36,82 @@ $request = new Request(
     $_POST
 );
 
+//$request = new Request(
+//    $_GET,
+//    (array) new FakeResponseBag()
+//);
+
+
 $request = new Request(
     $_GET,
-    (array) new FakeResponseBag()
+    (array) new FakeRequestBag()
 );
+
+
 
 $request = Request::createFromGlobals();
 $psr7Factory = new DiactorosFactory();
 $psrRequest = $psr7Factory->createRequest($request);
 
-class ErrorCodeHandler implements RequestHandlerInterface
+class ErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface
 {
-    /**
-     * @param \Psr\Http\Message\ServerRequestInterface $request
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    public function handle(string $errorCode)
     {
-        $errorCode = $request->getQueryParams()['error_code'];
-
-        printf(
-            'Error code was recived %s',
-            $errorCode
-        );
-
-        $symfonyResponse = new Response(sprintf('Error code %s', $errorCode));
-        $psr7Factory = new DiactorosFactory();
-        $psrResponse = $psr7Factory->createResponse($symfonyResponse);
-
-        return $psrResponse;
+        printf('Error code %s was handled by the handler', $errorCode);
     }
 }
 
-class URLCHandler implements RequestHandlerInterface
+class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
 {
-    /**
-     * @param \Psr\Http\Message\ServerRequestInterface $request
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    public function handle(\Dotpay\Response\ResponseBag $bag)
     {
-        echo 'URLC Handler';
-        $symfonyResponse = new Response();
-        $psr7Factory = new DiactorosFactory();
-        $psrResponse = $psr7Factory->createResponse($symfonyResponse);
+        printf('URLC was handled by the client');
+        var_dump($bag);
+    }
+}
 
-        return $psrResponse;
+class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
+{
+    public function handle(RequestBag $bag)
+    {
+        printf('Payment was handled by the client');
+        var_dump($bag);
     }
 }
 
 try {
-//    $errorState = new \Dotpay\Server\ErrorCode(new InstanceOfErrorCodeHabdker);
-//    $errorState->process($psrRequest, new ErrorCodeHandler);
-//
 
-    $urlcHandler = new URLCHandler();
-    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
-    $urlc->process($psrRequest, $urlcHandler);
+//    $errorCode = new ErrorCode();
+//    $httpResponse =
+//        $errorCode->process(
+//            $psrRequest,
+//            new \Dotpay\Server\Handler\DefaultErrorCodeHandler(
+//                new ErrorCodeHandler()
+//            )
+//    );
+
+//    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
+//    $httpResponse =
+//        $urlc->process(
+//            $psrRequest,
+//            new \Dotpay\Server\Handler\DefaultURLCHandler(
+//                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+//                new URLCHandler()
+//            )
+//    );
+
+
+    $payment = new \Dotpay\Server\Payment();
+    $httpResponse =
+        $payment->process(
+            $psrRequest,
+            new \Dotpay\Server\Handler\DefaultPaymentHandler(
+                '123456',
+                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+                new PaymentHandler()
+            )
+        );
+
 } catch (Throwable $e) {
     echo <<<EXCEPTION
     <h1>Exception thrown<h1>
@@ -103,6 +120,14 @@ try {
     throw ${e};
 EXCEPTION;
 } finally {
+    echo '<br/>';
+
+    $content = $httpResponse->getBody()->getContents();
+
+    var_dump(
+        $httpResponse
+    );
+
     echo <<<'finally'
     <h5>Response was handled by the server</h5>
 finally;

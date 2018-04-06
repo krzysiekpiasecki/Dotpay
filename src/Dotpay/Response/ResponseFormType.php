@@ -297,7 +297,7 @@ class ResponseFormType extends BaseType
         ))->__toString();
 
         if ($responseBag->signature !== $signatureExpected) {
-            // Security issue!!! Trow SecurityException instead
+            // Security issue!!! Throw SecurityException instead
             throw new \RuntimeException('Invalid response signature!!!');
         }
     }

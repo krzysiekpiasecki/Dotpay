@@ -37,6 +37,7 @@ use Dotpay\Request\Validator\Constraint\EmailConstraint;
 use Dotpay\Request\Validator\Constraint\ExpirationDateConstraint;
 use Dotpay\Request\Validator\Constraint\FirstnameConstraint;
 use Dotpay\Request\Validator\Constraint\IdConstraint;
+use Dotpay\Request\Validator\Constraint\IgnoreLastPaymentChannelConstraint;
 use Dotpay\Request\Validator\Constraint\LangConstraint;
 use Dotpay\Request\Validator\Constraint\LastnameConstraint;
 use Dotpay\Request\Validator\Constraint\PEmailConstraint;
@@ -87,6 +88,15 @@ class RequestFormType extends BaseType
                 [
                     'constraints' => [
                         new CurrencyConstraint(),
+                    ],
+                ]
+            )
+            ->add(
+                'ignore_last_payment_channel',
+                TextType::class,
+                [
+                    'constraints' => [
+                        new IgnoreLastPaymentChannelConstraint(),
                     ],
                 ]
             )
