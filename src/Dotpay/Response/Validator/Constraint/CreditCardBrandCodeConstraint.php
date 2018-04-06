@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'creditCardBrandCode' parameter.
  *
- * @see ResponseBag::$creditCardBrandCode Parameter 'creditCardBrandCode'
+ * @see URLC::$creditCardBrandCode Parameter 'creditCardBrandCode'
  * @Annotation
  * @Target({"PROPERTY"})
  */

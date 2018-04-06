@@ -21,9 +21,9 @@ namespace Dotpay\Response;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ResponseBag tests.
+ * URLC tests.
  *
- * @coversDefaultClass \Dotpay\Response\ResponseBag
+ * @coversDefaultClass \Dotpay\Response\URLC
  */
 class ResponseBagTest extends TestCase
 {
@@ -34,9 +34,9 @@ class ResponseBagTest extends TestCase
     public function testAvailableProperties(string $property)
     {
         $this->assertTrue(
-            property_exists(ResponseBag::class, $property),
+            property_exists(URLC::class, $property),
             sprintf(
-                'Expected property "%s" to exist in ResponseBag',
+                'Expected property "%s" to exist in URLC',
                 $property
             )
         );
@@ -46,13 +46,13 @@ class ResponseBagTest extends TestCase
     {
         $this->assertSame(
             27,
-            count(get_class_vars(ResponseBag::class)),
-            'Invalid count of ResponseBag properties'
+            count(get_class_vars(URLC::class)),
+            'Invalid count of URLC properties'
         );
     }
 
     /**
-     * Provide list of available properties in RequestBag class.
+     * Provide list of available properties in Payment class.
      *
      * @return array
      */

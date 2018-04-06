@@ -31,10 +31,10 @@ class Signature
     /**
      * ResponseSignature.
      *
-     * @param ResponseBag $bag Response bag
-     * @param string      $pin Seller pin
+     * @param URLC   $bag Response bag
+     * @param string $pin Seller pin
      */
-    public function __construct(ResponseBag $bag, string $pin)
+    public function __construct(URLC $bag, string $pin)
     {
         $this->signature = hash('sha256', sprintf(
             str_repeat('%s', 27),

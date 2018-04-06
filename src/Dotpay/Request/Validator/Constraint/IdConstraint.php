@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'id' parameter.
  *
- * @see RequestBag::$id Parameter 'id'
+ * @see Payment::$id Parameter 'id'
  * @Annotation
  * @Target({"PROPERTY"})
  */

@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'pInfo' parameter.
  *
- * @see ResponseBag::$pInfo Parameter 'pInfo'
+ * @see URLC::$pInfo Parameter 'pInfo'
  * @Annotation
  * @Target({"PROPERTY"})
  */

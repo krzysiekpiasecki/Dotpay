@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'channel' parameter.
  *
- * @see RequestBag::$channel Parameter 'channel'
+ * @see Payment::$channel Parameter 'channel'
  * @Annotation
  * @Target({"PROPERTY"})
  */

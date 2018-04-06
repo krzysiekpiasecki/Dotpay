@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'operationOriginalCurrency' parameter.
  *
- * @see ResponseBag::$operationOriginalCurrency Parameter 'operationOriginalCurrency'
+ * @see URLC::$operationOriginalCurrency Parameter 'operationOriginalCurrency'
  * @Annotation
  * @Target({"PROPERTY"})
  */

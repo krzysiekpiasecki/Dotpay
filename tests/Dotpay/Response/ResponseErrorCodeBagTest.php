@@ -21,9 +21,9 @@ namespace Dotpay\Response;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ResponseErrorCodeBag tests.
+ * ErrorCode tests.
  *
- * @coversDefaultClass \Dotpay\Response\ResponseErrorCodeBag
+ * @coversDefaultClass \Dotpay\Response\ErrorCode
  */
 class ResponseErrorCodeBagTest extends TestCase
 {
@@ -34,9 +34,9 @@ class ResponseErrorCodeBagTest extends TestCase
     public function testAvailableProperties(string $property)
     {
         $this->assertTrue(
-            property_exists(ResponseErrorCodeBag::class, $property),
+            property_exists(ErrorCode::class, $property),
             sprintf(
-                'Expected property "%s" to exist in ResponseErrorCodeBag',
+                'Expected property "%s" to exist in ErrorCode',
                 $property
             )
         );
@@ -46,13 +46,13 @@ class ResponseErrorCodeBagTest extends TestCase
     {
         $this->assertSame(
             1,
-            count(get_class_vars(ResponseErrorCodeBag::class)),
-            'Invalid count of ResponseErrorCodeBag properties'
+            count(get_class_vars(ErrorCode::class)),
+            'Invalid count of ErrorCode properties'
         );
     }
 
     /**
-     * Provide list of available properties in ResponseErrorCodeBag class.
+     * Provide list of available properties in ErrorCode class.
      *
      * @return array
      */

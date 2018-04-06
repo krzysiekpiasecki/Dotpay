@@ -11,8 +11,8 @@ $loader = require_once 'vendor/autoload.php';
 
 use Dotpay\Fake\FakeRequestBag;
 use Dotpay\Fake\FakeResponseBag;
-use Dotpay\Request\RequestBag;
-use Dotpay\Response\ResponseFormType;
+use Dotpay\Request\Payment;
+use Dotpay\Response\URLCFormType;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 use Symfony\Bridge\Twig\Extension\FormExtension;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
@@ -40,7 +40,7 @@ class ErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterfa
 
 class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
 {
-    public function handle(\Dotpay\Response\ResponseBag $bag)
+    public function handle(\Dotpay\Response\URLC $bag)
     {
         printf('URLC was handled by the client');
         var_dump($bag);
@@ -49,7 +49,7 @@ class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
 
 class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
 {
-    public function handle(RequestBag $bag)
+    public function handle(Payment $bag)
     {
         //printf('Payment was handled by the client');
     }
@@ -167,7 +167,7 @@ $formFactory = Forms::createFormFactoryBuilder()
     ->addExtension(new ValidatorExtension(Validation::createValidator()))
     ->getFormFactory();
 
-$requestBag = new \Dotpay\Request\RequestBag();
+$requestBag = new \Dotpay\Request\Payment();
 $requestBag->id = '747789';
 $requestBag->api_version = 'dev';
 $requestBag->currency = 'PLN';
@@ -184,7 +184,7 @@ const MODE_RESPONSE = 1;
 if (1 === MODE_RESPONSE) {
     $form = $formFactory->createNamed(
         null,
-        ResponseFormType::class,
+        URLCFormType::class,
         $responseBag,
         [
             'action' => 'http://127.0.0.1:8080',
@@ -234,7 +234,7 @@ if (1 === MODE_RESPONSE) {
 
 $form = $formFactory->createNamed(
     null,
-    \Dotpay\Request\RequestFormType::class,
+    \Dotpay\Request\PaymentFormType::class,
     $requestBag,
     [
         'action' => 'http://127.0.0.1:8080',

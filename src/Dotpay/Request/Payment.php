@@ -28,7 +28,7 @@ namespace Dotpay\Request;
 /**
  * Data structure to represent the request sent to Dotpay.
  */
-class RequestBag
+class Payment
 {
     /** @var string Api version */
     public $api_version;

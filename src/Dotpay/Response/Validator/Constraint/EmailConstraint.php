@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Email;
 /**
  * Constraint against 'email' parameter.
  *
- * @see ResponseBag::$email Parameter 'email'
+ * @see URLC::$email Parameter 'email'
  * @Annotation
  * @Target({"PROPERTY"})
  */

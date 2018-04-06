@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Url;
 /**
  * Constraint against 'URL' parameter.
  *
- * @see RequestBag::$URL Parameter 'URL'
+ * @see Payment::$URL Parameter 'URL'
  * @Annotation
  * @Target({"PROPERTY"})
  */

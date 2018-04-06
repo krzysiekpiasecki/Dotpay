@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'channelCountry' parameter.
  *
- * @see ResponseBag::$channelCountry Parameter 'channelCountry'
+ * @see URLC::$channelCountry Parameter 'channelCountry'
  * @Annotation
  * @Target({"PROPERTY"})
  */

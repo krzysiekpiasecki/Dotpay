@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'operationStatus' parameter.
  *
- * @see ResponseBag::$operationStatus Parameter 'operationStatus'
+ * @see URLC::$operationStatus Parameter 'operationStatus'
  * @Annotation
  * @Target({"PROPERTY"})
  */

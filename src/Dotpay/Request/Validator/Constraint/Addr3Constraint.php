@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'addr3' parameter.
  *
- * @see RequestBag::$addr3 Parameter 'addr3'
+ * @see Payment::$addr3 Parameter 'addr3'
  * @Annotation
  * @Target({"PROPERTY"})
  */

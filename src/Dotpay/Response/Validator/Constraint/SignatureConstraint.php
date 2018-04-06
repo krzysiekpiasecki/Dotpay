@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'signature' parameter.
  *
- * @see ResponseBag::$signature Parameter 'signature'
+ * @see URLC::$signature Parameter 'signature'
  * @Annotation
  * @Target({"PROPERTY"})
  */

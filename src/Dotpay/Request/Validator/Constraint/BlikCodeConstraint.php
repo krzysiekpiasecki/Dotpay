@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'blikCode' parameter.
  *
- * @see RequestBag::$blikCode Parameter 'blikCode'
+ * @see Payment::$blikCode Parameter 'blikCode'
  * @Annotation
  * @Target({"PROPERTY"})
  */

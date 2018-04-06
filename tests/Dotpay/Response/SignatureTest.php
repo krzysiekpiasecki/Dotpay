@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace Dotpay\Response;
 
-use Dotpay\Fake\FakeResponseBag;
+use Dotpay\Fake\FakeURLC;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,13 +34,13 @@ class SignatureTest extends TestCase
      */
     public function testSignature()
     {
-        $signature = (new Signature(new FakeResponseBag(), 'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'))->signature();
+        $signature = (new Signature(new FakeURLC(), 'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm'))->signature();
 
         $this->assertSame(
             $signature,
             '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
             sprintf(
-                'Expected ResponseBag signature "%s" but was "%s"',
+                'Expected URLC signature "%s" but was "%s"',
                 '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
                 $signature
             )

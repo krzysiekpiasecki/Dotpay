@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'control' parameter.
  *
- * @see ResponseBag::$control Parameter 'control'
+ * @see URLC::$control Parameter 'control'
  * @Annotation
  * @Target({"PROPERTY"})
  */

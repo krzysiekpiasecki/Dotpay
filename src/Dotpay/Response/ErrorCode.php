@@ -21,7 +21,7 @@ namespace Dotpay\Response;
 /**
  * Data structure to represent ErrorBag.
  */
-class ResponseErrorCodeBag
+class ErrorCode
 {
     /** @var string error_code */
     public $error_code;

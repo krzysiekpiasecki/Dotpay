@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'lang' parameter.
  *
- * @see RequestBag::$lang Parameter 'lang'
+ * @see Payment::$lang Parameter 'lang'
  * @Annotation
  * @Target({"PROPERTY"})
  */

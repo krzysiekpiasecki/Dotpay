@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'chLock' parameter.
  *
- * @see RequestBag::$chLock Parameter 'chLock'
+ * @see Payment::$chLock Parameter 'chLock'
  * @Annotation
  * @Target({"PROPERTY"})
  */

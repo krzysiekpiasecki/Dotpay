@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'deladdr' parameter.
  *
- * @see RequestBag::$deladdr Parameter 'deladdr'
+ * @see Payment::$deladdr Parameter 'deladdr'
  * @Annotation
  * @Target({"PROPERTY"})
  */

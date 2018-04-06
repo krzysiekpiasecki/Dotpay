@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'channel' parameter.
  *
- * @see ResponseBag::$channel Parameter 'channel'
+ * @see URLC::$channel Parameter 'channel'
  * @Annotation
  * @Target({"PROPERTY"})
  */

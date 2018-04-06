@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'channelGroups' parameter.
  *
- * @see RequestBag::$channelGroups Parameter 'channelGroups'
+ * @see Payment::$channelGroups Parameter 'channelGroups'
  * @Annotation
  * @Target({"PROPERTY"})
  */

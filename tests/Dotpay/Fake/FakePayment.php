@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace Dotpay\Fake;
 
-use Dotpay\Request\RequestBag;
+use Dotpay\Request\Payment;
 
-class FakeRequestBag extends RequestBag
+class FakePayment extends Payment
 {
     public $id = '123456';
 

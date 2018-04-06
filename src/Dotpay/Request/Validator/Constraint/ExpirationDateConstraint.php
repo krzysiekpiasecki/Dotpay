@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Constraint against 'expirationDate' parameter.
  *
- * @see RequestBag::$expirationDate Parameter 'expirationDate'
+ * @see Payment::$expirationDate Parameter 'expirationDate'
  * @Annotation
  * @Target({"PROPERTY"})
  */

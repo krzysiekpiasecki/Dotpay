@@ -60,13 +60,13 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RequestFormType extends BaseType
+class PaymentFormType extends BaseType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'pin' => '',
-            'data_class', RequestBag::class,
+            'data_class', Payment::class,
         ]);
     }
 

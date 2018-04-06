@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'id' parameter.
  *
- * @see ResponseBag::$id Parameter 'id'
+ * @see URLC::$id Parameter 'id'
  * @Annotation
  * @Target({"PROPERTY"})
  */

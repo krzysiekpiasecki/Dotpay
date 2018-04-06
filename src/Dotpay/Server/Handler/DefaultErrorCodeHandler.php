@@ -9,8 +9,8 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\Response\ResponseErrorCodeBag;
-use Dotpay\Response\ResponseErrorCodeType;
+use Dotpay\Response\ErrorCode;
+use Dotpay\Response\ErrorCodeFormType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -42,10 +42,10 @@ class DefaultErrorCodeHandler implements RequestHandlerInterface
         $formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
-        $responseErrorCodeBag = new ResponseErrorCodeBag();
+        $responseErrorCodeBag = new ErrorCode();
         $form = $formFactory->createNamed(
             null,
-            ResponseErrorCodeType::class,
+            ErrorCodeFormType::class,
             $responseErrorCodeBag
         );
         $form->submit([

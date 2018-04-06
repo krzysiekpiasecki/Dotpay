@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'personalData' parameter.
  *
- * @see RequestBag::$personalData Parameter 'personalData'
+ * @see Payment::$personalData Parameter 'personalData'
  * @Annotation
  * @Target({"PROPERTY"})
  */

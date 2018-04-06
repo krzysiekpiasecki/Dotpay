@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'currency' parameter.
  *
- * @see RequestBag::$currency Parameter 'currency'
+ * @see Payment::$currency Parameter 'currency'
  * @Annotation
  * @Target({"PROPERTY"})
  */

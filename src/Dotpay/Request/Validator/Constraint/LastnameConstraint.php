@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'lastname' parameter.
  *
- * @see RequestBag::$lastname Parameter 'lastname'
+ * @see Payment::$lastname Parameter 'lastname'
  * @Annotation
  * @Target({"PROPERTY"})
  */

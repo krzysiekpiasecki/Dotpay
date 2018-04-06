@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'postcode' parameter.
  *
- * @see RequestBag::$postcode Parameter 'postcode'
+ * @see Payment::$postcode Parameter 'postcode'
  * @Annotation
  * @Target({"PROPERTY"})
  */

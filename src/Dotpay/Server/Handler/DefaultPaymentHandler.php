@@ -9,8 +9,8 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\Request\RequestBag;
-use Dotpay\Request\RequestFormType;
+use Dotpay\Request\Payment;
+use Dotpay\Request\PaymentFormType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -50,10 +50,10 @@ class DefaultPaymentHandler implements RequestHandlerInterface
         $formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
-        $requestBag = new RequestBag();
+        $requestBag = new Payment();
         $form = $formFactory->createNamed(
             null,
-            RequestFormType::class,
+            PaymentFormType::class,
             $requestBag,
             ['pin' => $this->pin]
         );

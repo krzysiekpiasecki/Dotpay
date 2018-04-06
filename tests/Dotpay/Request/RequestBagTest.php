@@ -21,9 +21,9 @@ namespace Dotpay\Request;
 use PHPUnit\Framework\TestCase;
 
 /**
- * RequestBag tests.
+ * Payment tests.
  *
- * @coversDefaultClass \Dotpay\Request\RequestBag
+ * @coversDefaultClass \Dotpay\Request\Payment
  */
 class RequestBagTest extends TestCase
 {
@@ -34,9 +34,9 @@ class RequestBagTest extends TestCase
     public function testAvailableProperties(string $property)
     {
         $this->assertTrue(
-            property_exists(RequestBag::class, $property),
+            property_exists(Payment::class, $property),
             sprintf(
-                'Expected property "%s" to exist in RequestBag',
+                'Expected property "%s" to exist in Payment',
                 $property
             )
         );
@@ -46,13 +46,13 @@ class RequestBagTest extends TestCase
     {
         $this->assertSame(
             35,
-            count(get_class_vars(RequestBag::class)),
-            'Invalid count of RequestBag properties'
+            count(get_class_vars(Payment::class)),
+            'Invalid count of Payment properties'
         );
     }
 
     /**
-     * Provide list of available properties in RequestBag class.
+     * Provide list of available properties in Payment class.
      *
      * @return array
      */

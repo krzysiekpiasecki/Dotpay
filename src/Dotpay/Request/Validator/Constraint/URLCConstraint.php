@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Url;
 /**
  * Constraint against 'URLC' parameter.
  *
- * @see RequestBag::$URLC Parameter 'URLC'
+ * @see Payment::$URLC Parameter 'URLC'
  * @Annotation
  * @Target({"PROPERTY"})
  */

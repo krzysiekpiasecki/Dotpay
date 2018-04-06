@@ -24,11 +24,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ResponseErrorCodeType extends BaseType
+class ErrorCodeFormType extends BaseType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('data_class', ResponseErrorCodeBag::class);
+        $resolver->setDefault('data_class', ErrorCode::class);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)

@@ -21,7 +21,7 @@ namespace Dotpay\Response;
 /**
  * Data structure to represent the response sent by Dotpay.
  */
-class ResponseBag
+class URLC
 {
     /** @var string Seller id */
     public $id;

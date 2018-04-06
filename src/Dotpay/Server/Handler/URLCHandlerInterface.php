@@ -9,9 +9,9 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\Response\ResponseBag;
+use Dotpay\Response\URLC;
 
 interface URLCHandlerInterface
 {
-    public function handle(ResponseBag $bag);
+    public function handle(URLC $bag);
 }

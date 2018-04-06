@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'pInfo' parameter.
  *
- * @see RequestBag::$pInfo Parameter 'pInfo'
+ * @see Payment::$pInfo Parameter 'pInfo'
  * @Annotation
  * @Target({"PROPERTY"})
  */

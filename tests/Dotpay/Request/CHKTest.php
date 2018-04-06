@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace Dotpay\Request;
 
-use Dotpay\Fake\FakeRequestBag;
+use Dotpay\Fake\FakePayment;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,7 +36,7 @@ class CHKTest extends TestCase
     {
         $this->assertSame(
             '1fa8c0cae4a2e0cfddee1fe337d0cfb6767b524130d056eb5738e3d04c5e4132',
-            (new CHK(new FakeRequestBag(), 'YUTxSl8lE4cWx0gjUT2L1MW2MBqkvj98'))->__toString()
+            (new CHK(new FakePayment(), 'YUTxSl8lE4cWx0gjUT2L1MW2MBqkvj98'))->__toString()
         );
     }
 }

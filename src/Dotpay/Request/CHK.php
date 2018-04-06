@@ -13,7 +13,7 @@ class CHK
 {
     private $chk;
 
-    public function __construct(RequestBag $bag, string $pin)
+    public function __construct(Payment $bag, string $pin)
     {
         $this->chk = hash('sha256', sprintf(
             str_repeat('%s', 34),

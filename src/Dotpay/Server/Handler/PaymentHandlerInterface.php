@@ -9,9 +9,9 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\Request\RequestBag;
+use Dotpay\Request\Payment;
 
 interface PaymentHandlerInterface
 {
-    public function handle(RequestBag $bag);
+    public function handle(Payment $bag);
 }

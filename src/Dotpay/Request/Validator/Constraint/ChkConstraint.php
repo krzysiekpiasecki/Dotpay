@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'chk' parameter.
  *
- * @see RequestBag::$chk Parameter 'chk'
+ * @see Payment::$chk Parameter 'chk'
  * @Annotation
  * @Target({"PROPERTY"})
  */

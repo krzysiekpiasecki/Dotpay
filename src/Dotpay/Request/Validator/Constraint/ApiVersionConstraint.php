@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'api_version' parameter.
  *
- * @see RequestBag::$api_version Parameter 'api_version'
+ * @see Payment::$api_version Parameter 'api_version'
  * @Annotation
  * @Target({"PROPERTY"})
  */

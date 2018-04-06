@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'type' parameter.
  *
- * @see RequestBag::$type Parameter 'type'
+ * @see Payment::$type Parameter 'type'
  * @Annotation
  * @Target({"PROPERTY"})
  */

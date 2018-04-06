@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'country' parameter.
  *
- * @see RequestBag::$country Parameter 'country'
+ * @see Payment::$country Parameter 'country'
  * @Annotation
  * @Target({"PROPERTY"})
  */

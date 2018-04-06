@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Email;
 /**
  * Constraint against 'email' parameter.
  *
- * @see RequestBag::$email Parameter 'email'
+ * @see Payment::$email Parameter 'email'
  * @Annotation
  * @Target({"PROPERTY"})
  */

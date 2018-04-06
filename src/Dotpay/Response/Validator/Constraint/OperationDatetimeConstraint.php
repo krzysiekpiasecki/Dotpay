@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Constraint against 'operationDatetime' parameter.
  *
- * @see ResponseBag::$operationDatetime Parameter 'operationDatetime'
+ * @see URLC::$operationDatetime Parameter 'operationDatetime'
  * @Annotation
  * @Target({"PROPERTY"})
  */

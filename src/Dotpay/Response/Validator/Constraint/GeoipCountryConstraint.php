@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'geoipCountry' parameter.
  *
- * @see ResponseBag::$geoipCountry Parameter 'geoipCountry'
+ * @see URLC::$geoipCountry Parameter 'geoipCountry'
  * @Annotation
  * @Target({"PROPERTY"})
  */

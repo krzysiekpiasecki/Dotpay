@@ -9,8 +9,8 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\Response\ResponseBag;
-use Dotpay\Response\ResponseFormType;
+use Dotpay\Response\URLC;
+use Dotpay\Response\URLCFormType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,10 +47,10 @@ class DefaultURLCHandler implements RequestHandlerInterface
         $formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
-        $responseBag = new ResponseBag();
+        $responseBag = new URLC();
         $form = $formFactory->createNamed(
             null,
-            ResponseFormType::class,
+            URLCFormType::class,
             $responseBag,
             ['pin' => $this->pin]
         );

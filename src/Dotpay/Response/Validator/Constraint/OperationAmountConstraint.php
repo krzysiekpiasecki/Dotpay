@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'operationAmount' parameter.
  *
- * @see ResponseBag::$operationAmount Parameter 'operationAmount'
+ * @see URLC::$operationAmount Parameter 'operationAmount'
  * @Annotation
  * @Target({"PROPERTY"})
  */

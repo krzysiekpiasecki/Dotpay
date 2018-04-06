@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Constraint against 'control' parameter.
  *
- * @see RequestBag::$control Parameter 'control'
+ * @see Payment::$control Parameter 'control'
  * @Annotation
  * @Target({"PROPERTY"})
  */

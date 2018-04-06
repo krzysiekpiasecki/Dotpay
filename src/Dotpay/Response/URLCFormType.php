@@ -52,13 +52,13 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ResponseFormType extends BaseType
+class URLCFormType extends BaseType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'pin' => '',
-            'data_class', ResponseBag::class,
+            'data_class', URLC::class,
         ]);
     }
 

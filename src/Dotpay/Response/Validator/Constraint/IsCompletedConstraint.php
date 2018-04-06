@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'isCompleted' parameter.
  *
- * @see ResponseBag::$isCompleted Parameter 'isCompleted'
+ * @see URLC::$isCompleted Parameter 'isCompleted'
  * @Annotation
  * @Target({"PROPERTY"})
  */

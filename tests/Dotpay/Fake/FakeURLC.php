@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace Dotpay\Fake;
 
-use Dotpay\Response\ResponseBag;
+use Dotpay\Response\URLC;
 
-class FakeResponseBag extends ResponseBag
+class FakeURLC extends URLC
 {
     public $id = '999999';
 

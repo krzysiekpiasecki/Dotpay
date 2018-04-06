@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'bylaw' parameter.
  *
- * @see RequestBag::$bylaw Parameter 'bylaw'
+ * @see Payment::$bylaw Parameter 'bylaw'
  * @Annotation
  * @Target({"PROPERTY"})
  */

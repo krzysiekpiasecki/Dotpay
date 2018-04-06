@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * Constraint against 'ignoreLastPaymentChannel' parameter.
  *
- * @see RequestBag::$ignoreLastPaymentChannel Parameter 'ignoreLastPaymentChannel'
+ * @see Payment::$ignoreLastPaymentChannel Parameter 'ignoreLastPaymentChannel'
  * @Annotation
  * @Target({"PROPERTY"})
  */

@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 /**
  * Constraint against 'buttontext' parameter.
  *
- * @see RequestBag::$buttontext Parameter 'buttontext'
+ * @see Payment::$buttontext Parameter 'buttontext'
  * @Annotation
  * @Target({"PROPERTY"})
  */
