@@ -35,7 +35,7 @@ class CHKTest extends TestCase
     public function testCheksum()
     {
         $this->assertSame(
-            '1fa8c0cae4a2e0cfddee1fe337d0cfb6767b524130d056eb5738e3d04c5e4132',
+            '74505a4c8a479cfd878aed96fe6db2deccb90b78e6a773be1e8a7b34ad7c8f86',
             (new CHK(new FakePayment(), 'YUTxSl8lE4cWx0gjUT2L1MW2MBqkvj98'))->__toString()
         );
     }

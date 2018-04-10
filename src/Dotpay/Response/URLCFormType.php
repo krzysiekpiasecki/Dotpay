@@ -297,8 +297,8 @@ class URLCFormType extends BaseType
         ))->__toString();
 
         if ($responseBag->signature !== $signatureExpected) {
-            // Security issue!!! Throw SecurityException instead
-            throw new \RuntimeException('Invalid response signature!!!');
+            // Security issue!!! Throw SecurityException instead?
+            throw new \RuntimeException('Invalid URLC signature!');
         }
     }
 }

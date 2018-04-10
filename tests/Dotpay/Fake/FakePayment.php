@@ -22,7 +22,7 @@ use Dotpay\Request\Payment;
 
 class FakePayment extends Payment
 {
-    public $id = '123456';
+    public $id = '747789';
 
     public $api_version = 'dev';
 

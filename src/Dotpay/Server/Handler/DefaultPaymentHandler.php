@@ -9,6 +9,7 @@
 
 namespace Dotpay\Server\Handler;
 
+use Dotpay\PaymentUrl;
 use Dotpay\Request\Payment;
 use Dotpay\Request\PaymentFormType;
 use Psr\Http\Message\ResponseInterface;
@@ -50,11 +51,11 @@ class DefaultPaymentHandler implements RequestHandlerInterface
         $formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
-        $requestBag = new Payment();
+        $payment = new Payment();
         $form = $formFactory->createNamed(
             null,
             PaymentFormType::class,
-            $requestBag,
+            $payment,
             ['pin' => $this->pin]
         );
 
@@ -100,9 +101,16 @@ class DefaultPaymentHandler implements RequestHandlerInterface
             throw new \RuntimeException('Invalid Payment callback');
         }
 
-        $this->paymentHandler->handle($requestBag);
+        $this->paymentHandler->handle($payment);
 
-        $symfonyResponse = new RedirectResponse('https://ssl.dotpay.pl/test_seller/test/');
+        $symfonyResponse = new RedirectResponse(
+            (new PaymentUrl(
+                'https://ssl.dotpay.pl/test_payment',
+                $this->sellerID,
+                $payment
+            ))->__toString()
+        );
+
         $psr7Factory = new DiactorosFactory();
         $psrResponse = $psr7Factory->createResponse($symfonyResponse);
 

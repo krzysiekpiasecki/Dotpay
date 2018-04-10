@@ -9,7 +9,6 @@
 
 $loader = require_once 'vendor/autoload.php';
 
-use Dotpay\Fake\FakeRequestBag;
 use Dotpay\Fake\FakeResponseBag;
 use Dotpay\Request\Payment;
 use Dotpay\Response\URLCFormType;
@@ -43,7 +42,6 @@ class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
     public function handle(\Dotpay\Response\URLC $bag)
     {
         printf('URLC was handled by the client');
-        var_dump($bag);
     }
 }
 
@@ -55,7 +53,9 @@ class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
     }
 }
 
-$_POST = (array) new FakeRequestBag();
+echo '<pre>';
+//$_POST = (array) new \Dotpay\Fake\FakePayment();
+$_POST = (array) new \Dotpay\Fake\FakeURLC();
 
 $request = Request::createFromGlobals();
 $psr7Factory = new DiactorosFactory();
@@ -71,29 +71,29 @@ try {
 //            )
 //    );
 
-//    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
-//    $httpResponse =
-//        $urlc->process(
-//            $psrRequest,
-//            new \Dotpay\Server\Handler\DefaultURLCHandler(
-//                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
-//                new URLCHandler()
-//            )
-//    );
-
-    $payment = new \Dotpay\Server\Payment();
+    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
     $httpResponse =
-        $payment->process(
+        $urlc->process(
             $psrRequest,
-            new \Dotpay\Server\Handler\DefaultPaymentHandler(
-                '123456',
+            new \Dotpay\Server\Handler\DefaultURLCHandler(
                 'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
-                new PaymentHandler()
+                new URLCHandler()
             )
-        );
+    );
 
-    $emitter = new Zend\Diactoros\Response\SapiEmitter();
-    $emitter->emit($httpResponse);
+//    $payment = new \Dotpay\Server\Payment();
+//    $httpResponse =
+//        $payment->process(
+//            $psrRequest,
+//            new \Dotpay\Server\Handler\DefaultPaymentHandler(
+//                '747789',
+//                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+//                new PaymentHandler()
+//            )
+//        );
+
+//    $emitter = new Zend\Diactoros\Response\SapiEmitter();
+//    $emitter->emit($httpResponse);
 } catch (Throwable $e) {
     echo <<<EXCEPTION
     <h1 style="background: red; color: white; padding: 10px;">Exception was thrown: {$e->getMessage()}</h1>
@@ -103,7 +103,7 @@ EXCEPTION;
     echo <<<'finally'
 finally;
     echo '<pre>';
-    var_dump($httpResponse);
+    var_dump($httpResponse->getBody()->getContents());
     echo '</pre>';
 }
 

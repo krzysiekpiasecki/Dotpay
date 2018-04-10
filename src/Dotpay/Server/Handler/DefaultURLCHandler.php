@@ -15,7 +15,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
-use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,8 +41,6 @@ class DefaultURLCHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $httpFoundationFactory = new HttpFoundationFactory();
-        $symfonyRequest = $httpFoundationFactory->createRequest($request);
         $formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
@@ -70,7 +67,7 @@ class DefaultURLCHandler implements RequestHandlerInterface
             'operation_datetime' => $request->getParsedBody()['operation_datetime'],
             'operation_related_number' => $request->getParsedBody()['operation_related_number'],
             'control' => $request->getParsedBody()['control'],
-            'desription' => $request->getParsedBody()['desription'],
+            'description' => $request->getParsedBody()['description'],
             'email' => $request->getParsedBody()['email'],
             'p_info' => $request->getParsedBody()['p_info'],
             'p_email' => $request->getParsedBody()['p_email'],

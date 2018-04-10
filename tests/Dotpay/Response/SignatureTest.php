@@ -38,10 +38,10 @@ class SignatureTest extends TestCase
 
         $this->assertSame(
             $signature,
-            '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
+            '8363bf09482951fd69d76621cba469662a17205eee2c35097fd929023f573695',
             sprintf(
                 'Expected URLC signature "%s" but was "%s"',
-                '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
+                '8363bf09482951fd69d76621cba469662a17205eee2c35097fd929023f573695',
                 $signature
             )
         );
