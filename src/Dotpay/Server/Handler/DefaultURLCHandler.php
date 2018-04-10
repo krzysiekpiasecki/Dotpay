@@ -14,11 +14,10 @@ use Dotpay\Response\URLCFormType;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validation;
+use Zend\Diactoros\Response\TextResponse;
 
 class DefaultURLCHandler implements RequestHandlerInterface
 {
@@ -88,10 +87,6 @@ class DefaultURLCHandler implements RequestHandlerInterface
 
         $this->urlcHandler->handle($responseBag);
 
-        $symfonyResponse = new Response('OK', '200');
-        $psr7Factory = new DiactorosFactory();
-        $psrResponse = $psr7Factory->createResponse($symfonyResponse);
-
-        return $psrResponse;
+        return new TextResponse('OK', 200);
     }
 }
