@@ -14,6 +14,14 @@ Are you interested in more details? [Here's the complete documentation of API](h
 
 # Using the middlewares
 
+### Install
+
+Dotpayds is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotpay).
+
+```php
+composer require krzysiekpiasecki/dotpay
+```
+
 ## Payment Middleware
 
 Custom domain payment handler must implement only the interface 
