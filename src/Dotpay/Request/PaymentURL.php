@@ -7,9 +7,7 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-namespace Dotpay;
-
-use Dotpay\Request\Payment;
+namespace Dotpay\Request;
 
 /**
  * Represents a target URL when redirecting client to the payment gateway (form).

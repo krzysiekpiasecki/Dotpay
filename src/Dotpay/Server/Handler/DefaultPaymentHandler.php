@@ -9,9 +9,9 @@
 
 namespace Dotpay\Server\Handler;
 
-use Dotpay\PaymentUrl;
 use Dotpay\Request\Payment;
 use Dotpay\Request\PaymentFormType;
+use Dotpay\Request\PaymentUrl;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

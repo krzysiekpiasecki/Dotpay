@@ -52,7 +52,7 @@ class DefaultErrorCodeHandler implements RequestHandlerInterface
             'error_code' => $request->getQueryParams()['error_code'],
         ]);
         if (!$form->isValid()) {
-            throw new \RuntimeException('Invalid error code');
+            throw new \DomainException('Invalid error code parameter');
         }
 
         $this->errorCodeHandler->handle($request->getQueryParams()['error_code']);

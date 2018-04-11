@@ -7,61 +7,154 @@
  * @license   https://opensource.org/licenses/MIT  The MIT License
  */
 
-$loader = require_once 'vendor/autoload.php';
+const MODE_RESPONSE = 1;
 
-use Dotpay\Fake\FakeResponseBag;
-use Dotpay\Request\Payment;
-use Dotpay\Response\URLCFormType;
-use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
-use Symfony\Bridge\Twig\Extension\FormExtension;
-use Symfony\Bridge\Twig\Extension\TranslationExtension;
-use Symfony\Bridge\Twig\Form\TwigRendererEngine;
-use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
-use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
-use Symfony\Component\Form\FormRenderer;
-use Symfony\Component\Form\Forms;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Csrf\CsrfTokenManager;
-use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
-use Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage;
-use Symfony\Component\Translation\Loader\XliffFileLoader;
-use Symfony\Component\Translation\Translator;
-use Symfony\Component\Validator\Validation;
+    /*
+     * This file is part of Dotpayds project.
+     * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
+     *
+     * @license   https://opensource.org/licenses/MIT  The MIT License
+     */
 
-class ErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface
-{
-    public function handle(string $errorCode)
+    $loader = require_once 'vendor/autoload.php';
+
+    use Dotpay\Request\Payment;
+    use Dotpay\Response\URLCFormType;
+    use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
+    use Symfony\Bridge\Twig\Extension\FormExtension;
+    use Symfony\Bridge\Twig\Extension\TranslationExtension;
+    use Symfony\Bridge\Twig\Form\TwigRendererEngine;
+    use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
+    use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+    use Symfony\Component\Form\FormRenderer;
+    use Symfony\Component\Form\Forms;
+    use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\HttpFoundation\Session\Session;
+    use Symfony\Component\Security\Csrf\CsrfTokenManager;
+    use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
+    use Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage;
+    use Symfony\Component\Translation\Loader\XliffFileLoader;
+    use Symfony\Component\Translation\Translator;
+    use Symfony\Component\Validator\Validation;
+
+    class ErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface
     {
-        printf('Error code %s was handled by the handler', $errorCode);
+        public function handle(string $errorCode)
+        {
+            printf('Error code %s was handled by the handler', $errorCode);
+        }
     }
-}
 
-class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
-{
-    public function handle(\Dotpay\Response\URLC $bag)
+    class URLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
     {
-        printf('URLC was handled by the client');
+        public function handle(\Dotpay\Response\URLC $bag)
+        {
+            printf('URLC was handled by the client');
+        }
     }
-}
 
-class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
-{
-    public function handle(Payment $bag)
+    class PaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
     {
-        //printf('Payment was handled by the client');
+        public function handle(Payment $bag)
+        {
+            //printf('Payment was handled by the client');
+        }
     }
-}
 
-echo '<pre>';
-//$_POST = (array) new \Dotpay\Fake\FakePayment();
+// $_POST = (array) new \Dotpay\Fake\FakeURLC();
+
 $_POST = (array) new \Dotpay\Fake\FakeURLC();
 
-$request = Request::createFromGlobals();
-$psr7Factory = new DiactorosFactory();
-$psrRequest = $psr7Factory->createRequest($request);
+    class BusinessURLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
+    {
+        public function handle(\Dotpay\Response\URLC $URLC)
+        {
+            // TODO: Implement handle() method.
+        }
+    }
+
+    $psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
+        $_POST
+    );
 
 try {
+    $urlcMiddleware = new \Dotpay\Server\Payment();
+
+    $httpResponse =
+        $urlcMiddleware->process(
+            $psrRequest,
+            new \Dotpay\Server\Handler\DefaultURLCHandler(
+                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+                new BusinessURLCHandler()
+            )
+        );
+
+    $emitter = new Zend\Diactoros\Response\SapiEmitter();
+    $emitter->emit($httpResponse);
+} catch (\Throwable $e) {
+    var_dump($e);
+    // TODO: Handle exception
+}
+
+//
+//    try {
+//
+//        $paymentMiddleware = new \Dotpay\Server\Payment();
+//
+//        $httpResponse =
+//            $paymentMiddleware->process(
+//                $psrRequest,
+//                new \Dotpay\Server\Handler\DefaultPaymentHandler(
+//                    '747789',
+//                    'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+//                    new BusinessPaymentHandler()
+//                )
+//            );
+//
+//        $emitter = new Zend\Diactoros\Response\SapiEmitter();
+//        $emitter->emit($httpResponse);
+//
+//    } catch (\Throwable $e) {
+//        var_dump($e);
+//        // TODO: Handle exception
+//    }
+
+//
+//class BusinessErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface  {
+//
+//    public function handle(string $errorCode)
+//    {
+//        // TODO: Implement handle() method with custom logic
+//    }
+//}
+//
+//$psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
+//    $_GET
+//);
+//
+//try {
+//
+//    $errorCodeMiddleware = new \Dotpay\Server\ErrorCode();
+//
+//    $httpResponse =
+//        $errorCodeMiddleware->process(
+//            $psrRequest,
+//            new \Dotpay\Server\Handler\DefaultErrorCodeHandler(
+//                new BusinessErrorCodeHandler()
+//            )
+//        );
+//
+//} catch(\Throwable $e) {
+//    // TODO: Handle exception
+//}
+
+    exit();
+
+    $request = Request::createFromGlobals();
+    $psr7Factory = new DiactorosFactory();
+    $psrRequest = $psr7Factory->createRequest($request);
+
+    try {
 //    $errorCode = new ErrorCode();
 //    $httpResponse =
 //        $errorCode->process(
@@ -71,15 +164,15 @@ try {
 //            )
 //    );
 
-    $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
-    $httpResponse =
-        $urlc->process(
-            $psrRequest,
-            new \Dotpay\Server\Handler\DefaultURLCHandler(
-                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
-                new URLCHandler()
-            )
-    );
+        $urlc = new \Dotpay\Server\URLC('Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm');
+        $httpResponse =
+            $urlc->process(
+                $psrRequest,
+                new \Dotpay\Server\Handler\DefaultURLCHandler(
+                    'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+                    new URLCHandler()
+                )
+            );
 
 //    $payment = new \Dotpay\Server\Payment();
 //    $httpResponse =
@@ -94,167 +187,165 @@ try {
 
 //    $emitter = new Zend\Diactoros\Response\SapiEmitter();
 //    $emitter->emit($httpResponse);
-} catch (Throwable $e) {
-    echo <<<EXCEPTION
+    } catch (Throwable $e) {
+        echo <<<EXCEPTION
     <h1 style="background: red; color: white; padding: 10px;">Exception was thrown: {$e->getMessage()}</h1>
     <pre style="padding: 20px; border: #ccc;">${e}</pre>
 EXCEPTION;
-} finally {
-    echo <<<'finally'
+    } finally {
+        echo <<<'finally'
 finally;
-    echo '<pre>';
-    var_dump($httpResponse->getBody()->getContents());
-    echo '</pre>';
-}
+        echo '<pre>';
+        var_dump($httpResponse->getBody()->getContents());
+        echo '</pre>';
+    }
 
-exit();
+    exit();
 
-$session = new Session();
-$csrfGenerator = new UriSafeTokenGenerator();
-$csrfStorage = new SessionTokenStorage($session);
-$csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
+    $session = new Session();
+    $csrfGenerator = new UriSafeTokenGenerator();
+    $csrfStorage = new SessionTokenStorage($session);
+    $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 
-/**
- * Twig Extension.
- */
+    /**
+     * Twig Extension.
+     */
 
 // the Twig file that holds all the default markup for rendering forms
 // this file comes with TwigBridge
-$defaultFormTheme = 'form_div_layout.html.twig';
+    $defaultFormTheme = 'form_div_layout.html.twig';
 
-$vendorDirectory = realpath(__DIR__.'/../vendor');
+    $vendorDirectory = realpath(__DIR__.'/../vendor');
 // the path to TwigBridge library so Twig can locate the
 // form_div_layout.html.twig file
-$appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
-$vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
+    $appVariableReflection = new \ReflectionClass('\Symfony\Bridge\Twig\AppVariable');
+    $vendorTwigBridgeDirectory = dirname($appVariableReflection->getFileName());
 // the path to your other templates
-$viewsDirectory = realpath(__DIR__.'/../views');
+    $viewsDirectory = realpath(__DIR__.'/../views');
 
-$twig = new Twig_Environment(new Twig_Loader_Filesystem([
-    $viewsDirectory,
-    $vendorTwigBridgeDirectory.'/Resources/views/Form',
-]));
-$formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
-$twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader([
-    FormRenderer::class => function () use ($formEngine, $csrfManager) {
-        return new FormRenderer($formEngine, $csrfManager);
-    },
-]));
+    $twig = new Twig_Environment(new Twig_Loader_Filesystem([
+        $viewsDirectory,
+        $vendorTwigBridgeDirectory.'/Resources/views/Form',
+    ]));
+    $formEngine = new TwigRendererEngine([$defaultFormTheme], $twig);
+    $twig->addRuntimeLoader(new \Twig_FactoryRuntimeLoader([
+        FormRenderer::class => function () use ($formEngine, $csrfManager) {
+            return new FormRenderer($formEngine, $csrfManager);
+        },
+    ]));
 
-$twig->addExtension(new FormExtension());
+    $twig->addExtension(new FormExtension());
 
 // creates the Translator
-$translator = new Translator('en');
+    $translator = new Translator('en');
 // somehow load some translations into it
-$translator->addLoader('xlf', new XliffFileLoader());
+    $translator->addLoader('xlf', new XliffFileLoader());
 //$translator->addResource(
 //    'xlf',
 //    __DIR__.'/path/to/translations/messages.en.xlf',
 //    'en'
 //);
 
-$twig->addExtension(new TranslationExtension($translator));
+    $twig->addExtension(new TranslationExtension($translator));
 
-$session = new Session();
+    $session = new Session();
 
-$csrfGenerator = new UriSafeTokenGenerator();
-$csrfStorage = new SessionTokenStorage($session);
-$csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
+    $csrfGenerator = new UriSafeTokenGenerator();
+    $csrfStorage = new SessionTokenStorage($session);
+    $csrfManager = new CsrfTokenManager($csrfGenerator, $csrfStorage);
 
-$formFactory = Forms::createFormFactoryBuilder()
-    ->addExtension(new HttpFoundationExtension())
-    //->addExtension(new CsrfExtension($csrfManager))
-    ->addExtension(new ValidatorExtension(Validation::createValidator()))
-    ->getFormFactory();
+    $formFactory = Forms::createFormFactoryBuilder()
+        ->addExtension(new HttpFoundationExtension())
+        //->addExtension(new CsrfExtension($csrfManager))
+        ->addExtension(new ValidatorExtension(Validation::createValidator()))
+        ->getFormFactory();
 
-$requestBag = new \Dotpay\Request\Payment();
-$requestBag->id = '747789';
-$requestBag->api_version = 'dev';
-$requestBag->currency = 'PLN';
-$requestBag->description = 'Faktura 1';
-$requestBag->amount = '1,23';
-$requestBag->firstname = 'Agnieszka';
-$requestBag->lastname = 'Hunka';
-$requestBag->email = 'robert.bystrzanowski@gmail.com';
+    $requestBag = new \Dotpay\Request\Payment();
+    $requestBag->id = '747789';
+    $requestBag->api_version = 'dev';
+    $requestBag->currency = 'PLN';
+    $requestBag->description = 'Faktura 1';
+    $requestBag->amount = '1,23';
+    $requestBag->firstname = 'Agnieszka';
+    $requestBag->lastname = 'Hunka';
+    $requestBag->email = 'robert.bystrzanowski@gmail.com';
 
-$responseBag = new FakeResponseBag();
+    $responseBag = new FakeResponseBag();
 
-const MODE_RESPONSE = 1;
+    if (1 === MODE_RESPONSE) {
+        $form = $formFactory->createNamed(
+            null,
+            URLCFormType::class,
+            $responseBag,
+            [
+                'action' => 'http://127.0.0.1:8080',
+                'method' => 'GET',
+            ]
+        );
 
-if (1 === MODE_RESPONSE) {
+        $form->submit([
+            'id' => '999999',
+            'operation_number' => 'M1234-5678',
+            'operation_type' => 'payment',
+            'operation_status' => 'completed',
+            'operation_amount' => '177.27',
+            'operation_currency' => 'PLN',
+            'operation_withdrawal_amount' => '176.00',
+            'operation_commission_amount' => '-1.27',
+            'is_completed' => 'true',
+            'operation_original_amount' => '42.82',
+            'operation_original_currency' => 'EUR',
+            'operation_datetime' => '2014-06-01 12:06:37',
+            'operation_related_number' => 'M1234-5678',
+            'control' => 'ec4bf09d3dbe0cb71e6abc3ea44a7273',
+            'description' => 'Faktura VAT 120/2014',
+            'email' => 'jan.nowak@example.com',
+            'p_info' => 'Capgeminix',
+            'p_email' => 'biuro@capgeminix.pl',
+            'credit_card_issuer_identification_number' => '603753',
+            'credit_card_masked_number' => 'XXXX XXXX XXXX 6214',
+            'credit_card_brand_codename' => 'visa',
+            'credit_card_brand_code' => 'Visa',
+            'credit_card_id' => '59f92e2bf8bedc36bec2219862448dd54dd19490de526e217589b37f43dc3eb2a4df294e71829a239eb7432d0eebbdad4c58eb13d6333ce71369184eb7ab02ae',
+            'channel' => '248',
+            'channel_country' => 'POL',
+            'geoip_country' => 'POL',
+            'signature' => '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($responseBag);
+            exit('Response delevired');
+        }
+
+        exit('End of the script');
+    }
+
     $form = $formFactory->createNamed(
         null,
-        URLCFormType::class,
-        $responseBag,
+        \Dotpay\Request\PaymentFormType::class,
+        $requestBag,
         [
             'action' => 'http://127.0.0.1:8080',
             'method' => 'GET',
         ]
     );
 
-    $form->submit([
-        'id' => '999999',
-        'operation_number' => 'M1234-5678',
-        'operation_type' => 'payment',
-        'operation_status' => 'completed',
-        'operation_amount' => '177.27',
-        'operation_currency' => 'PLN',
-        'operation_withdrawal_amount' => '176.00',
-        'operation_commission_amount' => '-1.27',
-        'is_completed' => 'true',
-        'operation_original_amount' => '42.82',
-        'operation_original_currency' => 'EUR',
-        'operation_datetime' => '2014-06-01 12:06:37',
-        'operation_related_number' => 'M1234-5678',
-        'control' => 'ec4bf09d3dbe0cb71e6abc3ea44a7273',
-        'description' => 'Faktura VAT 120/2014',
-        'email' => 'jan.nowak@example.com',
-        'p_info' => 'Capgeminix',
-        'p_email' => 'biuro@capgeminix.pl',
-        'credit_card_issuer_identification_number' => '603753',
-        'credit_card_masked_number' => 'XXXX XXXX XXXX 6214',
-        'credit_card_brand_codename' => 'visa',
-        'credit_card_brand_code' => 'Visa',
-        'credit_card_id' => '59f92e2bf8bedc36bec2219862448dd54dd19490de526e217589b37f43dc3eb2a4df294e71829a239eb7432d0eebbdad4c58eb13d6333ce71369184eb7ab02ae',
-        'channel' => '248',
-        'channel_country' => 'POL',
-        'geoip_country' => 'POL',
-        'signature' => '4e3f76e666abd6c9c25097f648c37148fef0b5c8caf7ba134746519362c83f11',
-    ]);
-
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-        var_dump($responseBag);
-        exit('Response delevired');
+        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(
+            sprintf(
+                '%s%s',
+                'https://ssl.dotpay.pl/test_payment/?',
+                $request->getQueryString()
+            )
+        );
+        $response->send();
+    } else {
+        echo $twig->render('new.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
-
-    exit('End of the script');
-}
-
-$form = $formFactory->createNamed(
-    null,
-    \Dotpay\Request\PaymentFormType::class,
-    $requestBag,
-    [
-        'action' => 'http://127.0.0.1:8080',
-        'method' => 'GET',
-    ]
-);
-
-$form->handleRequest($request);
-
-if ($form->isSubmitted() && $form->isValid()) {
-    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(
-        sprintf(
-            '%s%s',
-            'https://ssl.dotpay.pl/test_payment/?',
-            $request->getQueryString()
-        )
-    );
-    $response->send();
-} else {
-    echo $twig->render('new.html.twig', [
-        'form' => $form->createView(),
-    ]);
-}
