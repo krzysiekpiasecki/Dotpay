@@ -1,11 +1,13 @@
-# Dotpay Middlewares 
+# Dotpay Middleware
+
+ ![Dotpay](https://raw.githubusercontent.com/krzysiekpiasecki/Dotpayds/master/dotpay_logo.png) 
 
 [![Build Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/build.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
-Middlewares for worldwilde payments implementation. Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce.
+Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository offers middlewares for payments implementation. 
 
 # API
 
@@ -15,7 +17,7 @@ Are you interested in more details? [Here's the complete documentation of API](h
 
 ### Install
 
-Dotpayds is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotpay).
+The source code is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotpay).
 
 ```php
 composer require krzysiekpiasecki/dotpay
