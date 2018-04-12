@@ -24,7 +24,7 @@ composer require krzysiekpiasecki/dotpay
 ## Payment Middleware
 
 Custom domain payment handler must implement only the interface 
-```\Dotpay\Server\Handler\PaymentHandlerInterface```. You have to use it at least for persisting client payments,
+\Dotpay\Server\Handler\PaymentHandlerInterface. You have to use it at least for persisting client payments,
 before redirecting the client to the payment gateway. 
 
 ```php
@@ -68,7 +68,7 @@ $emitter->emit($httpResponse);
 ## URLC Middleware
 
 Custom domain URLC handler must implement only the interface 
-```\Dotpay\Server\Handler\URLCHandlerInterface```. You have to use it to confirm 
+\Dotpay\Server\Handler\URLCHandlerInterface. You have to use it to confirm 
 transaction complete or handle status changing.
 
 ```php
@@ -110,7 +110,7 @@ $emitter->emit($httpResponse);
 ## Error Code Middleware
 
 Custom domain handler for getting error codes from Dotpay server
-must implement only the interface ```\Dotpay\Server\Handler\ErrorCodeHandlerInterface.
+must implement only the interface \Dotpay\Server\Handler\ErrorCodeHandlerInterface.
 
 ```php
 class BusinessErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface  {
