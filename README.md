@@ -109,9 +109,8 @@ $emitter->emit($httpResponse);
 
 ## Error Code Middleware
 
-```php
 Custom domain handler for getting error codes from Dotpay server
-must implement only the interface ```\Dotpay\Server\Handler\ErrorCodeHandlerInterface```.
+must implement only the interface ```\Dotpay\Server\Handler\ErrorCodeHandlerInterface.
 
 ```php
 class BusinessErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface  {
