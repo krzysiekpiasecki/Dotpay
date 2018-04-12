@@ -5,8 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
-Middlewares for integration services with Dotpay - The most comprehensive online payments solution dedicated for polish ecommerce.
-
+Middlewares for worldwilde payments implementation. Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce.
 
 # API
 
@@ -29,98 +28,83 @@ Custom domain payment handler must implement only the interface
 before redirecting the client to the payment gateway. 
 
 ```php
- class BusinessPaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
+class BusinessPaymentHandler implements \Dotpay\Server\Handler\PaymentHandlerInterface
+{
+    public function handle(Payment $payment)
     {
-
-        public function handle(Payment $payment)
-        {
-            // TODO: Implement handle() method.
-        }
+        // TODO: Implement handle() method.
     }
+}
 ```
 
-After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example using [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.
+After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example using [Zend Diactoros](https://github.com/zendframework/zend-diactoros) component.
 
 ```php
-    $psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
-        $_GET,
-        $_POST
-    );
+$psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
+    $_GET,
+    $_POST
+);
 ```
 
 At the end, call the payment middleware to execute your own payment handler and then to send a redirect response
-to the client using for example [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.component again.
+to the client using for example [Zend Diactoros](https://github.com/zendframework/zend-diactoros) component.
 
 ```php
-    try {
+$paymentMiddleware = new \Dotpay\Server\Payment();
 
-        $paymentMiddleware = new \Dotpay\Server\Payment();
+$httpResponse = $paymentMiddleware->process(
+    $psrRequest,
+    new \Dotpay\Server\Handler\DefaultPaymentHandler(
+        '747789',
+        'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+        new BusinessPaymentHandler()
+    )
+);
 
-        $httpResponse =
-            $paymentMiddleware->process(
-                $psrRequest,
-                new \Dotpay\Server\Handler\DefaultPaymentHandler(
-                    '747789',
-                    'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
-                    new BusinessPaymentHandler()
-                )
-            );
-
-        $emitter = new Zend\Diactoros\Response\SapiEmitter();
-        $emitter->emit($httpResponse);
-
-    } catch (\Throwable $e) {
-        // TODO: Handle exception
-    }
+$emitter = new \Zend\Diactoros\Response\SapiEmitter();
+$emitter->emit($httpResponse);
 ```
 
 ## URLC Middleware
 
 Custom domain URLC handler must implement only the interface 
 ```\Dotpay\Server\Handler\URLCHandlerInterface```. You have to use it to confirm 
-transaction complete or change status.
+transaction complete or handle status changing.
 
 ```php
-    class BusinessURLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
+class BusinessURLCHandler implements \Dotpay\Server\Handler\URLCHandlerInterface
+{
+    public function handle(\Dotpay\Response\URLC $URLC)
     {
-        public function handle(\Dotpay\Response\URLC $URLC)
-        {
-            // TODO: Implement handle() method.
-        }
+        // TODO: Implement handle() method.
     }
+}
 ```
 
-After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example with [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.
+After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example with [Zend Diactoros](https://github.com/zendframework/zend-diactoros) component.
 
 ```php
-    $psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
-        $_POST
-    );
+$psrRequest = \Zend\Diactoros\ServerRequestFactory::fromGlobals(
+    $_POST
+);
 ```
 
 At the end, call the URLC middleware to execute your own URLC handler and then send a response "OK" to Dotpay,
-when the transaction was handled correctly, using for example [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.component again.
+when the transaction was handled correctly, using for example [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.
 
 ```php
-try {
+$urlcMiddleware = new \Dotpay\Server\Payment();
 
-    $urlcMiddleware = new \Dotpay\Server\Payment();
+$httpResponse = $urlcMiddleware->process(
+    $psrRequest, 
+    new \Dotpay\Server\Handler\DefaultURLCHandler(
+        'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
+        new BusinessURLCHandler()
+    )
+);
 
-    $httpResponse =
-        $urlcMiddleware->process(
-            $psrRequest,
-            new \Dotpay\Server\Handler\DefaultURLCHandler(
-                'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
-                new BusinessURLCHandler()
-            )
-        );
-
-    $emitter = new Zend\Diactoros\Response\SapiEmitter();
-    $emitter->emit($httpResponse);
-
-} catch (\Throwable $e) {
-    // TODO: Handle exception
-}
+$emitter = new \Zend\Diactoros\Response\SapiEmitter();
+$emitter->emit($httpResponse);
 ```
 
 ## Error Code Middleware
@@ -131,7 +115,6 @@ must implement only the interface ```\Dotpay\Server\Handler\ErrorCodeHandlerInte
 
 ```php
 class BusinessErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandlerInterface  {
-
     public function handle(string $errorCode)
     {
         // TODO: Implement handle() method with custom logic
@@ -139,7 +122,7 @@ class BusinessErrorCodeHandler implements \Dotpay\Server\Handler\ErrorCodeHandle
 }
 ```
 
-After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example with [Zend Diactoros](https://github.com/zendframework/zend-diactoros)component.
+After implementing the handler, create [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible request object, for example with [Zend Diactoros](https://github.com/zendframework/zend-diactoros) component.
 
 ```php
 $psrRequest = Zend\Diactoros\ServerRequestFactory::fromGlobals(
@@ -151,21 +134,14 @@ At the end, call the error code middleware to execute your own error code handle
 
 
 ```php
-try {
+$errorCodeMiddleware = new \Dotpay\Server\ErrorCode();
 
-    $errorCodeMiddleware = new \Dotpay\Server\ErrorCode();
-
-    $httpResponse =
-        $errorCodeMiddleware->process(
-            $psrRequest,
-            new \Dotpay\Server\Handler\DefaultErrorCodeHandler(
-                new BusinessErrorCodeHandler()
-            )
-        );
-
-} catch(\Throwable $e) {
-    // TODO: Handle exception
-}
+$httpResponse = $errorCodeMiddleware->process(
+     $psrRequest,
+     new \Dotpay\Server\Handler\DefaultErrorCodeHandler(
+         new BusinessErrorCodeHandler()
+     )
+);
 ```
 
 # Dotpay for Developers
