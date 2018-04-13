@@ -56,7 +56,7 @@ $paymentMiddleware = new \Dotpay\Server\Payment();
 
 $httpResponse = $paymentMiddleware->process(
     $psrRequest,
-    new \Dotpay\Server\Handler\DefaultPaymentHandler(
+    new \Dotpay\Server\Handler\PaymentHandler(
         '747789',
         'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
         new BusinessPaymentHandler()
