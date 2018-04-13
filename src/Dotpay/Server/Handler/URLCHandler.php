@@ -19,7 +19,7 @@ use Symfony\Component\Form\Forms;
 use Symfony\Component\Validator\Validation;
 use Zend\Diactoros\Response\TextResponse;
 
-class DefaultURLCHandler implements RequestHandlerInterface
+class URLCHandler implements RequestHandlerInterface
 {
     /** @var URLCHandlerInterface */
     private $urlcHandler;
@@ -28,7 +28,7 @@ class DefaultURLCHandler implements RequestHandlerInterface
     private $pin;
 
     /**
-     * DefaultURLCHandler constructor.
+     * URLCHandler constructor.
      *
      * @param URLCHandlerInterface $urlcHandler
      */

@@ -21,12 +21,12 @@ use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validation;
 
-class DefaultErrorCodeHandler implements RequestHandlerInterface
+class ErrorCodeHandler implements RequestHandlerInterface
 {
     private $errorCodeHandler;
 
     /**
-     * DefaultErrorCodeHandler constructor.
+     * ErrorCodeHandler constructor.
      *
      * @param $errorCodeHandler
      */

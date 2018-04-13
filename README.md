@@ -99,7 +99,7 @@ $urlcMiddleware = new \Dotpay\Server\Payment();
 
 $httpResponse = $urlcMiddleware->process(
     $psrRequest, 
-    new \Dotpay\Server\Handler\DefaultURLCHandler(
+    new \Dotpay\Server\Handler\URLCHandler(
         'Np3n4QmXxp6MOTrLCVs905fdrGf3QIGm',
         new BusinessURLCHandler()
     )
@@ -139,7 +139,7 @@ $errorCodeMiddleware = new \Dotpay\Server\ErrorCode();
 
 $httpResponse = $errorCodeMiddleware->process(
      $psrRequest,
-     new \Dotpay\Server\Handler\DefaultErrorCodeHandler(
+     new \Dotpay\Server\Handler\ErrorCodeHandler(
          new BusinessErrorCodeHandler()
      )
 );

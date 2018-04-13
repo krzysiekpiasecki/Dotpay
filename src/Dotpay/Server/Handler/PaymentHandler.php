@@ -21,7 +21,7 @@ use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Validator\Validation;
 
-class DefaultPaymentHandler implements RequestHandlerInterface
+class PaymentHandler implements RequestHandlerInterface
 {
     /** @var PaymentHandlerInterface */
     private $paymentHandler;
@@ -33,7 +33,7 @@ class DefaultPaymentHandler implements RequestHandlerInterface
     private $sellerID;
 
     /**
-     * DefaultPaymentHandler constructor.
+     * PaymentHandler constructor.
      *
      * @param string                  $sellerID
      * @param string                  $pin
