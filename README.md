@@ -5,7 +5,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/build.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/build-status/master)<br/>
 [![Code Coverage](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)<br/>
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)<br/>
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)<br/>
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)<br/><br/>
 
 Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository offers middlewares for payments implementation. 
 
