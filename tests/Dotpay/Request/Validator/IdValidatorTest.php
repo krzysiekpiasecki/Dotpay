@@ -59,6 +59,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
             ['9999990'],
             ['-1'],
             ['999999.0'],
+            ['0123']
         ];
     }
 
