@@ -1,6 +1,6 @@
 # Dotpay Middleware
 
-Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository offers middlewares for payments implementation.
+Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository comes with middlewares for payments implementation and validation layer.
 
 ![Dotpay](https://raw.githubusercontent.com/krzysiekpiasecki/Dotpayds/master/dotpay_logo.png)
 
