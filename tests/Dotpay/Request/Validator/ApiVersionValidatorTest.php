@@ -1,20 +1,6 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
-
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
 
 namespace Dotpay\Request\Validator;
 
@@ -22,15 +8,14 @@ use Dotpay\Request\Validator\Constraint\ApiVersionConstraint;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
- * @coversDefaultClass \Dotpay\Validator\ApiVersionValidator
+ * @coversDefaultClass \Dotpay\Request\Validator\ApiVersionValidator
  */
 class ApiVersionValidatorTest extends ConstraintValidatorTestCase
 {
     /**
+     * @param string Valid API version
      * @covers ::validate
-     * @dataProvider provideValidApiVersion
-     *
-     * @param string API version
+     * @dataProvider provideValidData
      */
     public function testApiVersionIsValid(string $apiVersion)
     {
@@ -39,25 +24,15 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
+     * @param string Invalid API version
      * @covers ::validate
-     * @dataProvider provideInvalidApiVersion
-     *
-     * @param string API version
-     * @param string API version as string
-     * @param mixed $apiVersionAsString
+     * @dataProvider provideInvalidData
      */
-    public function testApiVersionIsInvalid(string $apiVersion, $apiVersionAsString)
+    public function testApiVersionIsInvalid(string $apiVersion)
     {
-        $apiVersionConstraint = new ApiVersionConstraint(
-            [
-                'message' => 'myMessage',
-            ]
-        );
-
-        $this->validator->validate($apiVersion, $apiVersionConstraint);
-
-        $this->buildViolation('myMessage')
-            ->setParameter('{{ api_version }}', $apiVersionAsString)
+        $this->validator->validate($apiVersion, new ApiVersionConstraint());
+        $this->buildViolation('The value {{ value }} is not a valid \'api_version\' parameter')
+            ->setParameter('{{ value }}', $apiVersion)
             ->assertRaised();
     }
 
@@ -66,7 +41,7 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
      *
      * @return array
      */
-    public function provideValidApiVersion(): array
+    public function provideValidData(): array
     {
         return [
             ['dev'],
@@ -78,12 +53,11 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
      *
      * @return array
      */
-    public function provideInvalidApiVersion(): array
+    public function provideInvalidData(): array
     {
         return [
-            ['prod', 'prod'],
-            [0, '0'],
-            [false, ''],
+            ['prod'],
+            ['DEV'],
         ];
     }
 

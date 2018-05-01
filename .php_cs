@@ -1,10 +1,7 @@
 <?php
 $header = <<<'EOF'
-This file is part of Dotpayds project.
-(c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
-
-@license   https://opensource.org/licenses/MIT  The MIT License
 EOF;
+
 $config = PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([

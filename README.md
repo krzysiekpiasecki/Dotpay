@@ -2,10 +2,10 @@
 
  ![Dotpay](https://raw.githubusercontent.com/krzysiekpiasecki/Dotpayds/master/dotpay_logo.png) 
 
-[![Build Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/build.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Build Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/build.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/build-status/master)<br/>
+[![Code Coverage](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)<br/>
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/?branch=master)<br/>
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/krzysiekpiasecki/Dotpayds/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)<br/>
 
 Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository offers middlewares for payments implementation. 
 
@@ -145,6 +145,27 @@ $httpResponse = $errorCodeMiddleware->process(
 );
 ```
 
-# Dotpay for Developers
+## Validation layer
 
-See [Dotpay Technical Manual For Payments Implementation](https://ssl.dotpay.pl/s2/login/cloudfs1/magellan_media/common_file/dotpay_technical_manual_for_payments_implementation.pdf) for more details.
+This library uses Symfony Validator component to validate the request. If you want, you can use validation layer provided by this library standalone. Example of validation is here:
+```php
+use Symfony\Component\Validator\Validation;
+
+$validator = Validation::createValidator();
+$violations = $validator->validate('-1',
+    new \Dotpay\Request\Validator\Constraint\IdConstraint()
+);
+
+if (0 !== count($violations)) {
+    // there are errors, now you can show them
+    foreach ($violations as $violation) {
+        echo $violation->getMessage().'<br>';
+        // Output: The value "-1" is not a valid 'id' parameter
+    }
+}
+```
+
+## Additional resources
+[Dotpay Technical Manual For Payments Implementation](https://ssl.dotpay.pl/s2/login/cloudfs1/magellan_media/common_file/dotpay_technical_manual_for_payments_implementation.pdf)<br/>
+[Using Symfony Validation component](https://symfony.com/doc/current/components/validator.html)<br/>
+

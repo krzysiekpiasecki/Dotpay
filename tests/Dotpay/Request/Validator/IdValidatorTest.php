@@ -1,20 +1,6 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
-
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
 
 namespace Dotpay\Request\Validator;
 
@@ -28,7 +14,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
-     * @dataProvider provideValidIds()
+     * @dataProvider provideValidData()
      */
     public function testValidId(string $id)
     {
@@ -38,22 +24,41 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @covers ::validate()
+     * @covers ::validate
+     * @dataProvider provideInvalidData
+     *
+     * @param string Invalid Id
      */
-    public function testInvalidId()
+    public function testInvalidId(string $id)
     {
-        $this->markTestSkipped('Not implemented yet');
+        $this->validator->validate($id, new IdConstraint());
+        $this->buildViolation('The value {{ value }} is not a valid \'id\' parameter')
+            ->setParameter('{{ value }}', sprintf('"%s"', $id))
+            ->setCode('de1e3db3-5ed4-4941-aae4-59f3667cc3a3')
+            ->assertRaised();
     }
 
     /**
      * @return array
      */
-    public function provideValidIds(): array
+    public function provideValidData(): array
     {
         return [
            ['1'],
            ['123456'],
            ['999999'],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function provideInvalidData(): array
+    {
+        return [
+            ['9999990'],
+            ['-1'],
+            ['999999.0'],
         ];
     }
 

@@ -1,20 +1,6 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
-
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
 
 namespace  Dotpay\Request\Validator\Constraint;
 
@@ -31,7 +17,7 @@ use Symfony\Component\Validator\Constraint;
 class ApiVersionConstraint extends Constraint
 {
     /** @var string Constraint message */
-    public $message = 'The value {{ api_version }} is not a valid \'api_version\' parameter';
+    public $message = 'The value {{ value }} is not a valid \'api_version\' parameter';
 
     /**
      * {@inheritdoc}

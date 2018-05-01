@@ -1,20 +1,6 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
-
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
 
 namespace Dotpay\Request\Validator\Constraint;
 
@@ -31,7 +17,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 class IdConstraint extends Regex
 {
     /** @var string Constraint message */
-    public $message = 'The value {{ id }} is not a valid \'id\' parameter';
+    public $message = 'The value {{ value }} is not a valid \'id\' parameter';
 
     /** @var string regex pattern */
     public $pattern = '/^[1-9][0-9]{0,5}$/';
@@ -41,7 +27,10 @@ class IdConstraint extends Regex
      */
     public function __construct()
     {
-        parent::__construct($this->pattern);
+        parent::__construct([
+            'pattern' => $this->pattern,
+            'message' => $this->message,
+        ]);
     }
 
     /**
