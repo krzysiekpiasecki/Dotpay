@@ -5,32 +5,18 @@ declare(strict_types=1);
 namespace Dotpay\Request\Validator\Constraint;
 
 use Dotpay\Request\Validator\IdValidator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \Dotpay\Request\Validator\Constraint\IdConstraint
  */
-class IdConstraintTest extends \PHPUnit\Framework\TestCase
+class IdConstraintTest extends TestCase
 {
-    public function testMessageProperty()
+    public function testMessage()
     {
         $this->assertSame(
             'The value {{ value }} is not a valid \'id\' parameter',
             (new IdConstraint())->message
-        );
-    }
-
-    /**
-     * @covers ::__construct()
-     */
-    public function test__construct()
-    {
-        $this->assertSame(
-            'The value {{ value }} is not a valid \'id\' parameter',
-            (new IdConstraint())->message
-        );
-        $this->assertSame(
-            '/^[1-9][0-9]{0,5}$/',
-            (new IdConstraint())->pattern
         );
     }
 
