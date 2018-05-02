@@ -15,6 +15,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      * @dataProvider provideValidData()
+     * @param string Valid Id
      */
     public function testValidId(string $id)
     {
@@ -26,16 +27,13 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate
      * @dataProvider provideInvalidData
-     *
      * @param string Invalid Id
-     * @param int $errorCode Validation error code
      */
-    public function testInvalidId(string $id, int $errorCode)
+    public function testInvalidId(string $id)
     {
         $this->validator->validate($id, new IdConstraint());
         $this->buildViolation('The value {{ value }} is not a valid \'id\' parameter')
             ->setParameter('{{ value }}', $id)
-            ->setCode($errorCode)
             ->assertRaised();
     }
 
@@ -57,11 +55,11 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     public function provideInvalidData(): array
     {
         return [
-            ['9999990', IdValidator::INVALID_RANGE],
-            ['-1', IdValidator::INVALID_RANGE],
-            ['999999.0', IdValidator::INVALID_FORMAT],
-            ['0123', IdValidator::INVALID_FORMAT],
-            ['a0123', IdValidator::INVALID_FORMAT]
+            ['9999990'],
+            ['-1'],
+            ['999999.0'],
+            ['0123'],
+            ['a0123']
         ];
     }
 

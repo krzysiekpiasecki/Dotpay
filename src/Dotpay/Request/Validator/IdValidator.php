@@ -15,12 +15,6 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class IdValidator extends ConstraintValidator
 {
-    /** @var int When invalid id format */
-    const INVALID_FORMAT = 1;
-
-    /** @var int When invalid id range */
-    const INVALID_RANGE = 2;
-
     /**
      * Validate against {@see IdConstraint}.
      *
@@ -32,7 +26,6 @@ class IdValidator extends ConstraintValidator
         if (false === filter_var($value, FILTER_VALIDATE_INT)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
-                ->setCode(self::INVALID_FORMAT)
                 ->addViolation();
             return;
         }
@@ -41,7 +34,6 @@ class IdValidator extends ConstraintValidator
         if ($intValue < 1 || $intValue > 999999) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
-                ->setCode(self::INVALID_RANGE)
                 ->addViolation();
         }
     }
