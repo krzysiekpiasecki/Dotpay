@@ -17,9 +17,10 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
      * @covers ::validate
      * @dataProvider provideValidData
      */
-    public function testApiVersionIsValid(string $apiVersion)
+    public function testValidApiVersion(string $apiVersion)
     {
         $this->validator->validate($apiVersion, new ApiVersionConstraint());
+
         $this->assertNoViolation();
     }
 
@@ -28,9 +29,10 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
      * @covers ::validate
      * @dataProvider provideInvalidData
      */
-    public function testApiVersionIsInvalid(string $apiVersion)
+    public function testInvalidApiVersion(string $apiVersion)
     {
         $this->validator->validate($apiVersion, new ApiVersionConstraint());
+
         $this->buildViolation('The value {{ value }} is not a valid \'api_version\' parameter')
             ->setParameter('{{ value }}', $apiVersion)
             ->assertRaised();

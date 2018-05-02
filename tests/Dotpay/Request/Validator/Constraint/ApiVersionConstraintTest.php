@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ApiVersionConstraintTest extends TestCase
 {
-    public function testMessageProperty()
+    public function testMessage()
     {
         $this->assertSame(
             'The value {{ value }} is not a valid \'api_version\' parameter',
