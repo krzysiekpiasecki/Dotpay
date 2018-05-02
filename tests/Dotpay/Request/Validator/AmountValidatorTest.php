@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace Dotpay\Request\Validator;
@@ -21,33 +14,60 @@ class AmountValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
-     * @dataProvider provideValidValues
+     * @dataProvider provideValidData
+     * @param string Valid amount
      */
-    public function testValidValue(string $value)
+    public function testValidAmount(string $value)
     {
         $constraint = new AmountConstraint();
         $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
-
     /**
-     * @covers ::validate()
+     * @covers ::validate
+     * @dataProvider provideInvalidData
+     *
+     * @param string Invalid amount
      */
-    public function testInvalidValue()
+    public function testInvalidAmount(string $value)
     {
-        $this->markTestSkipped('Not implemented yet');
+        $this->validator->validate($value, new AmountConstraint());
+        $this->buildViolation('The value {{ value }} is not a valid \'amount\' parameter')
+            ->setParameter('{{ value }}', $value)
+            ->assertRaised();
     }
 
     /**
      * @return array
      */
-    public function provideValidValues(): array
+    public function provideValidData(): array
     {
         return [
-            ['1'],
+            ['1.2'],
             ['1999343.23'],
             ['12.34'],
             ['0.34'],
+            ['1234567891']
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function provideInvalidData(): array
+    {
+        return [
+            ['a9999990'],
+            ['999,99'],
+            ['+23'],
+            ['-23'],
+            ['+.23'],
+            ['-.23'],
+            ['.23'],
+            ['-12'],
+            ['0'],
+            [''],
+            ['12345678910'],
         ];
     }
 

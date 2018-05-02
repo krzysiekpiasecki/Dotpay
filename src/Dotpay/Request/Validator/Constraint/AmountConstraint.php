@@ -1,18 +1,11 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
-namespace  Dotpay\Request\Validator\Constraint;
+namespace Dotpay\Request\Validator\Constraint;
 
 use Dotpay\Request\Validator\AmountValidator;
-use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraint;
 
 /**
  * Constraint against 'amount' parameter.
@@ -21,20 +14,10 @@ use Symfony\Component\Validator\Constraints\Regex;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class AmountConstraint extends Regex
+class AmountConstraint extends Constraint
 {
     /** @var string Constraint message */
-    public $message = 'The value {{ amount }} is not a valid \'amount\' parameter';
-
-    public $pattern = '^(0|([1-9][0-9]*))(\\.[0-9]+)?$^';
-
-    /**
-     * AmountConstraint constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct($this->pattern);
-    }
+    public $message = 'The value {{ value }} is not a valid \'amount\' parameter';
 
     /**
      * {@inheritdoc}

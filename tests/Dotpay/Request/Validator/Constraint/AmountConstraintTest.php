@@ -1,19 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dotpay\Request\Validator\Constraint;
 
+use Dotpay\Request\Validator\AmountValidator;
+use PHPUnit\Framework\TestCase;
+
 /**
- * @coversNothing
+ * @coversDefaultClass \Dotpay\Request\Validator\Constraint\AmountConstraint
  */
-class AmountConstraintTest extends \PHPUnit\Framework\TestCase
+class AmountConstraintTest extends TestCase
 {
-    public function test__construct()
+    public function testMessage()
     {
-        $this->markTestSkipped();
+        $this->assertSame(
+            'The value {{ value }} is not a valid \'amount\' parameter',
+            (new AmountConstraint())->message
+        );
     }
 
+    /**
+     * @covers ::validateBy
+     */
     public function testValidatedBy()
     {
-        $this->markTestSkipped();
+        $this->assertSame(
+            (new AmountConstraint())->validatedBy(),
+            AmountValidator::class
+        );
     }
 }
