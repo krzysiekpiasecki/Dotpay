@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace  Dotpay\Request\Validator\Constraint;
+namespace Dotpay\Request\Validator\Constraint;
 
 use Dotpay\Request\Validator\ApiVersionValidator;
 use Symfony\Component\Validator\Constraint;
