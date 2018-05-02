@@ -15,25 +15,25 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      * @dataProvider provideValidData()
-     * @param string Valid Id
+     * @param string $value Valid Id
      */
-    public function testValidId(string $id)
+    public function testValidId(string $value)
     {
         $constraint = new IdConstraint();
-        $this->validator->validate($id, $constraint);
+        $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
 
     /**
      * @covers ::validate
      * @dataProvider provideInvalidData
-     * @param string Invalid Id
+     * @param string $value Invalid Id
      */
-    public function testInvalidId(string $id)
+    public function testInvalidId(string $value)
     {
-        $this->validator->validate($id, new IdConstraint());
+        $this->validator->validate($value, new IdConstraint());
         $this->buildViolation('The value {{ value }} is not a valid \'id\' parameter')
-            ->setParameter('{{ value }}', $id)
+            ->setParameter('{{ value }}', $value)
             ->assertRaised();
     }
 
@@ -57,6 +57,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
         return [
             ['9999990'],
             ['-1'],
+            ['0'],
             ['999999.0'],
             ['0123'],
             ['a0123']

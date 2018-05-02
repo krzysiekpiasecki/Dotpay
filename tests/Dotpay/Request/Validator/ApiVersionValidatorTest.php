@@ -13,28 +13,28 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 class ApiVersionValidatorTest extends ConstraintValidatorTestCase
 {
     /**
-     * @param string Valid API version
+     * @param string $value Valid API version
      * @covers ::validate
      * @dataProvider provideValidData
      */
-    public function testValidApiVersion(string $apiVersion)
+    public function testValidApiVersion(string $value)
     {
-        $this->validator->validate($apiVersion, new ApiVersionConstraint());
+        $this->validator->validate($value, new ApiVersionConstraint());
 
         $this->assertNoViolation();
     }
 
     /**
-     * @param string Invalid API version
+     * @param string $value Invalid API version
      * @covers ::validate
      * @dataProvider provideInvalidData
      */
-    public function testInvalidApiVersion(string $apiVersion)
+    public function testInvalidApiVersion(string $value)
     {
-        $this->validator->validate($apiVersion, new ApiVersionConstraint());
+        $this->validator->validate($value, new ApiVersionConstraint());
 
         $this->buildViolation('The value {{ value }} is not a valid \'api_version\' parameter')
-            ->setParameter('{{ value }}', $apiVersion)
+            ->setParameter('{{ value }}', $value)
             ->assertRaised();
     }
 
@@ -58,6 +58,7 @@ class ApiVersionValidatorTest extends ConstraintValidatorTestCase
     public function provideInvalidData(): array
     {
         return [
+            [' dev'],
             ['prod'],
             ['DEV'],
         ];
