@@ -26,26 +26,22 @@ class AmountValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         if (false === filter_var($value, FILTER_VALIDATE_FLOAT)) {
-            $this->addViolation($constraint->message, $value);
-            return;
+            return $this->addViolation($constraint->message, $value);
         }
 
         $validator = Validation::createValidator();
         $violations = $validator->validate($value, new Length(['min' => 1, 'max' => 10]));
         if (0 !== count($violations)) {
-            $this->addViolation($constraint->message, $value);
-            return;
+            return $this->addViolation($constraint->message, $value);
         }
 
         $lead = substr($value, 0, 1);
         if ($lead === "." || !ctype_digit($lead)) {
-            $this->addViolation($constraint->message, $value);
-            return;
+            return $this->addViolation($constraint->message, $value);
         }
 
         if (floatval($value) <= 0) {
-            $this->addViolation($constraint->message, $value);
-            return;
+            return $this->addViolation($constraint->message, $value);
         }
 
     }
