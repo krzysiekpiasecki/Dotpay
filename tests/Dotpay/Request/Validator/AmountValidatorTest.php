@@ -15,6 +15,7 @@ class AmountValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      * @dataProvider provideValidData
+     *
      * @param string Valid amount
      */
     public function testValidAmount(string $value)
@@ -23,6 +24,7 @@ class AmountValidatorTest extends ConstraintValidatorTestCase
         $this->validator->validate($value, $constraint);
         $this->assertNoViolation();
     }
+
     /**
      * @covers ::validate
      * @dataProvider provideInvalidData
@@ -47,7 +49,7 @@ class AmountValidatorTest extends ConstraintValidatorTestCase
             ['1999343.23'],
             ['12.34'],
             ['0.34'],
-            ['1234567891']
+            ['1234567891'],
         ];
     }
 

@@ -15,6 +15,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      * @dataProvider provideValidData()
+     *
      * @param string $value Valid Id
      */
     public function testValidId(string $value)
@@ -27,6 +28,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate
      * @dataProvider provideInvalidData
+     *
      * @param string $value Invalid Id
      */
     public function testInvalidId(string $value)
@@ -60,7 +62,7 @@ class IdValidatorTest extends ConstraintValidatorTestCase
             ['0'],
             ['999999.0'],
             ['0123'],
-            ['a0123']
+            ['a0123'],
         ];
     }
 

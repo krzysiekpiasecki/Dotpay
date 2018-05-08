@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace Dotpay\Request\Validator;
@@ -22,6 +15,8 @@ class CurrencyValidatorTest extends ConstraintValidatorTestCase
     /**
      * @covers ::validate()
      * @dataProvider provideValidValues
+     *
+     * @param string $value Valid currency
      */
     public function testValidValue(string $value)
     {
@@ -32,10 +27,18 @@ class CurrencyValidatorTest extends ConstraintValidatorTestCase
 
     /**
      * @covers ::validate()
+     * @dataProvider provideInvalidValues
+     *
+     * @param string $value     Invalid currency
+     * @param string $errorCode Error code when invalid currency
      */
-    public function testInvalidValue()
+    public function testInvalidValue(string $value, string $errorCode)
     {
-        $this->markTestSkipped('Not implemented yet');
+        $this->validator->validate($value, new CurrencyConstraint());
+        $this->buildViolation('The value {{ value }} is not a valid \'currency\' parameter')
+            ->setParameter('{{ value }}', "\"${value}\"")
+            ->setCode($errorCode)
+            ->assertRaised();
     }
 
     /**
@@ -56,6 +59,21 @@ class CurrencyValidatorTest extends ConstraintValidatorTestCase
         ];
     }
 
+    /**
+     * @return array
+     */
+    public function provideInvalidValues(): array
+    {
+        return [
+            ['pln', '8e179f1b-97aa-4560-a02f-2a8b42e49df7'],
+            ['EUr', '8e179f1b-97aa-4560-a02f-2a8b42e49df7'],
+            ['CHK', '8e179f1b-97aa-4560-a02f-2a8b42e49df7'],
+        ];
+    }
+
+    /**
+     * @return CurrencyValidator
+     */
     protected function createValidator()
     {
         return new CurrencyValidator();

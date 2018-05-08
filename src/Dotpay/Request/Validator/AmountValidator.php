@@ -36,20 +36,19 @@ class AmountValidator extends ConstraintValidator
         }
 
         $lead = substr($value, 0, 1);
-        if ($lead === "." || !ctype_digit($lead)) {
+        if ('.' === $lead || !ctype_digit($lead)) {
             return $this->addViolation($constraint->message, $value);
         }
 
-        if (floatval($value) <= 0) {
+        if ((float) $value <= 0) {
             return $this->addViolation($constraint->message, $value);
         }
-
     }
 
-    private function addViolation(string $message, string $value) {
+    private function addViolation(string $message, string $value)
+    {
         $this->context->buildViolation($message)
             ->setParameter('{{ value }}', $value)
             ->addViolation();
-
     }
 }

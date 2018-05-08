@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace  Dotpay\Request\Validator\Constraint;
@@ -24,14 +17,14 @@ use Symfony\Component\Validator\Constraints\Choice;
 class CurrencyConstraint extends Choice
 {
     /** @var string Constraint message */
-    public $message = 'The value {{ currency }} is not a valid \'currency\' parameter';
+    public $message = 'The value {{ value }} is not a valid \'currency\' parameter';
 
     /**
-     * Available values.
+     * Available currencies.
      *
      * @var array
      */
-    private static $values = [
+    public $choices = [
         'PLN',
         'EUR',
         'USD',
@@ -42,14 +35,6 @@ class CurrencyConstraint extends Choice
         'UAH',
         'RON',
     ];
-
-    /**
-     * CurrencyConstraint constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct(self::$values);
-    }
 
     /**
      * {@inheritdoc}

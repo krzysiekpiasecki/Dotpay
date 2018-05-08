@@ -27,10 +27,11 @@ class IdValidator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
                 ->addViolation();
+
             return;
         }
 
-        $intValue = intval($value);
+        $intValue = (int) $value;
         if ($intValue < 1 || $intValue > 999999) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
