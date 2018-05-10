@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace Dotpay\Request\Validator;
@@ -21,32 +14,32 @@ class DescriptionValidatorTest extends ConstraintValidatorTestCase
 {
     /**
      * @covers ::validate()
-     * @dataProvider provideValidLanguages()
      */
-    public function testValidDescription(string $Description)
+    public function testValidValue()
     {
         $constraint = new DescriptionConstraint();
-        $this->validator->validate($Description, $constraint);
+        $this->validator->validate('a', $constraint);
+        $this->assertNoViolation();
+        $this->validator->validate(str_repeat('a', 255), $constraint);
         $this->assertNoViolation();
     }
 
     /**
      * @covers ::validate()
      */
-    public function testInvalidDescription()
+    public function testToLongDescription()
     {
-        $this->markTestSkipped('Not implemented yet');
-    }
-
-    /**
-     * @return array
-     */
-    public function provideValidLanguages(): array
-    {
-        return [
-            ['qwertyuiiopasdfghjklzxcvbnm1234567890-'],
-            ['123654789654123           1236554'],
-        ];
+        $toLong = str_repeat('a', 256);
+        $this->validator->validate($toLong, new DescriptionConstraint());
+        $this->buildViolation('This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.')
+            ->setParameters([
+                '{{ value }}' => sprintf("\"%s\"", $toLong),
+                '{{ limit }}' => 255
+            ])
+            ->setPlural(255)
+            ->setInvalidValue($toLong)
+            ->setCode('d94b19cc-114f-4f44-9cc4-4138e80a87b9')
+            ->assertRaised();
     }
 
     protected function createValidator()

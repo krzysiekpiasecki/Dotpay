@@ -1,18 +1,11 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace  Dotpay\Request\Validator\Constraint;
 
 use Dotpay\Request\Validator\DescriptionValidator;
-use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * Constraint against 'description' parameter.
@@ -21,20 +14,17 @@ use Symfony\Component\Validator\Constraints\Regex;
  * @Annotation
  * @Target({"PROPERTY"})
  */
-class DescriptionConstraint extends Regex
+class DescriptionConstraint extends Length
 {
-    /** @var string Constraint message */
-    public $message = 'The value {{ description }} is not a valid \'description\' parameter';
-
-    /** @var string regex pattern */
-    public $pattern = '^[\\w\\d _\\-]{1,255}$^';
-
     /**
      * DescriptionConstraint constructor.
      */
     public function __construct()
     {
-        parent::__construct($this->pattern);
+        parent::__construct([
+            'min' => 1,
+            'max' => 255
+        ]);
     }
 
     /**
