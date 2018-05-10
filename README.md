@@ -1,4 +1,4 @@
-# dotphpay
+# Dotphpay
 
 Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository comes with middlewares for payments implementation and validation layer.
 
@@ -9,14 +9,14 @@ Dotpay is the most comprehensive online worldwilde payments solution dedicated f
 
 Are you interested in more details? [Here's the complete documentation of API](https://krzysiekpiasecki.github.io/dotphpay/).<br />
 
-# Using the middlewares
+# Using this library
 
 ### Install
 
 The source code is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotphpay).
 
 ```php
-composer require krzysiekpiasecki/dotpay
+composer require krzysiekpiasecki/dotphpay
 ```
 
 ## Payment Middleware
