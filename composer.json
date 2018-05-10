@@ -1,6 +1,6 @@
 {
-    "name": "krzysiekpiasecki/dotpay",
-    "description": "Dotpay integration",
+    "name": "krzysiekpiasecki/dotphpay",
+    "description": "Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository comes with middlewares for payments implementation and validation layer.",
     "type": "library",
     "license": "MIT",
     "authors": [{

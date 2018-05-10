@@ -1,19 +1,19 @@
-# Dotpay Middleware
+# dotphpay
 
 Dotpay is the most comprehensive online worldwilde payments solution dedicated for polish ecommerce. This repository comes with middlewares for payments implementation and validation layer.
 
 ![Dotpay](https://raw.githubusercontent.com/krzysiekpiasecki/Dotpayds/master/dotpay_logo.png)
 
 
-# API
+# Documentation
 
-Are you interested in more details? [Here's the complete documentation of API](https://krzysiekpiasecki.github.io/Dotpayds/).
+Are you interested in more details? [Here's the complete documentation of API](https://krzysiekpiasecki.github.io/dotphpay/).
 
 # Using the middlewares
 
 ### Install
 
-The source code is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotpay).
+The source code is distributed via [Composer](https://getcomposer.org) and [Packagist](https://packagist.org/packages/krzysiekpiasecki/dotphpay).
 
 ```php
 composer require krzysiekpiasecki/dotpay
@@ -162,6 +162,5 @@ if (0 !== count($violations)) {
 ```
 
 ## Additional resources
-[Dotpay Technical Manual For Payments Implementation](https://ssl.dotpay.pl/s2/login/cloudfs1/magellan_media/common_file/dotpay_technical_manual_for_payments_implementation.pdf)<br/>
 [Using Symfony Validation component](https://symfony.com/doc/current/components/validator.html)<br/>
 
