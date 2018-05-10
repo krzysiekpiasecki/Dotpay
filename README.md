@@ -7,7 +7,7 @@ Dotpay is the most comprehensive online worldwilde payments solution dedicated f
 
 # Documentation
 
-Are you interested in more details? [Here's the complete documentation of API](https://krzysiekpiasecki.github.io/dotphpay/).
+Are you interested in more details? [Here's the complete documentation of API](https://krzysiekpiasecki.github.io/dotphpay/).<br />
 
 # Using the middlewares
 
@@ -162,5 +162,6 @@ if (0 !== count($violations)) {
 ```
 
 ## Additional resources
+[Dotpay Technical Manual For Payments Implementation](https://ssl.dotpay.pl/s2/login/cloudfs1/magellan_media/common_file/dotpay_technical_manual_for_payments_implementation.pdf)<br/>
 [Using Symfony Validation component](https://symfony.com/doc/current/components/validator.html)<br/>
 
