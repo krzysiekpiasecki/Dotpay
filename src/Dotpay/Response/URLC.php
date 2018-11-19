@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of Dotpayds project.
- * (c) Krzysztof Piasecki <krzysiekpiasecki@gmail.com>
- *
- * @license   https://opensource.org/licenses/MIT  The MIT License
- */
-
 declare(strict_types=1);
 
 namespace Dotpay\Response;
@@ -75,6 +68,12 @@ class URLC
 
     /** @var string Credit card masked number */
     public $credit_card_masked_number;
+
+    /** @var string Year expiration date of a payment card */
+    public $credit_card_expiration_year;
+
+    /** @var string Month expiration date of a payment card */
+    public $credit_card_expiration_month;
 
     /** @var string Credit card brand codename */
     public $credit_card_brand_codename;
